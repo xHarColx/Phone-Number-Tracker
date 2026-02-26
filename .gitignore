@@ -1,0 +1,39 @@
+# ── Environment & Secrets ──────────────────────────────
+.env
+.env.local
+!.env.example
+
+# ── Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Virtual Environments ──────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Output & Reports (user-generated, not tracked) ────
+output/
+*.json
+!requirements.txt
+
+# ── IDE / Editor ──────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Backup files ──────────────────────────────────────
+*_backup*.py
+*.bak
+*.orig
