@@ -99,6 +99,7 @@ OPENCAGE_API_KEY = os.environ.get("OPENCAGE_API_KEY", "")
 NUMVERIFY_API_KEY = os.environ.get("NUMVERIFY_API_KEY", "")
 ABSTRACT_API_KEY = os.environ.get("ABSTRACT_API_KEY", "")
 IPINFO_TOKEN = os.environ.get("IPINFO_TOKEN", "")
+TRESTLE_API_KEY = os.environ.get("TRESTLE_API_KEY", "")
 
 BANNER = r"""
 [bold red]
@@ -792,6 +793,7 @@ class PhoneTrackerPro:
 
         # Run all methods in parallel for speed
         methods = [
+            ("Trestle", self._trestle_live),
             ("NumVerify", self._numverify_live),
             ("AbstractAPI", self._abstractapi_live),
             ("IPInfo", self._ipinfo_detect),
@@ -886,7 +888,57 @@ class PhoneTrackerPro:
                         pass
         except Exception as e:
             console.print(f"[dim]  IPInfo: {e}[/dim]")
+   
+     def _trestle_live(self):
+        """Trestle API: Real-Time Activity Score and Line Type Fidelity."""
+        api_key = os.getenv("TRESTLE_API_KEY", "")
+        if not api_key:
+            return
+        try:
+            session = self._get_session()
+            number = self.phone_number.replace("+", "")
+            url = f"https://api.trestleiq.com/3.0/phone_intel?phone={number}"
+            
+            # Trestle requires the API key passed securely via headers
+            headers = {
+                "x-api-key": api_key,
+                "Accept": "application/json"
+            }
+            
+            resp = session.get(url, headers=headers, timeout=10)
+            
+            if resp.status_code == 200:
+                data = resp.json()
+                
+                # Parse Trestle specific signals
+                activity_score = data.get("activity_score", 0) 
+                line_type_fidelity = data.get("line_type", "")
+                crr = data.get("carrier", "")
 
+                # Update core forensics
+                if line_type_fidelity:
+                    self.line_type = line_type_fidelity
+                
+                # Score > 70 indicates a high likelihood of a human answering
+                if activity_score >= 70:
+                    self.network_status = f"REACHABLE (Activity Score: {activity_score}/100)"
+                    is_active = True
+                else:
+                    self.network_status = f"INACTIVE/DISCONNECTED (Activity Score: {activity_score}/100)"
+                    is_active = False
+                    
+                if crr and not self.current_carrier:
+                    self.current_carrier = crr
+
+                # Output to CLI
+                status_color = "green" if is_active else "yellow"
+                console.print(f"[{status_color}]  ✓ Trestle: Activity {activity_score}/100 | Type: {line_type_fidelity or 'Unknown'} | Carrier: {crr or 'Unknown'}[/{status_color}]")
+            else:
+                console.print(f"[dim]  Trestle API Error: {resp.status_code}[/dim]")
+                
+        except Exception as e:
+            console.print(f"[dim]  Trestle: {e}[/dim]")
+                  
     def _free_network_probe(self):
         try:
             session = self._get_session()
@@ -2555,6 +2607,7 @@ def main():
 
     # Check API keys
     api_status = []
+    api_status.append(("TRESTLE", "✓" if os.getenv("TRESTLE_API_KEY") else "✗"))
     api_status.append(("NUMVERIFY", "✓" if os.getenv("NUMVERIFY_API_KEY") else "✗"))
     api_status.append(("ABSTRACT", "✓" if os.getenv("ABSTRACT_API_KEY") else "✗"))
     api_status.append(("IPINFO", "✓" if os.getenv("IPINFO_TOKEN") else "✗"))
