@@ -11,25 +11,26 @@
 | # | Feature | Description |
 |---|---------|-------------|
 | 1 | **Phone Parsing & Validation** | E.164 / international / national format, valid + possible checks, auto country-code detection |
-| 2 | **CDR-Style Subscriber Info** | Carrier, country, timezone, region, line type, HLR status, network reachability |
-| 3 | **India Telecom Circle DB** | 700+ prefix → circle mapping (Jio, Airtel, Vi, BSNL) with SIM registration city |
-| 4 | **Live Location (Multi-API Consensus)** | Cross-references up to 7 sources with weighted voting → most likely current city |
-| 5 | **Roaming Detection** | Compares SIM registration circle vs live network city → flags roaming |
-| 6 | **IP Grabber Link** | Flask-powered tracking link captures visitor IP, User-Agent, GPS (if allowed), with Rich live dashboard |
-| 7 | **Advanced Geolocation** | OpenCage + Nominatim forward/reverse geocoding → lat/lng + formatted address |
-| 8 | **OSINT Platform Probes** | WhatsApp, Telegram, Truecaller (multi-method), Eyecon, SyncMe, Facebook, Instagram, Google |
-| 9 | **UPI ID Generation** | Auto-generates 10 possible UPI IDs (@paytm, @ybl, @okaxis, @upi, etc.) for Indian numbers |
-| 10 | **Email Intelligence** | Email guessing from phone number, Gravatar profile lookup, AbstractAPI email validation |
-| 11 | **Truecaller Multi-Method** | 3 API endpoints + web scrape + JSON extraction — attempts to fetch owner name & email |
-| 12 | **Deep OSINT** | Spam DB checks (SpamCalls.net, ShouldIAnswer), breach-style exposure check, web mention scraping |
-| 13 | **Owner Name Detection** | Auto-extracts real name from Truecaller/SyncMe/Eyecon and shows in summary |
-| 14 | **Case Management** | Case ID (auto-UUID or custom), operator name, unit, classification levels |
-| 15 | **Audit Trail & Evidence Hashing** | SHA-256 chain-of-custody, per-phase evidence logging, persistent audit log files |
-| 16 | **HTML Report (Professional)** | Dark-themed report with classification banners, case metadata, legal notice, audit trail, SHA-256 hash |
-| 17 | **JSON Export** | Forensic envelope with case metadata, evidence integrity hash, full data dump |
-| 18 | **Interactive Map** | Folium map with SIM location + live location markers, heatmap layer |
-| 19 | **Persistent API Keys** | `.env` file auto-loaded every run via `python-dotenv` |
-| 20 | **Flexible CLI** | Grouped argument categories, API status panel, version flag, epilog with examples |
+| 2 | **Forensic Phone Active Check** | Trestle Activity Score (0-100), real-time reachability, strict Line Type Fidelity (Mobile vs Non-Fixed VoIP) |
+| 3 | **CDR-Style Subscriber Info** | Carrier, country, timezone, region, line type, HLR status, network reachability |
+| 4 | **India Telecom Circle DB** | 700+ prefix → circle mapping (Jio, Airtel, Vi, BSNL) with SIM registration city |
+| 5 | **Live Location (Multi-API Consensus)** | Cross-references up to 7 sources with weighted voting → most likely current city |
+| 6 | **Roaming Detection** | Compares SIM registration circle vs live network city → flags roaming |
+| 7 | **IP Grabber Link** | Flask-powered tracking link captures visitor IP, User-Agent, GPS (if allowed), with Rich live dashboard |
+| 8 | **Advanced Geolocation** | OpenCage + Nominatim forward/reverse geocoding → lat/lng + formatted address |
+| 9 | **OSINT Platform Probes** | WhatsApp, Telegram, Truecaller (multi-method), Eyecon, SyncMe, Facebook, Instagram, Google |
+| 10 | **UPI ID Generation** | Auto-generates 10 possible UPI IDs (@paytm, @ybl, @okaxis, @upi, etc.) for Indian numbers |
+| 11 | **Email Intelligence** | Email guessing from phone number, Gravatar profile lookup, AbstractAPI email validation |
+| 12 | **Truecaller Multi-Method** | 3 API endpoints + web scrape + JSON extraction — attempts to fetch owner name & email |
+| 13 | **Deep OSINT** | Spam DB checks (SpamCalls.net, ShouldIAnswer), breach-style exposure check, web mention scraping |
+| 14 | **Owner Name Detection** | Auto-extracts real name from Truecaller/SyncMe/Eyecon and shows in summary |
+| 15 | **Case Management** | Case ID (auto-UUID or custom), operator name, unit, classification levels |
+| 16 | **Audit Trail & Evidence Hashing** | SHA-256 chain-of-custody, per-phase evidence logging, persistent audit log files |
+| 17 | **HTML Report (Professional)** | Dark-themed report with classification banners, case metadata, legal notice, audit trail, SHA-256 hash |
+| 18 | **JSON Export** | Forensic envelope with case metadata, evidence integrity hash, full data dump |
+| 19 | **Interactive Map** | Folium map with SIM location + live location markers, heatmap layer |
+| 20 | **Persistent API Keys** | `.env` file auto-loaded every run via `python-dotenv` |
+| 21 | **Flexible CLI** | Grouped argument categories, API status panel, version flag, epilog with examples |
 
 ---
 
@@ -88,6 +89,7 @@ PhoneTrackerPro uses 4 API keys for maximum intelligence. **All are free tier.**
 
 | API | Sign Up Link | Free Tier | Used For |
 |-----|-------------|-----------|----------|
+| **Trestle** | [trestleiq.com/signup](https://trestleiq.com/signup) | 25 req/month | Real-Time Activity Score, VoIP/Burner Detection |
 | **Numverify** | [numverify.com/signup](https://numverify.com/signup) | 100 req/month | Carrier lookup, location vote |
 | **AbstractAPI** | [app.abstractapi.com](https://app.abstractapi.com/users/signup) | 1000 req/month | Phone validation, location vote |
 | **ipinfo** | [ipinfo.io/signup](https://ipinfo.io/signup) | 50,000 req/month | Your IP location (reference point) |
@@ -98,6 +100,7 @@ PhoneTrackerPro uses 4 API keys for maximum intelligence. **All are free tier.**
 Create a `.env` file in the project root:
 
 ```env
+TRESTLE_API_KEY=your_trestle_key_here
 NUMVERIFY_API_KEY=your_numverify_key_here
 ABSTRACT_API_KEY=your_abstract_api_key_here
 IPINFO_TOKEN=your_ipinfo_token_here
@@ -428,6 +431,7 @@ The tool queries up to 7 different sources and uses **weighted consensus voting*
 
 | Source | Weight | Requires API Key |
 |--------|--------|-----------------|
+| Trestle | 5 | ✅ `TRESTLE_API_KEY` |
 | Numverify | 3 | ✅ `NUMVERIFY_API_KEY` |
 | AbstractAPI | 3 | ✅ `ABSTRACT_API_KEY` |
 | ipinfo | 2 | ✅ `IPINFO_TOKEN` |
