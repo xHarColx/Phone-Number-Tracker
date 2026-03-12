@@ -888,8 +888,8 @@ class PhoneTrackerPro:
                         pass
         except Exception as e:
             console.print(f"[dim]  IPInfo: {e}[/dim]")
-   
-   def _trestle_live(self):
+
+    def _trestle_live(self):
         """Trestle API: Real-Time Activity Score and Line Type Fidelity."""
         api_key = os.getenv("TRESTLE_API_KEY", "")
         if not api_key:
@@ -897,33 +897,38 @@ class PhoneTrackerPro:
         try:
             from urllib.parse import quote
             session = self._get_session()
-            
+
             # Encode phone number properly (handles + as %2B)
             number = quote(self.phone_number)
             url = f"https://api.trestleiq.com/3.0/phone_intel?phone={number}"
-            
+
             # Trestle requires the API key passed securely via headers
             headers = {
                 "x-api-key": api_key,
                 "Accept": "application/json"
             }
-            
+
             resp = session.get(url, headers=headers, timeout=10)
-            
+
             if resp.status_code == 200:
                 data = resp.json()
-                
+
+                # Guard: skip if number is flagged invalid by Trestle
+                if not data.get("is_valid", True):
+                    console.print("[yellow]  Trestle: Number flagged as INVALID[/yellow]")
+                    return
+
                 # Parse Trestle specific signals with a strict null check
                 raw_score = data.get("activity_score")
                 activity_score = int(raw_score) if raw_score is not None else 0
-                
+
                 line_type_fidelity = data.get("line_type", "")
                 crr = data.get("carrier", "")
 
                 # Update core forensics
                 if line_type_fidelity:
                     self.line_type = line_type_fidelity
-                
+
                 # Score >= 70 indicates a high likelihood of a human answering
                 if activity_score >= 70:
                     self.network_status = f"REACHABLE (Activity Score: {activity_score}/100)"
@@ -931,7 +936,7 @@ class PhoneTrackerPro:
                 else:
                     self.network_status = f"INACTIVE/DISCONNECTED (Activity Score: {activity_score}/100)"
                     is_active = False
-                    
+
                 if crr and not self.current_carrier:
                     self.current_carrier = crr
 
@@ -940,10 +945,10 @@ class PhoneTrackerPro:
                 console.print(f"[{status_color}]  ✓ Trestle: Activity {activity_score}/100 | Type: {line_type_fidelity or 'Unknown'} | Carrier: {crr or 'Unknown'}[/{status_color}]")
             else:
                 console.print(f"[dim]  Trestle API Error: {resp.status_code}[/dim]")
-                
+
         except Exception as e:
             console.print(f"[dim]  Trestle: {e}[/dim]")
-                  
+
     def _free_network_probe(self):
         try:
             session = self._get_session()
